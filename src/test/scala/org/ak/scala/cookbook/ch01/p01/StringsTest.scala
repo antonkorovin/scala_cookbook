@@ -1,6 +1,6 @@
-package org.ak.scala.cookbook.ch0101
+package org.ak.scala.cookbook.ch01.p01
 
-import org.scalatest.{Matchers, FlatSpec}
+import org.scalatest.{FlatSpec, Matchers}
 
 /**
  * @author antonk

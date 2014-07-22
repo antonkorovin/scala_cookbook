@@ -18,4 +18,15 @@ class StringsTest extends FlatSpec with Matchers {
 
     areEqual shouldEqual true
   }
+
+  it should "not throw NullPointerException when comparing with null" in {
+    val s1 = "NotNullString"
+    val s2: String = null
+    val s3: String = null
+
+
+    (s1 == s2) shouldEqual false
+    (s2 == s1) shouldEqual false
+    (s2 == s3) shouldEqual true
+  }
 }

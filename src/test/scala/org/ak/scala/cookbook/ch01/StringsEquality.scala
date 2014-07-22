@@ -1,4 +1,4 @@
-package org.ak.scala.cookbook.ch01.p01
+package org.ak.scala.cookbook.ch01
 
 import org.scalatest.{FlatSpec, Matchers}
 

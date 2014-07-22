@@ -6,8 +6,8 @@ import org.scalatest.{FlatSpec, Matchers}
  * @author antonk
  * @since  7/21/14 - 9:01 PM
  */
-class StringsTest extends FlatSpec with Matchers {
-  "A String" should "be compared with == operator" in {
+class StringsEquality extends FlatSpec with Matchers {
+  "A String equality with == operator" should "compare strings content instead references" in {
     val s1 = "Hello, World!"
     val s2 = "Hello, " + "World!"
 

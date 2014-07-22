@@ -19,6 +19,8 @@ class StringsEquality extends FlatSpec with Matchers {
     areEqual shouldEqual true
   }
 
+
+
   it should "not throw NullPointerException when comparing with null" in {
     val s1 = "NotNullString"
     val s2: String = null
@@ -28,5 +30,16 @@ class StringsEquality extends FlatSpec with Matchers {
     (s1 == s2) shouldEqual false
     (s2 == s1) shouldEqual false
     (s2 == s3) shouldEqual true
+  }
+
+
+
+  it should "compare strings content case sensitive" in {
+    val s1 = "Hello"
+    val s2 = "hello"
+
+    (s1 == s2) shouldEqual false
+
+    s1.equalsIgnoreCase(s2) shouldEqual true
   }
 }

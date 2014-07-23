@@ -54,4 +54,14 @@ class SplittingStrings extends FlatSpec with Matchers {
     arrTwo should have size 5
     arrTwo should contain theSameElementsInOrderAs  Array("one", "and", "two", "and", "three")
   }
+
+
+
+  it should "be split into two Strings with splitAt(n: Int) method" in {
+    val str = "Hello, World"
+    val (head, tail) = str.splitAt(6)
+
+    head shouldEqual "Hello,"
+    tail shouldEqual " World"
+  }
 }

@@ -19,4 +19,23 @@ class SplittingStrings extends FlatSpec with Matchers {
     arrTwo should have size 3
     arrTwo should contain only ("one,", "two,", "three")
   }
+
+
+  it should "be split and result should have map, filter and other functions" in {
+    val strOne = "one, two, three"
+    val arrOne = strOne.split(",").map(_.trim)
+
+    arrOne should have size 3
+    arrOne should contain only ("one", "two", "three")
+
+
+    val strTwo = "1, 2, 3"
+    val arrTwo = strTwo.split(",")
+                       .map(_.trim)
+                       .map(_.toInt)
+                       .filter(_ % 2 != 0)
+
+    arrTwo should have size 2
+    arrTwo should contain only (1, 3)
+  }
 }

@@ -38,4 +38,20 @@ class SplittingStrings extends FlatSpec with Matchers {
     arrTwo should have size 2
     arrTwo should contain only (1, 3)
   }
+
+
+
+  it should "be split with additional scala methods" in {
+    val str = "one, and two, and three"
+    val arrOne = str.split(',') // using one character separator
+
+    arrOne should have size 3
+    arrOne should contain only ("one", " and two", " and three")
+
+    val arrTwo = str.split(Array(',', ' ')) // using characters array as separator
+                    .filterNot(_.isEmpty)
+
+    arrTwo should have size 5
+    arrTwo should contain theSameElementsInOrderAs  Array("one", "and", "two", "and", "three")
+  }
 }

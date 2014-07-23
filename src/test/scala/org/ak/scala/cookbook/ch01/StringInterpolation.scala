@@ -23,4 +23,16 @@ class StringInterpolation extends FunSuite with Matchers {
 
     str shouldEqual "Length of 'Hello' is 5. It is odd."
   }
+
+
+
+  test("interpolation with printf style") {
+    val someString = "Hello"
+    val someInt = 42
+    val someFloat = 73.37f
+
+    val str = f"Str='$someString%7s' Int=0x$someInt%03X Float=$someFloat%4.1f"
+
+    str shouldEqual "Str='  Hello' Int=0x02A Float=73.4"
+  }
 }

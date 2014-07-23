@@ -8,16 +8,16 @@ import org.scalatest.{Matchers, FlatSpec}
  */
 class SplittingStrings extends FlatSpec with Matchers {
   "String" should "be split on field separator (java style)" in {
-    val s = "one, two, three"
-    val arrOne = s.split(",")
+    val str = "one, two, three"
+    val arrOne = str.split(",")
 
     arrOne should have size 3
-    arrOne should contain only ("one", " two", " three")
+    arrOne should contain inOrderOnly ("one", " two", " three")
 
 
-    val arrTwo = s.split("\\s+")
+    val arrTwo = str.split("\\s+")
     arrTwo should have size 3
-    arrTwo should contain only ("one,", "two,", "three")
+    arrTwo should contain inOrderOnly ("one,", "two,", "three")
   }
 
 
@@ -26,7 +26,7 @@ class SplittingStrings extends FlatSpec with Matchers {
     val arrOne = strOne.split(",").map(_.trim)
 
     arrOne should have size 3
-    arrOne should contain only ("one", "two", "three")
+    arrOne should contain inOrderOnly ("one", "two", "three")
 
 
     val strTwo = "1, 2, 3"
@@ -36,7 +36,7 @@ class SplittingStrings extends FlatSpec with Matchers {
                        .filter(_ % 2 != 0)
 
     arrTwo should have size 2
-    arrTwo should contain only (1, 3)
+    arrTwo should contain inOrderOnly (1, 3)
   }
 
 

@@ -35,4 +35,13 @@ class StringInterpolation extends FunSuite with Matchers {
 
     str shouldEqual "Str='  Hello' Int=0x02A Float=73.4"
   }
+
+
+
+  test("raw string interpolation") {
+    val str = raw"one\ntwo"
+    val expected = "one" + "\\" + "n" + "two"
+
+    str shouldEqual expected
+  }
 }

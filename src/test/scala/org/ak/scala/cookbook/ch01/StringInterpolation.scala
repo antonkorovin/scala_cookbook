@@ -44,4 +44,25 @@ class StringInterpolation extends FunSuite with Matchers {
 
     str shouldEqual expected
   }
+
+
+
+
+  test("own interpolation") {
+
+    import StringInterpolationHelper._
+
+    val str = "bar someKey=someValue"
+
+    str match {
+      case matches"foo $key=$value" =>
+        fail("Shouldn't match.")
+
+      case matches"bar $key=$value" =>
+        info("Matched successfully.")
+
+      case _ =>
+        fail("Doesn't match to anything.")
+    }
+  }
 }

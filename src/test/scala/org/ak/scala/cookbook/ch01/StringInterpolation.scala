@@ -48,7 +48,7 @@ class StringInterpolation extends FunSuite with Matchers {
 
 
 
-  test("own interpolation") {
+  test("own interpolation with unapplySeq") {
 
     import StringInterpolationHelper._
 
@@ -64,5 +64,29 @@ class StringInterpolation extends FunSuite with Matchers {
       case _ =>
         fail("Doesn't match to anything.")
     }
+
+
+  }
+
+
+  test("own interpolation with regex") {
+    import StringInterpolationHelper._
+
+    def toIpAddress(s: String) = {
+      s match {
+        case regex"""^([0-9]+)$a[.]([0-9]+)$b[.]([0-9]+)$c[.]([0-9]+)$d$$""" =>
+          Some(
+            a.toString().toInt,
+            b.toString().toInt,
+            c.toString().toInt,
+            d.toString().toInt
+          )
+
+        case _ => None
+      }
+    }
+
+    val ipAddr = toIpAddress("123.45.67.89")
+    ipAddr shouldEqual Some(123, 45, 67, 89)
   }
 }

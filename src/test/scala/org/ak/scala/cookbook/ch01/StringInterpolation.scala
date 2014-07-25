@@ -76,10 +76,10 @@ class StringInterpolation extends FunSuite with Matchers {
       s match {
         case regex"""^([0-9]+)$a[.]([0-9]+)$b[.]([0-9]+)$c[.]([0-9]+)$d$$""" =>
           Some(
-            a.toString().toInt,
-            b.toString().toInt,
-            c.toString().toInt,
-            d.toString().toInt
+            a.toInt,
+            b.toInt,
+            c.toInt,
+            d.toInt
           )
 
         case _ => None

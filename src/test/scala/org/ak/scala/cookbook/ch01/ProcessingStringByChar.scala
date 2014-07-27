@@ -13,4 +13,13 @@ class ProcessingStringByChar extends FunSuite with Matchers {
 
     capitalized shouldEqual "HELLO"
   }
+
+
+
+  test("using for") {
+    val str = "hello"
+    val capitalized = for (c <- str) yield c.toUpper
+
+    capitalized shouldEqual "HELLO"
+  }
 }

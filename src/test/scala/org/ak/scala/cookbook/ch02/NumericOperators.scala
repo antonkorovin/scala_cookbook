@@ -16,4 +16,13 @@ class NumericOperators extends FunSuite with Matchers {
     i -= 1
     i shouldEqual 42
   }
+
+
+  test("using BigInt for very large numbers") {
+    val i1 = BigInt(Long.MaxValue)
+    val i2 = BigInt(Long.MaxValue)
+
+    (i1 * i2) shouldEqual BigInt("85070591730234615847396907784232501249")
+
+  }
 }

@@ -1,5 +1,6 @@
 package org.ak.scala.cookbook.ch01
 
+import org.ak.scala.cookbook.StringUtils
 import org.scalatest.{Matchers, FunSuite}
 
 /**
@@ -7,12 +8,6 @@ import org.scalatest.{Matchers, FunSuite}
  * @since  7/27/14 - 8:38 AM
  */
 class AddingMethodsToString extends FunSuite with Matchers {
-  object StringUtils {
-    implicit class StringWithAdditional(s: String) {
-      def isValid = s != null && !s.trim.isEmpty
-    }
-  }
-
   test("adding isValid method") {
     import StringUtils._
 

@@ -33,4 +33,10 @@ class StringRegexp extends FunSuite with Matchers {
          fail()
      }
     }
+
+  test("replacing by pattern") {
+    val address = "123 Main Street".replaceAll("[0-9]", "x")
+
+    address shouldEqual "xxx Main Street"
+  }
 }

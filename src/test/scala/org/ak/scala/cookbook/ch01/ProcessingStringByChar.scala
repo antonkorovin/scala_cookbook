@@ -22,4 +22,11 @@ class ProcessingStringByChar extends FunSuite with Matchers {
 
     capitalized shouldEqual "HELLO"
   }
+
+
+  test("using charAt and friends") {
+    val str = "hello"
+
+    str(1) shouldEqual 'e'
+  }
 }

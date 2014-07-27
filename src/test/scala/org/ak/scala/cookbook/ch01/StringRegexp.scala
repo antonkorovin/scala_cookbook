@@ -19,4 +19,18 @@ class StringRegexp extends FunSuite with Matchers {
       matches.group(2) shouldEqual "value"
     }
 
+    test("unapply regexp") {
+      val pattern = "^([^=]+)=([^=]+)$".r
+      val str = "keyString=valueString"
+
+
+     str match {
+       case pattern(k, v) =>
+         k shouldEqual "keyString"
+         v shouldEqual "valueString"
+
+       case _ =>
+         fail()
+     }
+    }
 }

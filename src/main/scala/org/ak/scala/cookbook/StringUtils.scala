@@ -1,5 +1,7 @@
 package org.ak.scala.cookbook
 
+import java.awt.event.KeyEvent
+
 /**
  * @author antonk
  * @since  7/27/14 - 8:48 AM
@@ -19,4 +21,13 @@ object StringUtils {
     }
   }
 
+
+  def isPrintable(c: Char) = {
+    val block = Character.UnicodeBlock.of(c)
+
+    !c.isControl &&
+    c != KeyEvent.CHAR_UNDEFINED &&
+    block != null &&
+    block != Character.UnicodeBlock.SPECIALS
+  }
 }

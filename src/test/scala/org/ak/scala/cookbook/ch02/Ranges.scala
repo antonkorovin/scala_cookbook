@@ -51,9 +51,10 @@ class Ranges extends FunSuite with Matchers {
     val r = begin to end
 
     val expectedSum = sumOfArithmeticProgression(begin, end, r.length)
-    val sum = r.foldLeft(0)(_ + _)
+    val initial = 42
+    val sum = r.foldLeft(initial)(_ + _)
 
-    sum shouldEqual expectedSum
+    sum shouldEqual (expectedSum + initial)
   }
 
 

@@ -59,7 +59,7 @@ class StringInterpolation extends FunSuite with Matchers {
         fail("Shouldn't match.")
 
       case matches"bar $key=$value" =>
-        info("Matched successfully.")
+        // Should match successfully.
 
       case _ =>
         fail("Doesn't match to anything.")

@@ -1,9 +1,10 @@
 package org.ak.scala.cookbook.ch03
 
-import org.scalatest.{Matchers, FunSuite}
+import org.scalatest.{FunSuite, Matchers}
 
 import scala.util.Random
-import util.control.Breaks._
+import scala.util.control.Breaks
+import scala.util.control.Breaks._
 
 /**
  * @author antonk
@@ -186,5 +187,37 @@ class IteratingOverCollection extends FunSuite with Matchers {
       found shouldEqual 5
     }
 
+  }
+
+
+
+  test("labeled break example") {
+    val inner = new Breaks
+    val outer = new Breaks
+
+
+    var foundOuter = 0
+    var foundInner = '\0'
+
+    outer.breakable {
+      for (i <- 1 to 5) {
+        inner.breakable {
+          for (j <- 'a' to 'e') {
+            if (i == 1 && j == 'c') {
+              foundOuter = i
+              foundInner = j
+
+              inner.break()
+            }
+
+            if (i == 2 && j == 'b') outer.break()
+          }
+        }
+      }
+    }
+
+
+    foundInner shouldEqual 'c'
+    foundOuter shouldEqual 1
   }
 }

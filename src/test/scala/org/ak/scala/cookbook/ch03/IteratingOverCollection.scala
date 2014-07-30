@@ -3,6 +3,7 @@ package org.ak.scala.cookbook.ch03
 import org.scalatest.{Matchers, FunSuite}
 
 import scala.util.Random
+import util.control.Breaks._
 
 /**
  * @author antonk
@@ -166,5 +167,24 @@ class IteratingOverCollection extends FunSuite with Matchers {
     val col = 2 + Random.nextInt(9)
 
     arr(row - 2)(col - 2) shouldEqual row * col
+  }
+
+
+
+  test("break example") {
+
+    breakable {
+      var found = 0
+      for (i <- 1 to 10) {
+        if (i > 4) {
+          found = i
+          break()
+        } // break out of the for loop
+      }
+
+
+      found shouldEqual 5
+    }
+
   }
 }

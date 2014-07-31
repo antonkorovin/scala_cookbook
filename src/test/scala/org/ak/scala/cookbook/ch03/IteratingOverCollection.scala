@@ -1,8 +1,9 @@
 package org.ak.scala.cookbook.ch03
 
+import org.scalacheck.Gen
+import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import org.scalatest.{FunSuite, Matchers}
 
-import scala.util.Random
 import scala.util.control.Breaks
 import scala.util.control.Breaks._
 
@@ -10,7 +11,10 @@ import scala.util.control.Breaks._
  * @author antonk
  * @since  7/29/14 - 10:56 PM
  */
-class IteratingOverCollection extends FunSuite with Matchers {
+class IteratingOverCollection
+  extends FunSuite
+  with Matchers
+  with GeneratorDrivenPropertyChecks {
   test("iterating with for") {
     val arr = (1 to 5).toArray
 
@@ -164,11 +168,20 @@ class IteratingOverCollection extends FunSuite with Matchers {
       arr(row - 2)(col - 2) = row * col
     }
 
-    // TODO: Add scalacheck here
-    val row = 2 + Random.nextInt(8)
-    val col = 2 + Random.nextInt(8)
 
-    arr(row - 2)(col - 2) shouldEqual (row * col)
+    val doubleIndexes =
+      for {
+        row <- Gen.choose(2, 9)
+        col <- Gen.choose(2, 9)
+      } yield (row, col)
+
+
+    forAll(doubleIndexes) {
+      (doubleIndex) =>
+        val (row, col) = doubleIndex
+
+        arr(row - 2)(col - 2) shouldEqual (row * col)
+    }
   }
 
 

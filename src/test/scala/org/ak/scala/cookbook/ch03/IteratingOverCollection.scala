@@ -156,7 +156,7 @@ class IteratingOverCollection extends FunSuite with Matchers {
 
 
   test("for with multiple counters and multidimensional arrays ") {
-    val arr = Array.ofDim[Int](9, 9)
+    val arr = Array.ofDim[Int](8, 8)
     for {
       row <- 2 to 9
       col <- 2 to 9
@@ -164,10 +164,11 @@ class IteratingOverCollection extends FunSuite with Matchers {
       arr(row - 2)(col - 2) = row * col
     }
 
-    val row = 2 + Random.nextInt(9)
-    val col = 2 + Random.nextInt(9)
+    // TODO: Add scalacheck here
+    val row = 2 + Random.nextInt(8)
+    val col = 2 + Random.nextInt(8)
 
-    arr(row - 2)(col - 2) shouldEqual row * col
+    arr(row - 2)(col - 2) shouldEqual (row * col)
   }
 
 

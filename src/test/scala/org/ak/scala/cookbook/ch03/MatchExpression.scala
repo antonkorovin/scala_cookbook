@@ -44,6 +44,25 @@ class MatchExpression extends FunSuite with Matchers with GeneratorDrivenPropert
   }
 
 
+  test("simple matching with 'tableswitch' optimisation") {
+    val month = 6
+    val expectedMonthName = "June"
+
+    val monthName = monthNameWithSwitchAnnotation(month)
+    monthName shouldEqual expectedMonthName
+
+
+    forAll(Gen.chooseNum(Int.MinValue, Int.MaxValue)) {
+      unexpectedMonth =>
+        whenever(unexpectedMonth < 1 || unexpectedMonth > 12) {
+          monthNameWithSwitchAnnotation(unexpectedMonth) shouldEqual "Invalid month"
+        }
+    }
+  }
+
+
+  // ////////////////////////////////////////////
+
 
   private def monthNameWithDefault(i: Int) = {
     i match {
@@ -68,6 +87,30 @@ class MatchExpression extends FunSuite with Matchers with GeneratorDrivenPropert
 
   private def monthNameWithDefault2(i: Int) = {
     i match {
+      case 1 => "January"
+      case 2 => "February"
+      case 3 => "March"
+      case 4 => "April"
+      case 5 => "May"
+      case 6 => "June"
+      case 7 => "July"
+      case 8 => "August"
+      case 9 => "September"
+      case 10 => "October"
+      case 11 => "November"
+      case 12 => "December"
+
+      // the default, catch-all
+      case _ => "Invalid month"
+    }
+  }
+
+
+  private def monthNameWithSwitchAnnotation(i: Int) = {
+
+    import annotation.switch
+
+    (i: @switch) match {
       case 1 => "January"
       case 2 => "February"
       case 3 => "March"

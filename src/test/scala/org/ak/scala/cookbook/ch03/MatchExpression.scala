@@ -80,6 +80,28 @@ class MatchExpression extends FunSuite with Matchers with GeneratorDrivenPropert
     }
   }
 
+
+  test("simple matching multiple conditions with one case") {
+    def isOddOrEven(i: Int) = i match {
+      case 1 | 3 | 5 | 7 | 9 => "odd"
+      case 2 | 4 | 6 | 8 | 10 => "even"
+    }
+
+    // //////////////////////
+
+
+    forAll(Gen.oneOf(1 to 9 by 2)) {
+      n =>
+        isOddOrEven(n) shouldEqual "odd"
+    }
+
+
+    forAll(Gen.oneOf(2 to 10 by 2)) {
+      n =>
+        isOddOrEven(n) shouldEqual "even"
+    }
+  }
+
   // ////////////////////////////////////////////
 
 

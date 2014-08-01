@@ -9,7 +9,29 @@ import org.scalatest.{FunSuite, Matchers}
  * @since  7/31/14 - 3:38 PM
  */
 class MatchExpression extends FunSuite with Matchers with GeneratorDrivenPropertyChecks {
-  test("simple matching") {
+  test("simple matching with default case as variable") {
+
+    def monthNameWithDefault(i: Int) = {
+      i match {
+        case 1 => "January"
+        case 2 => "February"
+        case 3 => "March"
+        case 4 => "April"
+        case 5 => "May"
+        case 6 => "June"
+        case 7 => "July"
+        case 8 => "August"
+        case 9 => "September"
+        case 10 => "October"
+        case 11 => "November"
+        case 12 => "December"
+
+        // catch the default with a variable so you can print it
+        case whoa => s"Unexpected case: $whoa"
+      }
+    }
+
+
     val month = 6
     val expectedMonthName = "June"
 
@@ -27,7 +49,28 @@ class MatchExpression extends FunSuite with Matchers with GeneratorDrivenPropert
 
 
 
-  test("simple matching 2") {
+  test("simple matching with default case as wildcard") {
+    def monthNameWithDefault2(i: Int) = {
+      i match {
+        case 1 => "January"
+        case 2 => "February"
+        case 3 => "March"
+        case 4 => "April"
+        case 5 => "May"
+        case 6 => "June"
+        case 7 => "July"
+        case 8 => "August"
+        case 9 => "September"
+        case 10 => "October"
+        case 11 => "November"
+        case 12 => "December"
+
+        // the default, catch-all
+        case _ => "Invalid month"
+      }
+    }
+
+
     val month = 6
     val expectedMonthName = "June"
 
@@ -45,6 +88,29 @@ class MatchExpression extends FunSuite with Matchers with GeneratorDrivenPropert
 
 
   test("simple matching with 'tableswitch' optimisation") {
+    def monthNameWithSwitchAnnotation(i: Int) = {
+
+      import scala.annotation.switch
+
+      (i: @switch) match {
+        case 1 => "January"
+        case 2 => "February"
+        case 3 => "March"
+        case 4 => "April"
+        case 5 => "May"
+        case 6 => "June"
+        case 7 => "July"
+        case 8 => "August"
+        case 9 => "September"
+        case 10 => "October"
+        case 11 => "November"
+        case 12 => "December"
+
+        // the default, catch-all
+        case _ => "Invalid month"
+      }
+    }
+
     val month = 6
     val expectedMonthName = "June"
 
@@ -63,6 +129,23 @@ class MatchExpression extends FunSuite with Matchers with GeneratorDrivenPropert
 
 
   test("simple matching without default case") {
+    def monthNameWithoutDefault(i: Int) = {
+      i match {
+        case 1 => "January"
+        case 2 => "February"
+        case 3 => "March"
+        case 4 => "April"
+        case 5 => "May"
+        case 6 => "June"
+        case 7 => "July"
+        case 8 => "August"
+        case 9 => "September"
+        case 10 => "October"
+        case 11 => "November"
+        case 12 => "December"
+      }
+    }
+
     val month = 6
     val expectedMonthName = "June"
 
@@ -99,92 +182,6 @@ class MatchExpression extends FunSuite with Matchers with GeneratorDrivenPropert
     forAll(Gen.oneOf(2 to 10 by 2)) {
       n =>
         isOddOrEven(n) shouldEqual "even"
-    }
-  }
-
-  // ////////////////////////////////////////////
-
-
-  private def monthNameWithDefault(i: Int) = {
-    i match {
-      case 1 => "January"
-      case 2 => "February"
-      case 3 => "March"
-      case 4 => "April"
-      case 5 => "May"
-      case 6 => "June"
-      case 7 => "July"
-      case 8 => "August"
-      case 9 => "September"
-      case 10 => "October"
-      case 11 => "November"
-      case 12 => "December"
-
-      // catch the default with a variable so you can print it
-      case whoa => s"Unexpected case: $whoa"
-    }
-  }
-
-
-  private def monthNameWithDefault2(i: Int) = {
-    i match {
-      case 1 => "January"
-      case 2 => "February"
-      case 3 => "March"
-      case 4 => "April"
-      case 5 => "May"
-      case 6 => "June"
-      case 7 => "July"
-      case 8 => "August"
-      case 9 => "September"
-      case 10 => "October"
-      case 11 => "November"
-      case 12 => "December"
-
-      // the default, catch-all
-      case _ => "Invalid month"
-    }
-  }
-
-
-  private def monthNameWithSwitchAnnotation(i: Int) = {
-
-    import scala.annotation.switch
-
-    (i: @switch) match {
-      case 1 => "January"
-      case 2 => "February"
-      case 3 => "March"
-      case 4 => "April"
-      case 5 => "May"
-      case 6 => "June"
-      case 7 => "July"
-      case 8 => "August"
-      case 9 => "September"
-      case 10 => "October"
-      case 11 => "November"
-      case 12 => "December"
-
-      // the default, catch-all
-      case _ => "Invalid month"
-    }
-  }
-
-
-  private def monthNameWithoutDefault(i: Int) = {
-    i match {
-      case 1 => "January"
-      case 2 => "February"
-      case 3 => "March"
-      case 4 => "April"
-      case 5 => "May"
-      case 6 => "June"
-      case 7 => "July"
-      case 8 => "August"
-      case 9 => "September"
-      case 10 => "October"
-      case 11 => "November"
-      case 12 => "December"
     }
   }
 }

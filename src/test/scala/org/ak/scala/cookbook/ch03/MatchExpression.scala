@@ -285,4 +285,33 @@ class MatchExpression extends FunSuite with Matchers with GeneratorDrivenPropert
     startsWithOneAndHasLength3(List(1, 2, 3, 4)) shouldEqual false
     startsWithOneAndHasLength3(None) shouldEqual false
   }
+
+
+
+  test("if guards in pattern matching") {
+    def description(i: Any) = i match {
+      case negative: Int if negative < 0 =>
+        "negative"
+
+      case number: Int if number == 0 =>
+        "zero"
+
+      case positive: Int if positive > 0 =>
+        "positive"
+    }
+
+
+    forAll(Gen.choose(Int.MinValue, -1)) {
+      i =>
+        description(i) shouldEqual "negative"
+    }
+
+    description(0) shouldEqual "zero"
+
+
+    forAll(Gen.choose(0, Int.MaxValue)) {
+      i =>
+        description(i) shouldEqual "positive"
+    }
+  }
 }

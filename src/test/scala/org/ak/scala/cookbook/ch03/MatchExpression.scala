@@ -263,4 +263,26 @@ class MatchExpression extends FunSuite with Matchers with GeneratorDrivenPropert
 
     echoWhatYouGaveMe(None) shouldEqual "Unknown"
   }
+
+
+
+  test("adding variables to patterns") {
+    def startsWithOneAndHasLength3(any: Any) = {
+      any match {
+        // a variable-binding pattern
+        case list @ List(1, _*) =>
+          list.size == 3
+        case _ =>
+          false
+      }
+    }
+
+    // //////////////////////
+
+
+    startsWithOneAndHasLength3(List(1, 2, 3)) shouldEqual true
+    startsWithOneAndHasLength3(List(2, 2, 3)) shouldEqual false
+    startsWithOneAndHasLength3(List(1, 2, 3, 4)) shouldEqual false
+    startsWithOneAndHasLength3(None) shouldEqual false
+  }
 }

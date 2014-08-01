@@ -184,4 +184,83 @@ class MatchExpression extends FunSuite with Matchers with GeneratorDrivenPropert
         isOddOrEven(n) shouldEqual "even"
     }
   }
+
+
+
+  test("pattern matching in match expressions") {
+    case class Person(first: String, last: String)
+    case class Dog(name: String)
+
+    def echoWhatYouGaveMe(x: Any): String = x match {
+      // constant patterns
+      case 0 => "zero"
+      case true => "true"
+      case "hello" => "you said 'hello'"
+      case Nil => "an empty List"
+
+
+      // sequence patterns
+      case List(0, _, _) => "a three-element list with 0 as the first element"
+      case List(1, _*) => "a list beginning with 1, having any number of elements"
+      case Vector(1, _*) => "a vector starting with 1, having any number of elements"
+
+
+      // tuples
+      case (one, two) => s"got $one and $two"
+      case (one, two, three) => s"got $one, $two, and $three"
+
+
+      // constructor patterns
+      case Person(first, "Alexander") => s"found an Alexander, first name = $first"
+      case Dog("Suka") => "found a dog named Suka"
+
+
+      // typed patterns
+      case s: String => s"you gave me this string: $s"
+      case i: Int => s"thanks for the int: $i"
+      case f: Float => s"thanks for the float: $f"
+      case a: Array[_] => s"an array : ${a.mkString(",")}"
+      case d: Dog => s"dog: ${d.name}"
+      case list: List[_] => s"thanks for the List: $list"
+      case m: Map[_, _] => String.valueOf(m)
+
+      // the default wildcard pattern
+      case _ => "Unknown"
+    }
+
+
+    // //////////////////////
+
+
+    // constant patterns
+    echoWhatYouGaveMe(0) shouldEqual "zero"
+    echoWhatYouGaveMe(true) shouldEqual "true"
+    echoWhatYouGaveMe("hello") shouldEqual "you said 'hello'"
+
+    // sequence patterns
+    echoWhatYouGaveMe(Nil) shouldEqual "an empty List"
+    echoWhatYouGaveMe(List(0, 1, 2)) shouldEqual "a three-element list with 0 as the first element"
+    echoWhatYouGaveMe(List(1, 0, 2)) shouldEqual "a list beginning with 1, having any number of elements"
+    echoWhatYouGaveMe(Vector(1, 0, 2)) shouldEqual "a vector starting with 1, having any number of elements"
+
+    // tuples
+    echoWhatYouGaveMe(("one", 2)) shouldEqual "got one and 2"
+    echoWhatYouGaveMe((1, "two", 3.0)) shouldEqual "got 1, two, and 3.0"
+
+    // constructor patterns
+    echoWhatYouGaveMe(Person("Richard", "Alexander")) shouldEqual "found an Alexander, first name = Richard"
+    echoWhatYouGaveMe(Dog("Suka")) shouldEqual "found a dog named Suka"
+
+
+    // typed patterns
+    echoWhatYouGaveMe("Hello") shouldEqual "you gave me this string: Hello"
+    echoWhatYouGaveMe(42) shouldEqual "thanks for the int: 42"
+    echoWhatYouGaveMe(73.37F) shouldEqual "thanks for the float: 73.37"
+    echoWhatYouGaveMe((1 to 9 by 2).toArray) shouldEqual "an array : 1,3,5,7,9"
+    echoWhatYouGaveMe(Dog("Another")) shouldEqual "dog: Another"
+    echoWhatYouGaveMe(List("one", "two")) shouldEqual "thanks for the List: List(one, two)"
+    echoWhatYouGaveMe(Map("one" -> 1, "two" -> 2)) shouldEqual "Map(one -> 1, two -> 2)"
+
+    echoWhatYouGaveMe(None) shouldEqual "Unknown"
+  }
 }

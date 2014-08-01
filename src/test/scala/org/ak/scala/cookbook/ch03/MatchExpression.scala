@@ -4,6 +4,8 @@ import org.scalacheck.Gen
 import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import org.scalatest.{FunSuite, Matchers}
 
+import scala.annotation.tailrec
+
 /**
  * @author antonk
  * @since  7/31/14 - 3:38 PM
@@ -312,6 +314,40 @@ class MatchExpression extends FunSuite with Matchers with GeneratorDrivenPropert
     forAll(Gen.choose(0, Int.MaxValue)) {
       i =>
         description(i) shouldEqual "positive"
+    }
+  }
+
+
+
+  test("pattern matching with List[T]") {
+    def reverseList[T](list: List[T]): List[T] = {
+
+      @tailrec
+      def recReverse(rest: List[T], reversed: List[T]): List[T] = {
+        rest match {
+          case Nil =>
+            reversed
+
+
+          case last :: Nil =>
+            last :: reversed
+
+          case head :: tail =>
+            recReverse(tail, head :: reversed)
+        }
+      }
+
+      recReverse(list, Nil)
+    }
+
+    forAll(Gen.listOf(Int)) {
+      list =>
+        val reversed = reverseList(list)
+        list.reverse shouldEqual reversed
+
+        reverseList(
+          reverseList(list)
+        ) shouldEqual list
     }
   }
 }

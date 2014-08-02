@@ -35,4 +35,22 @@ class ExceptionsAndMatchExpressions extends FunSuite with Matchers {
         exc should be theSameInstanceAs e
     }
   }
+
+
+  test("declare java compatible throws specification") {
+    val e = new Exception("Expected")
+
+    @throws(classOf[Exception])
+    def validJavaCall() {
+      throw e
+    }
+
+
+    try {
+      validJavaCall()
+    } catch {
+      case exc: Exception =>
+        exc should be theSameInstanceAs e
+    }
+  }
 }

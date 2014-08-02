@@ -17,4 +17,22 @@ class ExceptionsAndMatchExpressions extends FunSuite with Matchers {
         exc should be theSameInstanceAs e
     }
   }
+
+
+  test("catch any type") {
+    val e = new Exception("Expected")
+
+    try {
+      throw e
+    } catch {
+      case _: IllegalAccessError =>
+        fail("Wrong type of exception")
+
+      case _: IllegalArgumentException =>
+        fail("Wrong type of exception")
+
+      case exc: Throwable =>
+        exc should be theSameInstanceAs e
+    }
+  }
 }

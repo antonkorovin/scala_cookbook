@@ -1,6 +1,9 @@
 package org.ak.scala.cookbook.ch03
 
-import org.scalatest.{Matchers, FunSuite}
+import java.io.{PrintWriter, FileInputStream, File, FileOutputStream}
+import java.util.Scanner
+
+import org.scalatest.{FunSuite, Matchers}
 
 /**
  * @author antonk
@@ -51,6 +54,39 @@ class ExceptionsAndMatchExpressions extends FunSuite with Matchers {
     } catch {
       case exc: Exception =>
         exc should be theSameInstanceAs e
+    }
+  }
+
+
+  test("declaring a variable before using it in a try/catch/finally block") {
+
+    val file = File.createTempFile("scalaCookbook", "exceptions")
+    file.deleteOnExit()
+
+    val testData = "Hello"
+
+    var out = None: Option[PrintWriter]
+    try {
+      out = Some(new PrintWriter(file))
+      out.foreach {
+        _.println(testData)
+      }
+    } finally {
+      out.foreach(_.close())
+    }
+
+
+
+    var in = None: Option[Scanner]
+    try {
+      in = Some(new Scanner(file))
+      val lines = in.map(_.nextLine()).toArray
+
+      lines should have size 1
+      lines shouldEqual Array(testData)
+
+    } finally {
+      in.foreach(_.close())
     }
   }
 }

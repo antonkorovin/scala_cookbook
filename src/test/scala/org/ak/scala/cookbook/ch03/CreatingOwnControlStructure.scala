@@ -1,5 +1,7 @@
 package org.ak.scala.cookbook.ch03
 
+import org.scalacheck.Gen
+import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import org.scalatest.{FunSuite, Matchers}
 
 import scala.annotation.tailrec
@@ -8,7 +10,7 @@ import scala.annotation.tailrec
  * @author antonk
  * @since  8/4/14 - 10:05 AM
  */
-class CreatingOwnControlStructure extends FunSuite with Matchers {
+class CreatingOwnControlStructure extends FunSuite with Matchers with GeneratorDrivenPropertyChecks {
   test("whilst example") {
     @tailrec
     def whileNot(condition: => Boolean)(body: => Unit) {
@@ -21,13 +23,15 @@ class CreatingOwnControlStructure extends FunSuite with Matchers {
 
     // ////////////////////
 
-    var i = 0
+    forAll(Gen.chooseNum(1, 100)) {
+      n =>
+        var i = 0
+        whileNot(i > n) {
+          i += 1
+        }
 
-    whileNot(i > 10) {
-      i += 1
+
+        i shouldEqual n + 1
     }
-
-
-    i shouldEqual 11
   }
 }

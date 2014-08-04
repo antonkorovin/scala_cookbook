@@ -11,7 +11,7 @@ import scala.annotation.tailrec
  * @since  8/4/14 - 10:05 AM
  */
 class CreatingOwnControlStructure extends FunSuite with Matchers with GeneratorDrivenPropertyChecks {
-  test("whilst example") {
+  test("while not structure example") {
     @tailrec
     def whileNot(condition: => Boolean)(body: => Unit) {
       if (!condition) {
@@ -26,12 +26,12 @@ class CreatingOwnControlStructure extends FunSuite with Matchers with GeneratorD
     forAll(Gen.chooseNum(1, 100)) {
       n =>
         var i = 0
-        whileNot(i > n) {
+        whileNot(i >= n) {
           i += 1
         }
 
 
-        i shouldEqual n + 1
+        i shouldEqual n
     }
   }
 }

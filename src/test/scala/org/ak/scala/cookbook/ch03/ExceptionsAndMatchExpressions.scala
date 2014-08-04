@@ -1,6 +1,6 @@
 package org.ak.scala.cookbook.ch03
 
-import java.io.{PrintWriter, FileInputStream, File, FileOutputStream}
+import java.io.{File, PrintWriter}
 import java.util.Scanner
 
 import org.scalatest.{FunSuite, Matchers}

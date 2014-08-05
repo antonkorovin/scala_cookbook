@@ -8,12 +8,28 @@ import org.scalatest.{Matchers, FunSuite}
  */
 class ClassesAndProperties extends FunSuite with Matchers {
   test("primary constructor") {
+    var personsCreated = 0
+
+
     class Person(var firstName: String, var lastName: String) {
+
+      // <editor-fold desc="Primary constructor body">
+
+      personsCreated += 1
+
+      // </editor-fold>
+
+      // //////////////////////////////
+
       override def toString = s"$firstName $lastName"
     }
 
 
+    personsCreated shouldEqual 0
+
     val p = new Person("First", "Last")
+
+    personsCreated shouldEqual 1
 
     p.toString shouldEqual "First Last"
 

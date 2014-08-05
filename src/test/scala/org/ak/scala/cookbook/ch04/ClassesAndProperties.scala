@@ -90,4 +90,15 @@ class ClassesAndProperties extends FunSuite with Matchers {
     p.setPrivateVar("newPrivateVar")
     p.getPrivateVar shouldEqual "newPrivateVar"
   }
+
+
+  test("fields visibility in case classes") {
+    case class Person(defField: String)
+
+
+    val p = Person("def")
+    // p.defField has generated mutator
+    // But it can't be reassigned
+    p.defField shouldEqual "def"
+  }
 }

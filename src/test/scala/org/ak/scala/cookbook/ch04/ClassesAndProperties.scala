@@ -101,4 +101,24 @@ class ClassesAndProperties extends FunSuite with Matchers {
     // But it can't be reassigned
     p.defField shouldEqual "def"
   }
+
+
+  test("add auxiliary constructor") {
+    class Person(
+      val firstName  : String,
+      val middleName : Option[String],
+      val lastName   : String
+    ) {
+      def this(
+        firstName : String,
+        lastName  : String) {
+        this(firstName, None, lastName)
+      }
+    }
+
+
+    val p = new Person("first", "last")
+
+    p.middleName shouldEqual None
+  }
 }

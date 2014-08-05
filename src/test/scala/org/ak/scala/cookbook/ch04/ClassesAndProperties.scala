@@ -38,4 +38,56 @@ class ClassesAndProperties extends FunSuite with Matchers {
 
     p.toString shouldEqual s"${p.firstName} ${p.lastName}"
   }
+
+
+  test("fields visibility") {
+    // ////////////////////////////////
+
+    class Person(
+      var varField: String,
+      val valField: String,
+          defField: String,
+      private val privateVal: String,
+      private var privateVar: String
+    )  {
+      def getDefFieldValue = defField
+
+      def getPrivateVar = privateVar
+      def setPrivateVar(newValue: String) {privateVar = newValue}
+
+      def getPrivateVal = privateVal
+    }
+
+    // ////////////////////////////////
+
+
+    val p = new Person(
+      "var",
+      "val",
+      "def",
+      "privateVal",
+      "privateVar"
+    )
+
+
+    p.varField shouldEqual "var"
+    p.valField shouldEqual "val"
+
+    // p.defField has no generated mutator/accessor
+    // And it can't be reassigned
+    p.getDefFieldValue shouldEqual "def"
+
+
+    // p.privateVal has no generated mutator/accessor
+    // And it can't be reassigned
+    p.getPrivateVal shouldEqual "privateVal"
+
+
+    // p.privateVal has no generated mutator/accessor
+    p.getPrivateVar shouldEqual "privateVar"
+
+    // But it can be reassigned via handmade method
+    p.setPrivateVar("newPrivateVar")
+    p.getPrivateVar shouldEqual "newPrivateVar"
+  }
 }

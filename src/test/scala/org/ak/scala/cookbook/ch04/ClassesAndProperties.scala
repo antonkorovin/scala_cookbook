@@ -16,5 +16,10 @@ class ClassesAndProperties extends FunSuite with Matchers {
     val p = new Person("First", "Last")
 
     p.toString shouldEqual "First Last"
+
+    p.firstName = "NewFirstName"
+    p.lastName = "NewLastName"
+
+    p.toString shouldEqual s"${p.firstName} ${p.lastName}"
   }
 }

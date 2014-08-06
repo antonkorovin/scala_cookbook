@@ -185,4 +185,27 @@ class ClassesAndProperties extends FunSuite with Matchers {
     socketFive.timeout shouldEqual 7000
     socketFive.linger  shouldEqual 6000
   }
+
+
+  test("overriding accessor and mutator") {
+    // error: this won't work
+//    class Person(private var name: String) {
+//      // this line essentially creates a circular reference
+//      def name = name
+//      def name_=(aName: String) { name = aName }
+//    }
+
+
+    class Person(private var _name: String) {
+      def name = _name
+      def name_=(newValue: String) {_name = newValue}
+    }
+
+
+    val p = new Person("SomeName")
+    p.name shouldEqual "SomeName"
+
+    p.name = "NewName"
+    p.name shouldEqual "NewName"
+  }
 }

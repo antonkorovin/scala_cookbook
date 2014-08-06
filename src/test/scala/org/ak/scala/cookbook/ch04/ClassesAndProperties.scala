@@ -121,4 +121,33 @@ class ClassesAndProperties extends FunSuite with Matchers {
 
     p.middleName shouldEqual None
   }
+
+
+  // <editor-fold desc="Classes with private constuctors">
+
+  class NoArgConstructor private {
+  } /* {} can be replaced with ; */
+
+  object NoArgConstructor {
+    def create() = new NoArgConstructor
+  }
+
+  class OneArgConstructor private (val name: String)
+  object OneArgConstructor {
+    def apply(name: String) = new OneArgConstructor(name)
+  }
+
+  // </editor-fold>
+
+  test("defining private primary constructor") {
+    // 'new NoArgConstructor' produces compile error:
+    // constructor NoArgConstructor cannot be accessed
+
+    val noArg = NoArgConstructor.create()
+    noArg.isInstanceOf[NoArgConstructor] shouldEqual true
+
+    val oneArg = OneArgConstructor("constructorValue")
+    oneArg.isInstanceOf[OneArgConstructor] shouldEqual true
+    oneArg.name shouldEqual "constructorValue"
+  }
 }

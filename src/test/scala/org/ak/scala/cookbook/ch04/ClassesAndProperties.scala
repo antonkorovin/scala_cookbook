@@ -208,4 +208,25 @@ class ClassesAndProperties extends FunSuite with Matchers {
     p.name = "NewName"
     p.name shouldEqual "NewName"
   }
+
+
+
+  test("preventing getter and setter methods from being generated") {
+    class CagyPerson(
+      val name: String,
+      private var age: Int
+    ) {
+      def isOlderThan(someAge: Int) = age > someAge
+      def grow(years: Int) {age += years}
+    }
+
+
+    val p = new CagyPerson("SomeName", 42)
+
+    // p.age has no getter and setter
+    p.isOlderThan(52) shouldEqual false
+
+    p.grow(11)
+    p.isOlderThan(52) shouldEqual true
+  }
 }

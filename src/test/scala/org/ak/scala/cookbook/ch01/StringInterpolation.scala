@@ -74,12 +74,12 @@ class StringInterpolation extends FunSuite with Matchers {
 
     def toIpAddress(s: String) = {
       s match {
-        case regex"""^([0-9]+)$a[.]([0-9]+)$b[.]([0-9]+)$c[.]([0-9]+)$d$$""" =>
+        case regex"^([0-9]+)$one[.]([0-9]+)$two[.]([0-9]+)$three[.]([0-9]+)$four$$" =>
           Some(
-            a.toInt,
-            b.toInt,
-            c.toInt,
-            d.toInt
+            one.toInt,
+            two.toInt,
+            three.toInt,
+            four.toInt
           )
 
         case _ => None

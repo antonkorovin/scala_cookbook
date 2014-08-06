@@ -153,31 +153,31 @@ class ClassesAndProperties extends FunSuite with Matchers {
 
 
   test("default fields values in constructors") {
-    class Socket(
-      val timeout : Int = 1000,
-      val linger  : Int = 2000
+    case class Socket(
+      timeout : Int = 1000,
+      linger  : Int = 2000
     )
 
 
-    val socketOne = new Socket()
+    val socketOne = Socket()
     socketOne.timeout shouldEqual 1000
     socketOne.linger  shouldEqual 2000
 
-    val socketTwo = new Socket(3000)
+    val socketTwo = Socket(3000)
     socketTwo.timeout shouldEqual 3000
     socketTwo.linger  shouldEqual 2000
 
-    val socketThree = new Socket(3000, 4000)
+    val socketThree = Socket(3000, 4000)
     socketThree.timeout shouldEqual 3000
     socketThree.linger  shouldEqual 4000
 
-    val socketFour = new Socket(
+    val socketFour = Socket(
       linger  = 5000
     )
     socketFour.timeout shouldEqual 1000
     socketFour.linger  shouldEqual 5000
 
-    val socketFive = new Socket(
+    val socketFive = Socket(
       linger  = 6000,
       timeout = 7000
     )

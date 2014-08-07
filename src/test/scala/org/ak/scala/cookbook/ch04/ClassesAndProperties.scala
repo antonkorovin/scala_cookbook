@@ -1,12 +1,19 @@
 package org.ak.scala.cookbook.ch04
 
-import org.scalatest.{Matchers, FunSuite}
+import org.scalacheck.Gen
+import org.scalatest.prop.GeneratorDrivenPropertyChecks
+import org.scalatest.{FunSuite, Matchers}
 
 /**
  * @author antonk
  * @since  8/5/14 - 10:26 AM
  */
-class ClassesAndProperties extends FunSuite with Matchers {
+class ClassesAndProperties
+  extends FunSuite
+  with Matchers
+  with GeneratorDrivenPropertyChecks {
+
+
   test("primary constructor") {
     var personsCreated = 0
 
@@ -172,7 +179,7 @@ class ClassesAndProperties extends FunSuite with Matchers {
     socketThree.linger  shouldEqual 4000
 
     val socketFour = Socket(
-      linger  = 5000
+      linger = 5000
     )
     socketFour.timeout shouldEqual 1000
     socketFour.linger  shouldEqual 5000
@@ -189,11 +196,11 @@ class ClassesAndProperties extends FunSuite with Matchers {
 
   test("overriding accessor and mutator") {
     // error: this won't work
-//    class Person(private var name: String) {
-//      // this line essentially creates a circular reference
-//      def name = name
-//      def name_=(aName: String) { name = aName }
-//    }
+    //    class Person(private var name: String) {
+    //      // this line essentially creates a circular reference
+    //      def name = name
+    //      def name_=(aName: String) { name = aName }
+    //    }
 
 
     class Person(private var _name: String) {
@@ -228,5 +235,44 @@ class ClassesAndProperties extends FunSuite with Matchers {
 
     p.grow(11)
     p.isOlderThan(52) shouldEqual true
+  }
+
+
+
+  test("assigning a field to a block or function") {
+    case class Foo(intValue: Int) {
+      val desc = {
+        if (intValue < 0) {
+          "negative"
+        } else if (intValue > 0) {
+          "positive"
+        } else
+          "zero"
+      }
+    }
+
+
+    forAll(Gen.negNum[Int]) {
+      num =>
+        val foo = Foo(num)
+
+        foo.intValue should be < 0
+        foo.desc shouldEqual "negative"
+    }
+
+
+    forAll(Gen.posNum[Int]) {
+      num =>
+        val foo = Foo(num)
+
+        foo.intValue should be > 0
+        foo.desc shouldEqual "positive"
+    }
+
+
+    val foo = Foo(0)
+
+    foo.intValue shouldEqual 0
+    foo.desc shouldEqual "zero"
   }
 }

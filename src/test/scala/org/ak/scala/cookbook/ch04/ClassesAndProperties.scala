@@ -275,4 +275,29 @@ class ClassesAndProperties
     foo.intValue shouldEqual 0
     foo.desc shouldEqual "zero"
   }
+
+
+
+  test("handling constructor parameters when extending a class") {
+    class Person(val name: String, var age: Int)
+    class Employee(name: String, age: Int, var dept: String) extends Person(name, age)
+
+
+    val e = new Employee("EmployeeName", 42, "IT")
+
+    e.name shouldEqual "EmployeeName"
+    e.age  shouldEqual 42
+    e.dept shouldEqual "IT"
+
+    e.age += 10
+    e.age  shouldEqual 52
+
+
+
+    val p: Person = e
+    p.name shouldEqual "EmployeeName"
+
+    p.age -= 5
+    p.age  shouldEqual 47
+  }
 }

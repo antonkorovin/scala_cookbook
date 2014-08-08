@@ -300,4 +300,28 @@ class ClassesAndProperties
     p.age -= 5
     p.age  shouldEqual 47
   }
+
+
+
+  test("calling a superclass constructor") {
+    class Parent(val name: String, val age: Int) {
+      def this(name: String) {
+        this(name, 0)
+      }
+    }
+
+    class Child(name: String) extends Parent(name) {
+      // This is a bit of a trick question, because you can control the superclass constructor that’s
+      // called by the primary constructor in a subclass, but you can’t control the superclass
+      // constructor that’s called by an auxiliary constructor in the subclass. (c) Alvin Alexander
+      //      def this(name: String, age: Int) {
+      //        super(name, age)
+      //      }
+    }
+
+
+    val c = new Child("ChildName")
+    c.name shouldEqual "ChildName"
+    c.age shouldEqual 0
+  }
 }

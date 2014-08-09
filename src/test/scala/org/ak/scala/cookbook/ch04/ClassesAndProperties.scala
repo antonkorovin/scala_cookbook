@@ -324,4 +324,31 @@ class ClassesAndProperties
     c.name shouldEqual "ChildName"
     c.age shouldEqual 0
   }
+
+
+
+  test("using abstract class instead of trait") {
+    // There are two reasons
+    // • You want to create a base class that requires constructor arguments.
+    // • The code will be called from Java code.
+    // (c) Alvin Alexander
+
+
+    abstract class Animal(name: String) {
+
+      def say: String
+
+      override def toString = {s"$name says '$say'"}
+    }
+
+
+    class Dog(name: String) extends Animal(name) {
+      def say = "Woof"
+    }
+
+
+    val dog: Animal = new Dog("Ted")
+
+    dog.toString shouldEqual "Ted says 'Woof'"
+  }
 }

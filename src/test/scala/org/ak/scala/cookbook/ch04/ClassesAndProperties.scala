@@ -351,4 +351,29 @@ class ClassesAndProperties
 
     dog.toString shouldEqual "Ted says 'Woof'"
   }
+
+
+  test("defining properties in an abstract base class") {
+    abstract class Animal(name: String) {
+      val greeting = "Hello"
+      var age: Int
+
+      override def toString = {s"$name says '$greeting'"}
+    }
+
+
+    class Cat(name: String) extends Animal(name) {
+      override val greeting = "Meow"
+      var age = 0
+    }
+
+
+    val cat = new Cat("Max")
+    cat.toString shouldEqual "Max says 'Meow'"
+
+    cat.age shouldEqual 0
+
+    cat.age += 5
+    cat.age shouldEqual 5
+  }
 }

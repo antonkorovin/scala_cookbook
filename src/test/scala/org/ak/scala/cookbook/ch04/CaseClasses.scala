@@ -10,14 +10,21 @@ class CaseClasses
   extends FunSuite
   with Matchers
 {
+  // 'name' and 'age' are val by default
+  case class ConstPerson(name: String, age: Int)
+
+
   test("generating accessor for field without val/var keyword") {
-
-    // 'name' and 'age' are val by default
-    case class ConstPerson(name: String, age: Int)
-
     val person = ConstPerson("SomeName", 42)
 
     person.name shouldEqual "SomeName"
     person.age shouldEqual 42
+  }
+
+
+  test("default toString method") {
+    val person = ConstPerson("SomeName", 42)
+
+    person.toString shouldEqual "ConstPerson(SomeName,42)"
   }
 }

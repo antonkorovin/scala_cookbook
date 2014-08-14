@@ -130,7 +130,7 @@ class ClassesAndProperties
   }
 
 
-  // <editor-fold desc="Classes with private constuctors">
+  // <editor-fold desc="Classes with private constructors">
 
   class NoArgConstructor private {
   } /* {} can be replaced with ; */
@@ -375,5 +375,45 @@ class ClassesAndProperties
 
     cat.age += 5
     cat.age shouldEqual 5
+  }
+
+
+
+  test("defining an equals method (object equality)") {
+    class Record(val id: Int, val someData: String) {
+
+      def canEqual(other: Any): Boolean = other.isInstanceOf[Record]
+
+      override def equals(other: Any): Boolean = other match {
+        case that: Record =>
+          (that canEqual this) &&
+            id == that.id
+        case _ => false
+      }
+    }
+
+    val idOne = 1
+    val idTwo = 2
+
+
+    val r1 = new Record(idOne, "valueOne")
+    val r2 = new Record(idTwo, "valueOne")
+    val r3 = new Record(idOne, "valuesThree")
+
+    // Use the '==' method to compare equality
+    r1 shouldEqual r3
+    r3 shouldEqual r1
+
+    r1 shouldNot equal(r2)
+    r3 shouldNot equal(r2)
+
+    r2 shouldNot equal(r1)
+    r2 shouldNot equal(r3)
+
+    r1.canEqual((idOne, "valueOne")) shouldEqual false
+
+    r1.canEqual(r1) shouldEqual true
+    r1.canEqual(r2) shouldEqual true
+    r1.canEqual(r3) shouldEqual true
   }
 }

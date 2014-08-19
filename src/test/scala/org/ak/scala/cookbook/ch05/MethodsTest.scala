@@ -17,7 +17,7 @@ class MethodsTest
       def role = "NoRole"
     }
     trait Member {
-      def role= "MemberRole"
+      def role = "MemberRole"
     }
     trait Mother extends Member {
       override def role = "MotherRole"
@@ -47,7 +47,7 @@ class MethodsTest
 
 
     val child = new Child
-    child.role shouldEqual       "ChildRole"
+    child.role shouldEqual "ChildRole"
     child.motherRole shouldEqual "MotherRole"
     child.fatherRole shouldEqual "FatherRole"
     child.memberRole shouldEqual "MemberRole"

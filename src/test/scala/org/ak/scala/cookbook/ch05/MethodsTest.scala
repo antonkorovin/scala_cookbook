@@ -52,4 +52,21 @@ class MethodsTest
     child.fatherRole shouldEqual "FatherRole"
     child.memberRole shouldEqual "MemberRole"
   }
+
+
+
+
+  test("creating methods that take variable-argument fields") {
+    def sum(args: Int*) = {
+      args.sum
+    }
+
+
+    sum() shouldEqual 0
+    sum(1, 2, 3, 4) shouldEqual 10
+    sum(
+      List(1, 2, 3, 4): _*
+    ) shouldEqual 10
+  }
+
 }

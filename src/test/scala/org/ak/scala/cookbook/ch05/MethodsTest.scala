@@ -69,4 +69,50 @@ class MethodsTest
     ) shouldEqual 10
   }
 
+
+  test("supporting a fluent style of programming") {
+    class Person {
+      protected var firstName = ""
+      protected var lastName = ""
+
+      // explicitly setting this.type as the return type
+      def setFirstName(name: String): this.type = {
+        firstName = name
+        this
+      }
+
+
+      // explicitly setting this.type as the return type
+      def setLastName(name: String): this.type = {
+        lastName = name
+        this
+      }
+    }
+
+    class Employee extends Person {
+      protected var role = ""
+
+      // explicitly setting this.type as the return type
+      def setRole(role: String): this.type = {
+        this.role = role
+        this
+      }
+
+      override def toString = {
+        "%s, %s, %s".format(firstName, lastName, role)
+      }
+    }
+
+
+    // ////////////////////////////////////////////////////
+
+
+    val e = new Employee
+    e.setFirstName("firstNameValue")
+      .setLastName("lastNameValue")
+      .setRole("roleValue")
+
+    e.toString shouldEqual "firstNameValue, lastNameValue, roleValue"
+
+  }
 }

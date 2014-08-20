@@ -22,4 +22,9 @@ class ReflectionTest
       intAsAny.asInstanceOf[String]
     }
   }
+
+
+  test("the scala equivalent of java’s .class") {
+    "Hello".getClass shouldEqual classOf[String]
+  }
 }

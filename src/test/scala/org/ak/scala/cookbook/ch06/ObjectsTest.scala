@@ -17,11 +17,16 @@ class ObjectsTest
   val tmpFile = File.createTempFile("ScalaCookbook", "ObjectsTest")
   val outFile = new PrintWriter(new FileOutputStream(tmpFile))
 
+  tmpFile.deleteOnExit()
+
+  // ////////////////////////////////////////////
+
   object Main extends App {
     outFile.println(args.map(_.toInt).sum)
     outFile.close()
   }
 
+  // ////////////////////////////////////////////
 
   test("launching an application with an object") {
     Main.main(Array("1", "2", "3", "4", "5"))

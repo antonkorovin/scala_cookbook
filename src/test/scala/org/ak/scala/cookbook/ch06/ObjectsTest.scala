@@ -35,4 +35,32 @@ class ObjectsTest
     val lines = Source.fromFile(tmpFile).getLines().toList
     lines shouldEqual List("15")
   }
+
+
+
+  test("creating static members with companion objects") {
+    object Foo {
+      private var currentId = 0
+
+      def nextId = {
+        currentId += 1
+        currentId
+      }
+    }
+
+    class Foo {
+      val id = Foo.nextId
+    }
+
+
+
+    val fooOne = new Foo
+    val fooTwo = new Foo
+    val fooThree = new Foo
+
+
+    fooOne.id shouldEqual 1
+    fooTwo.id shouldEqual 2
+    fooThree.id shouldEqual 3
+  }
 }

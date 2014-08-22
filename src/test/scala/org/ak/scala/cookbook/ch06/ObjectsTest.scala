@@ -105,4 +105,30 @@ class ObjectsTest
     manyFoes should have size 3
     manyFoes shouldEqual expList
   }
+
+
+  test("implement the factory method in scala with apply") {
+    class Animal
+    class Dog extends Animal
+    class Cat extends Animal
+
+    object Animal {
+      def apply(animal: String) = animal match {
+        case "dog" => new Dog
+        case "cat" => new Cat
+
+        case _ => throw new IllegalArgumentException
+      }
+    }
+
+
+    // ////////////////////////////////
+
+
+    val dog = Animal("dog")
+    val cat = Animal("cat")
+
+    assert(dog.isInstanceOf[Dog])
+    assert(cat.isInstanceOf[Cat])
+  }
 }

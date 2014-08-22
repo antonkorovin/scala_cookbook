@@ -63,4 +63,46 @@ class ObjectsTest
     fooTwo.id shouldEqual 2
     fooThree.id shouldEqual 3
   }
+
+
+  test("creating object instances without using the new keyword") {
+    class Foo(val name: String) {
+      override def equals(obj: scala.Any) = obj match {
+        case otherFoo: Foo if otherFoo.name == name =>
+          true
+        case _ =>
+          false
+      }
+
+      override def toString = name
+    }
+
+
+    object Foo {
+      def apply(
+        name: String
+      ) = new Foo(name)
+
+
+      def apply(
+        name: String,
+        names: String*
+      ): List[Foo] = {
+        Foo(name) :: names.map(Foo(_)).toList
+      }
+    }
+
+
+    // ////////////////////////////////
+
+
+    val foo = Foo("FooName")
+    foo.name shouldEqual "FooName"
+
+    val manyFoes = Foo("One", "Two", "Three")
+    val expList = List(Foo("One"), Foo("Two"), Foo("Three"))
+
+    manyFoes should have size 3
+    manyFoes shouldEqual expList
+  }
 }

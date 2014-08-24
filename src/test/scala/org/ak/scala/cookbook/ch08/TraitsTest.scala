@@ -40,8 +40,10 @@ class TraitsTest
   test("using abstract and concrete fields in traits") {
 
     trait PizzaTrait {
-      var numToppings: Int // abstract
-      var size = 14 // concrete
+      var numToppings: Int
+      // abstract
+      var size = 14
+      // concrete
       val maxNumToppings = 10 // concrete
     }
 
@@ -65,5 +67,34 @@ class TraitsTest
 
     p.size += 10
     p.size shouldEqual 26
+  }
+
+
+  test("using traits as simple mixins") {
+    trait Tail {
+      def wagTail = "tail is wagging"
+
+      def stopTail = "tail is stopped"
+    }
+
+    abstract class Pet(val name: String) {
+      def speak: String
+
+      // abstract
+      def ownerIsHome = "excited"
+
+      def jumpForJoy = "jumping for joy"
+    }
+
+
+    class Dog(name: String) extends Pet(name) with Tail {
+      def speak = "woof"
+      override def ownerIsHome = wagTail + " and " + speak
+    }
+
+
+    val ted = new Dog("Ted")
+    ted.speak shouldEqual "woof"
+    ted.ownerIsHome shouldEqual "tail is wagging and woof"
   }
 }

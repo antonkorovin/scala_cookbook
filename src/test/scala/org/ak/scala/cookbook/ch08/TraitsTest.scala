@@ -97,4 +97,28 @@ class TraitsTest
     ted.speak shouldEqual "woof"
     ted.ownerIsHome shouldEqual "tail is wagging and woof"
   }
+
+
+  test("limiting which classes can use a trait by inheritance") {
+    abstract class Employee
+    class CorporateEmployee extends Employee
+    class StoreEmployee extends Employee
+
+    trait DeliversFood extends StoreEmployee
+    trait ServicesCustomers extends CorporateEmployee
+
+
+    // this is allowed
+    class DeliveryPerson extends StoreEmployee with DeliversFood
+
+    // won't compile
+    //  class DeliveryPerson extends StoreEmployee with ServicesCustomers
+
+
+    // this is allowed
+    class Receptionist extends CorporateEmployee with ServicesCustomers
+
+    // won't compile
+    // class Receptionist extends CorporateEmployee with DeliversFood
+  }
 }

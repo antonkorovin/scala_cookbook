@@ -121,4 +121,25 @@ class TraitsTest
     // won't compile
     // class Receptionist extends CorporateEmployee with DeliversFood
   }
+
+
+
+  test("marking traits so they can only be used by subclasses of a certain type") {
+    class Starship
+    trait StarfleetWarpCore {
+      this: Starship =>
+    }
+
+    class Enterprise extends Starship with StarfleetWarpCore
+
+    class RomulanShip
+    // this won't compile\
+    // class Warbird extends RomulanShip with StarfleetWarpCore
+
+    // compiler says:
+    // self-type Warbird does not conform to
+    // StarfleetWarpCore's selftype StarfleetWarpCore with Starship
+    // class Warbird extends RomulanShip with StarfleetWarpCore
+    //                                        ^
+  }
 }

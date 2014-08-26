@@ -133,7 +133,7 @@ class TraitsTest
     class Enterprise extends Starship with StarfleetWarpCore
 
     class RomulanShip
-    // this won't compile\
+    // this won't compile:
     // class Warbird extends RomulanShip with StarfleetWarpCore
 
     // compiler says:
@@ -141,5 +141,34 @@ class TraitsTest
     // StarfleetWarpCore's selftype StarfleetWarpCore with Starship
     // class Warbird extends RomulanShip with StarfleetWarpCore
     //                                        ^
+  }
+
+
+  test("ensuring a trait can only be added to a type that has a specific method") {
+    trait WarpCore {
+      this: { // structural type
+        def ejectWarpCore(password: String): Boolean
+        def startWarpCore: String
+      } =>
+    }
+
+    class Starship
+    class Enterprise extends Starship with WarpCore {
+      def ejectWarpCore(password: String): Boolean = {
+        password == "password"
+      }
+      def startWarpCore = "core started"
+    }
+
+
+    // this won't compile:
+    // class Warbird extends Starship with WarpCore
+    //                                     ^
+
+    // compiler says:
+    //  self-type Warbird does not conform to
+    // WarpCore's selftype
+    // WarpCore with AnyRef{def ejectWarpCore(password: String): Boolean;
+    // def startWarpCore: String}
   }
 }

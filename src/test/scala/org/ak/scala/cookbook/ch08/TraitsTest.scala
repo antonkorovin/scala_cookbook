@@ -171,4 +171,27 @@ class TraitsTest
     // WarpCore with AnyRef{def ejectWarpCore(password: String): Boolean;
     // def startWarpCore: String}
   }
+
+
+
+  test("adding a trait to an object instance") {
+    class SomeClass
+
+    object InstancesCounter {
+      var count = 0
+
+      def instancesCount = count
+    }
+
+    trait InstancesCounter {
+      InstancesCounter.count += 1
+    }
+
+
+    InstancesCounter.instancesCount shouldEqual 0
+
+    new SomeClass with InstancesCounter
+
+    InstancesCounter.instancesCount shouldEqual 1
+  }
 }

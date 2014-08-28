@@ -194,4 +194,24 @@ class TraitsTest
 
     InstancesCounter.instancesCount shouldEqual 1
   }
+
+
+  test("extending a java interface like a trait") {
+    class Foo extends Runnable with java.io.Serializable with AutoCloseable {
+      // override isn't necessary
+      def run(): Unit = {
+        // Do some stuff
+      }
+
+      // but it isn't forbidden
+      override def close(): Unit = {
+        // Do some stuff
+      }
+    }
+
+    val foo = new Foo
+    assert(foo.isInstanceOf[Runnable])
+    assert(foo.isInstanceOf[java.io.Serializable])
+    assert(foo.isInstanceOf[AutoCloseable])
+  }
 }

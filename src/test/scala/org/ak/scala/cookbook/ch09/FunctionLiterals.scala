@@ -56,12 +56,51 @@ class FunctionLiterals
       2,
       3,
       _ * _
-    )  shouldEqual 6
+    ) shouldEqual 6
 
     execute2[Double](
       2,
       3,
       Math.pow
-    )  shouldEqual 8
+    ) shouldEqual 8
+  }
+
+  test("using closures") {
+    object OtherScope {
+
+      class Foo {
+        // a method that takes a function and a string, and passes the string into
+        // the function, and then executes the function
+        def exec(f: (String) => String, name: String) = {
+          f(name)
+        }
+      }
+
+    }
+
+    object ClosureExample {
+      var greeting = "Hello"
+
+      def sayHello(name: String) = {
+        s"$greeting, $name"
+      }
+    }
+
+    // execute sayHello from the exec method foo
+    val foo = new OtherScope.Foo
+    foo.exec(
+      ClosureExample.sayHello,
+      "Al"
+    ) shouldEqual "Hello, Al"
+
+    // change the local variable 'greeting', then execute sayHello from
+    // the exec method of foo, and see what happens
+    ClosureExample.greeting = "Hola"
+    foo.exec(
+      ClosureExample.sayHello,
+      "Lorenzo"
+    ) shouldEqual "Hola, Lorenzo"
+  }
+
   }
 }

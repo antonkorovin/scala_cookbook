@@ -35,4 +35,33 @@ class FunctionLiterals
       5
     ).map(double) shouldEqual List.range(2, 10, 2)
   }
+
+
+  test("defining a method that accepts a simple function parameter") {
+    def execute[T](t: T, f: T => T) = f(t)
+
+    execute[Int](4, _ * 2) shouldEqual 8
+    execute[Int](4, _ / 2) shouldEqual 2
+    execute[Int](4, _ + 2) shouldEqual 6
+
+
+    def execute2[T](
+      t1: T,
+      t2: T,
+      f: (T, T) => T
+    ) = f(t1, t2)
+
+
+    execute2[Int](
+      2,
+      3,
+      _ * _
+    )  shouldEqual 6
+
+    execute2[Double](
+      2,
+      3,
+      Math.pow
+    )  shouldEqual 8
+  }
 }

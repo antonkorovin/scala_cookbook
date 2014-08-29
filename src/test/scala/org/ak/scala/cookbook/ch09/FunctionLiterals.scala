@@ -18,6 +18,21 @@ class FunctionLiterals
     x.filter(i => i % 2 == 0) shouldEqual evens
     x.filter(_ % 2 == 0) shouldEqual evens
 
-    List(-42.0 , 0.0, 42.0).map(Math.signum) shouldEqual List(-1, 0, 1)
+    List(-42.0, 0.0, 42.0).map(Math.signum) shouldEqual List(-1, 0, 1)
+  }
+
+
+  test("using functions as variables") {
+    val double = (i: Int) => {
+      i * 2
+    }
+
+    double(2) shouldEqual 4
+    double(4) shouldEqual 8
+
+    List.range(
+      1,
+      5
+    ).map(double) shouldEqual List.range(2, 10, 2)
   }
 }

@@ -121,5 +121,41 @@ class FunctionLiterals
     ) shouldEqual "<div><p>Hello, world</p></div>"
   }
 
+
+
+  test("creating a function that returns a function") {
+    def saySomething(prefix: String) = (s: String) => {
+      prefix + " " + s
+    }
+
+    val sayHello = saySomething("Hello")
+
+    sayHello(
+      "Al"
+    ) shouldEqual "Hello Al"
+
+
+
+    // //////////////////////////////////////////
+
+
+    def greeting(language: String) = (name: String) => {
+      val english = () => "Hello, " + name
+      val spanish = () => "Buenos dias, " + name
+
+      language match {
+        case "english" => english()
+        case "spanish" => spanish()
+      }
+    }
+
+
+    val hello = greeting("english")
+    val buenosDias = greeting("spanish")
+
+    hello("Al") shouldEqual "Hello, Al"
+    buenosDias("Lorenzo") shouldEqual "Buenos dias, Lorenzo"
+  }
+
   }
 }

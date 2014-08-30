@@ -65,6 +65,7 @@ class FunctionLiterals
     ) shouldEqual 8
   }
 
+
   test("using closures") {
     object OtherScope {
 
@@ -100,6 +101,24 @@ class FunctionLiterals
       ClosureExample.sayHello,
       "Lorenzo"
     ) shouldEqual "Hola, Lorenzo"
+  }
+
+
+
+  test("using partially applied functions") {
+    def wrap(
+      prefix: String,
+      html: String,
+      suffix: String
+    ) = {
+      prefix + html + suffix
+    }
+
+
+    val wrapWithDiv = wrap("<div>", _: String, "</div>")
+    wrapWithDiv(
+      "<p>Hello, world</p>"
+    ) shouldEqual "<div><p>Hello, world</p></div>"
   }
 
   }

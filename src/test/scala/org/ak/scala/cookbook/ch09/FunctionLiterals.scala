@@ -157,5 +157,37 @@ class FunctionLiterals
     buenosDias("Lorenzo") shouldEqual "Buenos dias, Lorenzo"
   }
 
+
+
+  test("creating partial functions") {
+    val divideAsMatch: PartialFunction[Int, Int] = {
+      case d: Int if d != 0 => 42 / d
+    }
+
+    val divideAsSubclass = new PartialFunction[Int, Int] {
+      def apply(d: Int) = 42 / d
+
+      def isDefinedAt(d: Int) = d != 0
+    }
+
+    intercept[MatchError] {
+      List(0, 1, 2) map divideAsMatch
+    }
+
+    intercept[ArithmeticException] {
+      List(0, 1, 2) map divideAsSubclass
+    }
+
+
+
+    List(
+      0, 1, 2
+    ) collect divideAsMatch shouldEqual List(42, 21)
+
+    List(
+      0, 1, 2
+    ) collect divideAsSubclass shouldEqual List(42, 21)
+  }
+
   }
 }

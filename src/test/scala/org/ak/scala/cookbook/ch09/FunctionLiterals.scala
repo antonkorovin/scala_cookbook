@@ -189,5 +189,51 @@ class FunctionLiterals
     ) collect divideAsSubclass shouldEqual List(42, 21)
   }
 
+
+
+  test("using 'orElse' and 'andThen'") {
+    // converts 1 to "one", etc., up to 5
+    val convert1to5 = new PartialFunction[Int, String] {
+      val nums = Array("one", "two", "three", "four", "five")
+
+      def apply(i: Int) = nums(i - 1)
+
+      def isDefinedAt(i: Int) = i > 0 && i < 6
+    }
+    // converts 6 to "six", etc., up to 10
+    val convert6to10 = new PartialFunction[Int, String] {
+      val nums = Array("six", "seven", "eight", "nine", "ten")
+
+      def apply(i: Int) = nums(i - 6)
+
+      def isDefinedAt(i: Int) = i > 5 && i < 11
+    }
+
+
+    val handle1to10 = convert1to5 orElse convert6to10
+
+    handle1to10(2) shouldEqual "two"
+    handle1to10(8) shouldEqual "eight"
+
+
+    // //////////////////////
+
+    val absolute: PartialFunction[Double, Double] = {
+      case x: Double if x < 0 => -x
+      case x: Double => x
+    }
+
+    val sqrt: PartialFunction[Double, Double] = {
+      case x: Double if x < 0 => Double.NaN
+      case x: Double => Math.sqrt(x)
+    }
+
+
+    // List.map(sqrt) returns List(NaN, NaN, 0.0, 1.0, 2.0)
+    List(
+      -4.0, -1.0, 0.0, 1.0, 4.0
+    ).map(
+        absolute andThen sqrt
+      ) shouldEqual List(2.0, 1.0, 0.0, 1.0, 2.0)
   }
 }

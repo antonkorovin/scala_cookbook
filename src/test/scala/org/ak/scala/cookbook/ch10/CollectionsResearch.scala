@@ -1,8 +1,10 @@
 package org.ak.scala.cookbook.ch10
 
-import org.scalatest.{Matchers, FunSuite}
+import org.scalatest.{FunSuite, Matchers}
 
-import scala.collection.LinearSeq
+import scala.collection.immutable.{Queue, Stack}
+import scala.collection.mutable.{ArrayBuffer, ListBuffer}
+import scala.collection.{LinearSeq, mutable}
 
 /**
  * @author antonk
@@ -13,17 +15,17 @@ class CollectionsResearch
           with Matchers {
 
   test("understanding the collections hierarchy") {
-//                Traversable
-//                     |
-//                  Iterable
-//                     |
-//              ---------------
-//              |      |      |
-//             Seq    Set    Map
-//              |
-//       ----------------
-//       |              |
-//    IndexedSeq      LinearSeq
+    //                Traversable
+    //                     |
+    //                  Iterable
+    //                     |
+    //              ---------------
+    //              |      |      |
+    //             Seq    Set    Map
+    //              |
+    //       ----------------
+    //       |              |
+    //    IndexedSeq      LinearSeq
 
     val indexedSeq = IndexedSeq(1, 2, 3)
 
@@ -80,4 +82,50 @@ class CollectionsResearch
     false shouldEqual iterable.isInstanceOf[Map[_, _]]
   }
 
+
+  test("understanding the collections hierarchy for sequences") {
+    pending
+  }
+
+
+
+  private def testSeq[T](
+    seqUnderTest: Seq[T],
+    array: Boolean,
+    range: Boolean,
+    vector: Boolean,
+    listBuffer: Boolean,
+    queue: Boolean,
+    stack: Boolean,
+    stream: Boolean,
+    stringBuilder: Boolean,
+    string: Boolean,
+    arrayBuffer: Boolean,
+    list: Boolean,
+    linkedList: Boolean,
+    mutableList: Boolean,
+    indexedSeq: Boolean,
+    buffer: Boolean,
+    linearSeq: Boolean,
+    seq: Boolean
+  ) {
+    array shouldEqual seqUnderTest.isInstanceOf[Array[_]]
+    range shouldEqual seqUnderTest.isInstanceOf[Range]
+    vector shouldEqual seqUnderTest.isInstanceOf[Vector[_]]
+    listBuffer shouldEqual seqUnderTest.isInstanceOf[ListBuffer[_]]
+    queue shouldEqual seqUnderTest.isInstanceOf[Queue[_]]
+    stack shouldEqual seqUnderTest.isInstanceOf[Stack[_]]
+    stream shouldEqual seqUnderTest.isInstanceOf[Stream[_]]
+    stringBuilder shouldEqual seqUnderTest.isInstanceOf[StringBuilder]
+    // TODO: Check implicit conversations
+    string shouldEqual seqUnderTest.isInstanceOf[String]
+    arrayBuffer shouldEqual seqUnderTest.isInstanceOf[ArrayBuffer[_]]
+    list shouldEqual seqUnderTest.isInstanceOf[List[_]]
+    linkedList shouldEqual seqUnderTest.isInstanceOf[mutable.LinkedList[_]]
+    mutableList shouldEqual seqUnderTest.isInstanceOf[mutable.MutableList[_]]
+    indexedSeq shouldEqual seqUnderTest.isInstanceOf[IndexedSeq[_]]
+    buffer shouldEqual seqUnderTest.isInstanceOf[mutable.Buffer[_]]
+    linearSeq shouldEqual seqUnderTest.isInstanceOf[LinearSeq[_]]
+    seq shouldEqual seqUnderTest.isInstanceOf[Seq[_]]
+  }
 }

@@ -5,6 +5,7 @@ import org.scalatest.{FunSuite, Matchers}
 import scala.collection.immutable.{Queue, Stack}
 import scala.collection.mutable.{ArrayBuffer, ListBuffer}
 import scala.collection.{LinearSeq, mutable}
+import scala.reflect.internal.util.StringOps
 
 /**
  * @author antonk
@@ -117,8 +118,9 @@ class CollectionsResearch
     stack shouldEqual seqUnderTest.isInstanceOf[Stack[_]]
     stream shouldEqual seqUnderTest.isInstanceOf[Stream[_]]
     stringBuilder shouldEqual seqUnderTest.isInstanceOf[StringBuilder]
-    // TODO: Check implicit conversations
-    string shouldEqual seqUnderTest.isInstanceOf[String]
+
+    // Predef.augmentString() implicitly converts String to StringOps
+    string shouldEqual seqUnderTest.isInstanceOf[StringOps]
     arrayBuffer shouldEqual seqUnderTest.isInstanceOf[ArrayBuffer[_]]
     list shouldEqual seqUnderTest.isInstanceOf[List[_]]
     linkedList shouldEqual seqUnderTest.isInstanceOf[mutable.LinkedList[_]]

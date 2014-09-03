@@ -108,6 +108,30 @@ class CollectionsResearch
   }
 
 
+  test("understanding the collections hierarchy for sequences(Range)") {
+    testSeq(
+      Range(1, 3),
+      array = false,
+      range = true,
+      vector = false,
+      listBuffer = false,
+      queue = false,
+      stack = false,
+      stream = false,
+      stringBuilder = false,
+      string = false,
+      arrayBuffer = false,
+      list = false,
+      linkedList = false,
+      mutableList = false,
+      indexedSeq = true,
+      buffer = false,
+      linearSeq = false,
+      seq = true
+    )
+  }
+
+
 
   private def testSeq[T](
     seqUnderTest: Seq[T],

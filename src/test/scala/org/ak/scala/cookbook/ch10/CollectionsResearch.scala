@@ -84,8 +84,27 @@ class CollectionsResearch
   }
 
 
-  test("understanding the collections hierarchy for sequences") {
-    pending
+  test("understanding the collections hierarchy for sequences(Array)") {
+    testSeq(
+      Array(1, 2, 3),
+      array = true,
+      range = false,
+      vector = false,
+      listBuffer = false,
+      queue = false,
+      stack = false,
+      stream = false,
+      stringBuilder = false,
+      string = false,
+      arrayBuffer = false,
+      list = false,
+      linkedList = false,
+      mutableList = false,
+      indexedSeq = true,
+      buffer = false,
+      linearSeq = false,
+      seq = true
+    )
   }
 
 
@@ -110,7 +129,8 @@ class CollectionsResearch
     linearSeq: Boolean,
     seq: Boolean
   ) {
-    array shouldEqual seqUnderTest.isInstanceOf[Array[_]]
+    // Predef.refArrayOps implicitly converts Array to WrappedArray
+    array shouldEqual seqUnderTest.isInstanceOf[mutable.ArrayLike[_, _]]
     range shouldEqual seqUnderTest.isInstanceOf[Range]
     vector shouldEqual seqUnderTest.isInstanceOf[Vector[_]]
     listBuffer shouldEqual seqUnderTest.isInstanceOf[ListBuffer[_]]

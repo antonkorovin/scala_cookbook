@@ -395,6 +395,30 @@ class CollectionsResearch
     )
   }
 
+
+  test("understanding the collections hierarchy for sequences(IndexedSeq)") {
+    testSeq(
+      IndexedSeq(1, 2, 3),
+      array = false,
+      range = false,
+      vector = true,
+      listBuffer = false,
+      queue = false,
+      stack = false,
+      stream = false,
+      stringBuilder = false,
+      string = false,
+      arrayBuffer = false,
+      list = false,
+      linkedList = false,
+      mutableList = false,
+      indexedSeq = true,
+      buffer = false,
+      linearSeq = false,
+      seq = true
+    )
+  }
+
   private def testSeq[T](
     seqUnderTest: Seq[T],
     array: Boolean,

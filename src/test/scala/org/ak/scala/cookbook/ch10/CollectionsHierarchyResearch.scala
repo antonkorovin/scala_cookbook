@@ -2,16 +2,15 @@ package org.ak.scala.cookbook.ch10
 
 import org.scalatest.{FunSuite, Matchers}
 
-import scala.collection.immutable.{WrappedString, Queue, Stack}
+import scala.collection.immutable.{Queue, Stack, WrappedString}
 import scala.collection.mutable.{ArrayBuffer, ListBuffer}
 import scala.collection.{LinearSeq, mutable}
-import scala.reflect.internal.util.StringOps
 
 /**
  * @author antonk
  * @since  9/1/14 - 8:17 PM
  */
-class CollectionsResearch
+class CollectionsHierarchyResearch
   extends FunSuite
           with Matchers {
 
@@ -83,6 +82,19 @@ class CollectionsResearch
     false shouldEqual iterable.isInstanceOf[Map[_, _]]
   }
 
+  //                                 Sequences hierarchy
+  //
+  //                                         Seq
+  //                                          |
+  //                   ------------------------------------------------
+  //                   |                      |                       |
+  //               IndexedSeq              Buffer                 LinearSeq
+  //                   |                      |                       |
+  //  --------------------------------   -----|      --------------------------------
+  //  |       |        |    |   |    |   |    |      |   |     |      |     |       |
+  //  |  StringBuilder | String | ArrayBuffer |    List  | LinkedList | MutableList |
+  //  |                |        |             |          |            |             |
+  // Array           Range    Vector      ListBuffer   Queue        Stack         Stream
 
   test("understanding the collections hierarchy for sequences(Array)") {
     testSeq(

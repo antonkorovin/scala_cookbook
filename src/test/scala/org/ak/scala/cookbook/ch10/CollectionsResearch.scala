@@ -2,7 +2,7 @@ package org.ak.scala.cookbook.ch10
 
 import org.scalatest.{FunSuite, Matchers}
 
-import scala.collection.immutable.{Queue, Stack}
+import scala.collection.immutable.{WrappedString, Queue, Stack}
 import scala.collection.mutable.{ArrayBuffer, ListBuffer}
 import scala.collection.{LinearSeq, mutable}
 import scala.reflect.internal.util.StringOps
@@ -155,6 +155,29 @@ class CollectionsResearch
     )
   }
 
+
+  test("understanding the collections hierarchy for sequences(ListBuffer)") {
+    testSeq(
+      ListBuffer(1, 2, 3),
+      array = false,
+      range = false,
+      vector = false,
+      listBuffer = true,
+      queue = false,
+      stack = false,
+      stream = false,
+      stringBuilder = false,
+      string = false,
+      arrayBuffer = false,
+      list = false,
+      linkedList = false,
+      mutableList = false,
+      indexedSeq = false,
+      buffer = true,
+      linearSeq = false,
+      seq = true
+    )
+  }
 
   private def testSeq[T](
     seqUnderTest: Seq[T],

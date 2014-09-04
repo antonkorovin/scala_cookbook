@@ -419,6 +419,30 @@ class CollectionsResearch
     )
   }
 
+
+  test("understanding the collections hierarchy for sequences(Buffer)") {
+    testSeq(
+      mutable.Buffer(1, 2, 3),
+      array = false,
+      range = false,
+      vector = false,
+      listBuffer = false,
+      queue = false,
+      stack = false,
+      stream = false,
+      stringBuilder = false,
+      string = false,
+      arrayBuffer = true,
+      list = false,
+      linkedList = false,
+      mutableList = false,
+      indexedSeq = true,
+      buffer = true,
+      linearSeq = false,
+      seq = true
+    )
+  }
+
   private def testSeq[T](
     seqUnderTest: Seq[T],
     array: Boolean,

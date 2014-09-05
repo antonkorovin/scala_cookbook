@@ -523,6 +523,29 @@ class CollectionsHierarchyResearch
     linkedHashMap.isInstanceOf[mutable.Map[_, _]] shouldEqual true
     listMap.isInstanceOf[mutable.Map[_, _]] shouldEqual true
   }
+
+
+  test("understanding the collections hierarchy for sequences(Set)") {
+    import collection.immutable.ListSet
+    import collection.immutable.SortedSet
+    import collection.immutable.TreeSet
+
+
+    val bitSet = mutable.BitSet(1)
+    val hashSet = mutable.HashSet(1)
+    val listSet = ListSet(1)
+    val sortedSet = SortedSet(1)
+    val treeSet = TreeSet(1)
+
+    bitSet.isInstanceOf[mutable.BitSet] shouldEqual true
+    hashSet.isInstanceOf[mutable.HashSet[_]] shouldEqual true
+    listSet.isInstanceOf[ListSet[_]] shouldEqual true
+    sortedSet.isInstanceOf[SortedSet[_]] shouldEqual true
+    treeSet.isInstanceOf[TreeSet[_]] shouldEqual true
+    treeSet.isInstanceOf[SortedSet[_]] shouldEqual true
+  }
+
+
   // ////////////////////////////////////////////
 
 

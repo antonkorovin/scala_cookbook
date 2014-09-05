@@ -100,22 +100,9 @@ class CollectionsHierarchyResearch
     testSeq(
       Array(1, 2, 3),
       array = true,
-      range = false,
-      vector = false,
-      listBuffer = false,
-      queue = false,
-      stack = false,
-      stream = false,
-      stringBuilder = false,
-      string = false,
-      arrayBuffer = false,
-      list = false,
-      linkedList = false,
-      mutableList = false,
       indexedSeq = true,
       buffer = false,
-      linearSeq = false,
-      seq = true
+      linearSeq = false
     )
   }
 
@@ -123,23 +110,10 @@ class CollectionsHierarchyResearch
   test("understanding the collections hierarchy for sequences(Range)") {
     testSeq(
       Range(1, 3),
-      array = false,
       range = true,
-      vector = false,
-      listBuffer = false,
-      queue = false,
-      stack = false,
-      stream = false,
-      stringBuilder = false,
-      string = false,
-      arrayBuffer = false,
-      list = false,
-      linkedList = false,
-      mutableList = false,
       indexedSeq = true,
       buffer = false,
-      linearSeq = false,
-      seq = true
+      linearSeq = false
     )
   }
 
@@ -147,23 +121,10 @@ class CollectionsHierarchyResearch
   test("understanding the collections hierarchy for sequences(Vector)") {
     testSeq(
       Vector(1, 2, 3),
-      array = false,
-      range = false,
       vector = true,
-      listBuffer = false,
-      queue = false,
-      stack = false,
-      stream = false,
-      stringBuilder = false,
-      string = false,
-      arrayBuffer = false,
-      list = false,
-      linkedList = false,
-      mutableList = false,
       indexedSeq = true,
       buffer = false,
-      linearSeq = false,
-      seq = true
+      linearSeq = false
     )
   }
 
@@ -171,23 +132,10 @@ class CollectionsHierarchyResearch
   test("understanding the collections hierarchy for sequences(ListBuffer)") {
     testSeq(
       ListBuffer(1, 2, 3),
-      array = false,
-      range = false,
-      vector = false,
       listBuffer = true,
-      queue = false,
-      stack = false,
-      stream = false,
-      stringBuilder = false,
-      string = false,
-      arrayBuffer = false,
-      list = false,
-      linkedList = false,
-      mutableList = false,
       indexedSeq = false,
       buffer = true,
-      linearSeq = false,
-      seq = true
+      linearSeq = false
     )
   }
 
@@ -195,23 +143,10 @@ class CollectionsHierarchyResearch
   test("understanding the collections hierarchy for sequences(Queue)") {
     testSeq(
       Queue(1, 2, 3),
-      array = false,
-      range = false,
-      vector = false,
-      listBuffer = false,
       queue = true,
-      stack = false,
-      stream = false,
-      stringBuilder = false,
-      string = false,
-      arrayBuffer = false,
-      list = false,
-      linkedList = false,
-      mutableList = false,
       indexedSeq = false,
       buffer = false,
-      linearSeq = true,
-      seq = true
+      linearSeq = true
     )
   }
 
@@ -219,23 +154,10 @@ class CollectionsHierarchyResearch
   test("understanding the collections hierarchy for sequences(Stack)") {
     testSeq(
       Stack(1, 2, 3),
-      array = false,
-      range = false,
-      vector = false,
-      listBuffer = false,
-      queue = false,
       stack = true,
-      stream = false,
-      stringBuilder = false,
-      string = false,
-      arrayBuffer = false,
-      list = false,
-      linkedList = false,
-      mutableList = false,
       indexedSeq = false,
       buffer = false,
-      linearSeq = true,
-      seq = true
+      linearSeq = true
     )
   }
 
@@ -243,23 +165,10 @@ class CollectionsHierarchyResearch
   test("understanding the collections hierarchy for sequences(Stream)") {
     testSeq(
       Stream(1, 2, 3),
-      array = false,
-      range = false,
-      vector = false,
-      listBuffer = false,
-      queue = false,
-      stack = false,
       stream = true,
-      stringBuilder = false,
-      string = false,
-      arrayBuffer = false,
-      list = false,
-      linkedList = false,
-      mutableList = false,
       indexedSeq = false,
       buffer = false,
-      linearSeq = true,
-      seq = true
+      linearSeq = true
     )
   }
 
@@ -267,23 +176,10 @@ class CollectionsHierarchyResearch
   test("understanding the collections hierarchy for sequences(StringBuilder)") {
     testSeq(
       new mutable.StringBuilder,
-      array = false,
-      range = false,
-      vector = false,
-      listBuffer = false,
-      queue = false,
-      stack = false,
-      stream = false,
       stringBuilder = true,
-      string = false,
-      arrayBuffer = false,
-      list = false,
-      linkedList = false,
-      mutableList = false,
       indexedSeq = true,
       buffer = false,
-      linearSeq = false,
-      seq = true
+      linearSeq = false
     )
   }
 
@@ -291,23 +187,10 @@ class CollectionsHierarchyResearch
   test("understanding the collections hierarchy for sequences(String)") {
     testSeq(
       new String(),
-      array = false,
-      range = false,
-      vector = false,
-      listBuffer = false,
-      queue = false,
-      stack = false,
-      stream = false,
-      stringBuilder = false,
       string = true,
-      arrayBuffer = false,
-      list = false,
-      linkedList = false,
-      mutableList = false,
       indexedSeq = true,
       buffer = false,
-      linearSeq = false,
-      seq = true
+      linearSeq = false
     )
   }
 
@@ -315,23 +198,10 @@ class CollectionsHierarchyResearch
   test("understanding the collections hierarchy for sequences(ArrayBuffer)") {
     testSeq(
       ArrayBuffer(1, 2, 3),
-      array = false,
-      range = false,
-      vector = false,
-      listBuffer = false,
-      queue = false,
-      stack = false,
-      stream = false,
-      stringBuilder = false,
-      string = false,
       arrayBuffer = true,
-      list = false,
-      linkedList = false,
-      mutableList = false,
       indexedSeq = true,
       buffer = true,
-      linearSeq = false,
-      seq = true
+      linearSeq = false
     )
   }
 
@@ -339,23 +209,10 @@ class CollectionsHierarchyResearch
   test("understanding the collections hierarchy for sequences(List)") {
     testSeq(
       List(1, 2, 3),
-      array = false,
-      range = false,
-      vector = false,
-      listBuffer = false,
-      queue = false,
-      stack = false,
-      stream = false,
-      stringBuilder = false,
-      string = false,
-      arrayBuffer = false,
       list = true,
-      linkedList = false,
-      mutableList = false,
       indexedSeq = false,
       buffer = false,
-      linearSeq = true,
-      seq = true
+      linearSeq = true
     )
   }
 
@@ -363,23 +220,10 @@ class CollectionsHierarchyResearch
   test("understanding the collections hierarchy for sequences(LinkedList)") {
     testSeq(
       mutable.LinkedList(1, 2, 3),
-      array = false,
-      range = false,
-      vector = false,
-      listBuffer = false,
-      queue = false,
-      stack = false,
-      stream = false,
-      stringBuilder = false,
-      string = false,
-      arrayBuffer = false,
-      list = false,
       linkedList = true,
-      mutableList = false,
       indexedSeq = false,
       buffer = false,
-      linearSeq = true,
-      seq = true
+      linearSeq = true
     )
   }
 
@@ -387,23 +231,10 @@ class CollectionsHierarchyResearch
   test("understanding the collections hierarchy for sequences(MutableList)") {
     testSeq(
       mutable.MutableList(1, 2, 3),
-      array = false,
-      range = false,
-      vector = false,
-      listBuffer = false,
-      queue = false,
-      stack = false,
-      stream = false,
-      stringBuilder = false,
-      string = false,
-      arrayBuffer = false,
-      list = false,
-      linkedList = false,
       mutableList = true,
       indexedSeq = false,
       buffer = false,
-      linearSeq = true,
-      seq = true
+      linearSeq = true
     )
   }
 
@@ -411,23 +242,10 @@ class CollectionsHierarchyResearch
   test("understanding the collections hierarchy for sequences(IndexedSeq)") {
     testSeq(
       IndexedSeq(1, 2, 3),
-      array = false,
-      range = false,
       vector = true,
-      listBuffer = false,
-      queue = false,
-      stack = false,
-      stream = false,
-      stringBuilder = false,
-      string = false,
-      arrayBuffer = false,
-      list = false,
-      linkedList = false,
-      mutableList = false,
       indexedSeq = true,
       buffer = false,
-      linearSeq = false,
-      seq = true
+      linearSeq = false
     )
   }
 
@@ -435,23 +253,10 @@ class CollectionsHierarchyResearch
   test("understanding the collections hierarchy for sequences(Buffer)") {
     testSeq(
       mutable.Buffer(1, 2, 3),
-      array = false,
-      range = false,
-      vector = false,
-      listBuffer = false,
-      queue = false,
-      stack = false,
-      stream = false,
-      stringBuilder = false,
-      string = false,
       arrayBuffer = true,
-      list = false,
-      linkedList = false,
-      mutableList = false,
       indexedSeq = true,
       buffer = true,
-      linearSeq = false,
-      seq = true
+      linearSeq = false
     )
   }
 
@@ -459,23 +264,10 @@ class CollectionsHierarchyResearch
   test("understanding the collections hierarchy for sequences(LinearSeq)") {
     testSeq(
       LinearSeq(1, 2, 3),
-      array = false,
-      range = false,
-      vector = false,
-      listBuffer = false,
-      queue = false,
-      stack = false,
-      stream = false,
-      stringBuilder = false,
-      string = false,
-      arrayBuffer = false,
       list = true,
-      linkedList = false,
-      mutableList = false,
       indexedSeq = false,
       buffer = false,
-      linearSeq = true,
-      seq = true
+      linearSeq = true
     )
   }
 
@@ -483,23 +275,10 @@ class CollectionsHierarchyResearch
   test("understanding the collections hierarchy for sequences(Seq)") {
     testSeq(
       Seq(1, 2, 3),
-      array = false,
-      range = false,
-      vector = false,
-      listBuffer = false,
-      queue = false,
-      stack = false,
-      stream = false,
-      stringBuilder = false,
-      string = false,
-      arrayBuffer = false,
       list = true,
-      linkedList = false,
-      mutableList = false,
       indexedSeq = false,
       buffer = false,
-      linearSeq = true,
-      seq = true
+      linearSeq = true
     )
   }
 
@@ -551,23 +330,23 @@ class CollectionsHierarchyResearch
 
   private def testSeq[T](
     seqUnderTest: Seq[T],
-    array: Boolean,
-    range: Boolean,
-    vector: Boolean,
-    listBuffer: Boolean,
-    queue: Boolean,
-    stack: Boolean,
-    stream: Boolean,
-    stringBuilder: Boolean,
-    string: Boolean,
-    arrayBuffer: Boolean,
-    list: Boolean,
-    linkedList: Boolean,
-    mutableList: Boolean,
-    indexedSeq: Boolean,
-    buffer: Boolean,
-    linearSeq: Boolean,
-    seq: Boolean
+    array: Boolean = false,
+    range: Boolean = false,
+    vector: Boolean = false,
+    listBuffer: Boolean = false,
+    queue: Boolean = false,
+    stack: Boolean = false,
+    stream: Boolean = false,
+    stringBuilder: Boolean = false,
+    string: Boolean = false,
+    arrayBuffer: Boolean = false,
+    list: Boolean = false,
+    linkedList: Boolean = false,
+    mutableList: Boolean = false,
+    indexedSeq: Boolean = true,
+    buffer: Boolean = true,
+    linearSeq: Boolean = true,
+    seq: Boolean = true
   ) {
     // Predef.refArrayOps implicitly converts Array to WrappedArray
     array shouldEqual seqUnderTest.isInstanceOf[mutable.ArrayLike[_, _]]

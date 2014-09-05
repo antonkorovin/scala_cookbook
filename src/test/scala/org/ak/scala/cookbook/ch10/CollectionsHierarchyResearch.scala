@@ -504,6 +504,25 @@ class CollectionsHierarchyResearch
   }
 
 
+
+  test("understanding the collections hierarchy for sequences(Map)") {
+    import collection.SortedMap
+    import collection.immutable.TreeMap
+
+    val hashMap = mutable.HashMap(1 -> 1)
+    val weakHashMap = mutable.WeakHashMap(1 -> 1)
+    val sortedMap = SortedMap(1 -> 1)
+    val treeMap = TreeMap(1 -> 1)
+    val linkedHashMap = mutable.LinkedHashMap(1 -> 1)
+    val listMap = mutable.ListMap(1 -> 1)
+
+    hashMap.isInstanceOf[mutable.Map[_, _]] shouldEqual true
+    weakHashMap.isInstanceOf[mutable.Map[_, _]] shouldEqual true
+    sortedMap.isInstanceOf[Map[_, _]] shouldEqual true
+    treeMap.isInstanceOf[Map[_, _]] shouldEqual true
+    linkedHashMap.isInstanceOf[mutable.Map[_, _]] shouldEqual true
+    listMap.isInstanceOf[mutable.Map[_, _]] shouldEqual true
+  }
   // ////////////////////////////////////////////
 
 

@@ -53,4 +53,11 @@ class ChoosingCollectionClassResearch
 
     pending
   }
+
+
+  test("choosing a linear mutable sequence") {
+    // TODO Add test for ListBuffer
+
+    pending
+  }
 }

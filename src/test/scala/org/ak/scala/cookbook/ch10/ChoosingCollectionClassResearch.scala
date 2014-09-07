@@ -46,4 +46,11 @@ class ChoosingCollectionClassResearch
 
     pending
   }
+
+
+  test("choosing a linear immutable sequence") {
+    // TODO Add test for List
+
+    pending
+  }
 }

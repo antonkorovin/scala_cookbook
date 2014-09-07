@@ -39,4 +39,11 @@ class ChoosingCollectionClassResearch
     appended shouldEqual Vector(2, 4, 8, 16, 32, 42)
     prepended shouldEqual Vector(42, 2, 4, 8, 16, 32)
   }
+
+
+  test("choosing an indexed mutable sequence") {
+    // TODO Add test for ArrayBuffer
+
+    pending
+  }
 }

@@ -82,10 +82,39 @@ class ChoosingCollectionClassResearch
   }
 
 
-  test("choosing a linear immutable sequence") {
-    // TODO Add test for List
+  test("choosing a linear immutable sequence (List)") {
+    val list = List(2, 4, 8, 16, 32)
 
-    pending
+    // The operation is linear,
+    // that is it takes time proportional to the collection size
+    list(3) shouldEqual 16
+
+    // The operation takes (fast) constant time
+    list.head shouldEqual 2
+
+    // The operation takes (fast) constant time
+    list.tail shouldEqual List(4, 8, 16, 32)
+
+
+    // The operation is linear,
+    // that is it takes time proportional to the collection size
+    // Can't use like this `list(2) = 42`
+    // Instead use:
+    val updated = list.updated(2, 42)
+
+    list(2) shouldEqual 8
+    updated(2) shouldEqual 42
+
+    // The operation is linear,
+    // that is it takes time proportional to the collection size
+    val appended = list :+ 42
+
+    // The operation takes (fast) constant time
+    val prepended = 42 +: list
+
+    list shouldEqual List(2, 4, 8, 16, 32)
+    appended shouldEqual List(2, 4, 8, 16, 32, 42)
+    prepended shouldEqual List(42, 2, 4, 8, 16, 32)
   }
 
 

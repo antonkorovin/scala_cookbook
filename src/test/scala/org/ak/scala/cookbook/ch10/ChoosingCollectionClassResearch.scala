@@ -10,21 +10,22 @@ class ChoosingCollectionClassResearch
   extends FunSuite
           with Matchers {
 
-  test("choosing an indexed immutable sequence") {
+  test("choosing an indexed immutable sequence (Vector)") {
     val vec = Vector(2, 4, 8, 16, 32)
 
-    // TODO: Check performance
+    // The operation takes effectively constant time
     vec(3) shouldEqual 16
 
-    // TODO: Check performance
+    // The operation takes effectively constant time
     // Uses `apply(0)`
     vec.head shouldEqual 2
 
-    // TODO: Check performance
+    // The operation takes effectively constant time
     // Uses `drop(1)`
     vec.tail shouldEqual Vector(4, 8, 16, 32)
 
 
+    // The operation takes effectively constant time
     // Can't use like this `vec(2) = 42`
     // Instead use:
     val updated = vec.updated(2, 42)
@@ -32,7 +33,10 @@ class ChoosingCollectionClassResearch
     vec(2) shouldEqual 8
     updated(2) shouldEqual 42
 
+    // The operation takes effectively constant time
     val appended = vec :+ 42
+
+    // The operation takes effectively constant time
     val prepended = 42 +: vec
 
     vec shouldEqual Vector(2, 4, 8, 16, 32)

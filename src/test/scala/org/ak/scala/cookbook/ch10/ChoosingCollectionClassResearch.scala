@@ -2,6 +2,8 @@ package org.ak.scala.cookbook.ch10
 
 import org.scalatest.{FunSuite, Matchers}
 
+import scala.collection.mutable.ArrayBuffer
+
 /**
  * @author antonk
  * @since  9/4/14 - 1:07 PM
@@ -45,10 +47,38 @@ class ChoosingCollectionClassResearch
   }
 
 
-  test("choosing an indexed mutable sequence") {
-    // TODO Add test for ArrayBuffer
+  test("choosing an indexed mutable sequence (ArrayBuffer)") {
+    val buff = ArrayBuffer(2, 4, 8, 16, 32)
 
-    pending
+    // The operation takes (fast) constant time
+    buff(3) shouldEqual 16
+
+    // The operation takes effectively constant time
+    buff.head shouldEqual 2
+
+    // The operation is linear,
+    // that is it takes time proportional to the collection size
+    buff.tail shouldEqual ArrayBuffer(4, 8, 16, 32)
+
+    // The operation takes amortized constant time
+    buff += 42
+    buff shouldEqual ArrayBuffer(2, 4, 8, 16, 32, 42)
+
+    // The operation takes (fast) constant time
+    buff(5) = 37
+    buff shouldEqual ArrayBuffer(2, 4, 8, 16, 32, 37)
+
+
+    // The operation is linear,
+    // that is it takes time proportional to the collection size
+    buff.prepend(73)
+    buff shouldEqual ArrayBuffer(73, 2, 4, 8, 16, 32, 37)
+
+
+    // The operation is linear,
+    // that is it takes time proportional to the collection size
+    buff.insert(3, 42)
+    buff shouldEqual ArrayBuffer(73, 2, 4, 42, 8, 16, 32, 37)
   }
 
 

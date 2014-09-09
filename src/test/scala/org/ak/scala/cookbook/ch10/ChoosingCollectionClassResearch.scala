@@ -2,7 +2,7 @@ package org.ak.scala.cookbook.ch10
 
 import org.scalatest.{FunSuite, Matchers}
 
-import scala.collection.mutable.ArrayBuffer
+import scala.collection.mutable.{ListBuffer, ArrayBuffer}
 
 /**
  * @author antonk
@@ -118,9 +118,38 @@ class ChoosingCollectionClassResearch
   }
 
 
-  test("choosing a linear mutable sequence") {
-    // TODO Add test for ListBuffer
+  test("choosing a linear mutable sequence (ListBuffer)") {
+    val buff = ListBuffer(2, 4, 8, 16, 32)
 
-    pending
+    // The operation is linear,
+    // that is it takes time proportional to the collection size
+    buff(3) shouldEqual 16
+
+    // The operation takes (fast) constant time
+    buff.head shouldEqual 2
+
+    // The operation is linear,
+    // that is it takes time proportional to the collection size
+    buff.tail shouldEqual ListBuffer(4, 8, 16, 32)
+
+    // The operation takes (fast) constant time
+    buff += 42
+    buff shouldEqual ListBuffer(2, 4, 8, 16, 32, 42)
+
+    // The operation is linear,
+    // that is it takes time proportional to the collection size
+    buff(5) = 37
+    buff shouldEqual ListBuffer(2, 4, 8, 16, 32, 37)
+
+
+    // The operation takes (fast) constant time
+    buff.prepend(73)
+    buff shouldEqual ListBuffer(73, 2, 4, 8, 16, 32, 37)
+
+
+    // The operation is linear,
+    // that is it takes time proportional to the collection size
+    buff.insert(3, 42)
+    buff shouldEqual ListBuffer(73, 2, 4, 42, 8, 16, 32, 37)
   }
 }

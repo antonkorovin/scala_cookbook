@@ -152,4 +152,11 @@ class ChoosingCollectionClassResearch
     buff.insert(3, 42)
     buff shouldEqual ListBuffer(73, 2, 4, 42, 8, 16, 32, 37)
   }
+
+
+  // TODO Add tests for Stack, Queue, DoubleLinkedList etc.
+
+
+
+
 }

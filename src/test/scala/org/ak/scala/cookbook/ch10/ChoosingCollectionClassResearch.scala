@@ -3,6 +3,7 @@ package org.ak.scala.cookbook.ch10
 import org.scalatest.{FunSuite, Matchers}
 
 import scala.collection.mutable.{ListBuffer, ArrayBuffer}
+import scala.collection.mutable
 
 /**
  * @author antonk
@@ -157,6 +158,16 @@ class ChoosingCollectionClassResearch
   // TODO Add tests for Stack, Queue, DoubleLinkedList etc.
 
 
+  test("choosing a map (HashMap)") {
+    // Implements maps using a hashtable
+    val map = mutable.HashMap[String, Int]()
 
+    map += ("one" -> 1)
+    map += ("two" -> 2)
+    map += ("three" -> 3)
 
+    map("two") shouldEqual 2
+
+    map.toList shouldEqual  List(("one", 1), ("three", 3), ("two", 2))
+  }
 }

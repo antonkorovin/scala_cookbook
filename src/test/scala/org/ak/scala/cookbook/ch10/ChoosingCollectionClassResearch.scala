@@ -170,4 +170,19 @@ class ChoosingCollectionClassResearch
 
     map.toList shouldEqual  List(("one", 1), ("three", 3), ("two", 2))
   }
+
+
+  test("choosing a map (LinkedHashMap)") {
+    // Implements maps using a hashtable
+    val map = mutable.LinkedHashMap[String, Int]()
+
+    map += ("one" -> 1)
+    map += ("two" -> 2)
+    map += ("three" -> 3)
+
+    map("two") shouldEqual 2
+
+    // Returns elements by the order in which they were inserted.
+    map.toList shouldEqual  List(("one", 1), ("two", 2), ("three", 3))
+  }
 }

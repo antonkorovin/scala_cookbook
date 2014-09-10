@@ -203,4 +203,25 @@ class ChoosingCollectionClassResearch
     map.toList shouldEqual List(("three", 3), ("two", 2), ("one", 1))
   }
 
+
+
+  test("choosing a map (SortedMap)") {
+    // A base trait that stores its keys in sorted order.
+    // (Creating a variable as a SortedMap
+    // currently returns a TreeMap.)
+    var map = SortedMap[Int, String]()
+
+    map += (1 -> "one")
+    map += (3 -> "three")
+    map += (2 -> "two")
+    map += (0 -> "zero")
+
+    map(2) shouldEqual "two"
+
+    // Returns elements in the opposite order by which they
+    // were inserted, as though each element is inserted at the
+    // head of the map.
+    map.toList shouldEqual List((0, "zero"), (1, "one"), (2, "two"), (3, "three"))
+  }
+
 }

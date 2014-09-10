@@ -224,4 +224,56 @@ class ChoosingCollectionClassResearch
     map.toList shouldEqual List((0, "zero"), (1, "one"), (2, "two"), (3, "three"))
   }
 
+
+
+  test("choosing a map (WeakHash)") {
+    case class Key(s: String, i: Int) {
+      def canEqual(other: Any): Boolean = other.isInstanceOf[Key]
+
+      override def equals(other: Any): Boolean = other match {
+        case that: Key =>
+          (that canEqual this) &&
+            s == that.s &&
+            i == that.i
+        case _ => false
+      }
+
+      override def hashCode(): Int = {
+        val state = Seq(s, i)
+        state.map(_.hashCode()).foldLeft(0)((a, b) => 31 * a + b)
+      }
+    }
+
+    // A hash map with weak references,
+    // it’s a wrapper around java.util.WeakHashMap.
+    val map = mutable.WeakHashMap[Key, String]()
+
+    val keyStr = "SomeString"
+    val keys = ArrayBuffer(
+      Key(keyStr, 1),
+      Key(keyStr, 3),
+      Key(keyStr, 2),
+      Key(keyStr, 0)
+    )
+
+    map += (keys(0) -> "one")
+    map += (keys(1) -> "three")
+    map += (keys(2) -> "two")
+    map += (keys(3) -> "zero")
+
+    map(keys(2)) shouldEqual "two"
+
+    map.toList shouldEqual List(
+      (Key(keyStr, 0), "zero"),
+      (Key(keyStr, 1), "one"),
+      (Key(keyStr, 2), "two"),
+      (Key(keyStr, 3), "three")
+    )
+
+
+    keys.clear()
+    System.gc()
+
+    map should be (empty)
+  }
 }

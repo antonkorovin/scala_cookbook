@@ -185,4 +185,22 @@ class ChoosingCollectionClassResearch
     // Returns elements by the order in which they were inserted.
     map.toList shouldEqual List(("one", 1), ("two", 2), ("three", 3))
   }
+
+
+  test("choosing a map (ListMap)") {
+    // A map implemented using a list data structure
+    val map = mutable.ListMap[String, Int]()
+
+    map += ("one" -> 1)
+    map += ("two" -> 2)
+    map += ("three" -> 3)
+
+    map("two") shouldEqual 2
+
+    // Returns elements in the opposite order by which they
+    // were inserted, as though each element is inserted at the
+    // head of the map.
+    map.toList shouldEqual List(("three", 3), ("two", 2), ("one", 1))
+  }
+
 }

@@ -2,8 +2,8 @@ package org.ak.scala.cookbook.ch10
 
 import org.scalatest.{FunSuite, Matchers}
 
-import scala.collection.mutable.{ListBuffer, ArrayBuffer}
-import scala.collection.mutable
+import scala.collection.mutable.{ArrayBuffer, ListBuffer}
+import scala.collection.{SortedMap, mutable}
 
 /**
  * @author antonk
@@ -168,7 +168,7 @@ class ChoosingCollectionClassResearch
 
     map("two") shouldEqual 2
 
-    map.toList shouldEqual  List(("one", 1), ("three", 3), ("two", 2))
+    map.toList shouldEqual List(("one", 1), ("three", 3), ("two", 2))
   }
 
 
@@ -183,6 +183,6 @@ class ChoosingCollectionClassResearch
     map("two") shouldEqual 2
 
     // Returns elements by the order in which they were inserted.
-    map.toList shouldEqual  List(("one", 1), ("two", 2), ("three", 3))
+    map.toList shouldEqual List(("one", 1), ("two", 2), ("three", 3))
   }
 }

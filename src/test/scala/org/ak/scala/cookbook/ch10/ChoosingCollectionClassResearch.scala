@@ -336,5 +336,22 @@ class ChoosingCollectionClassResearch
     Set("5", "2", "4", "3") &~ set shouldEqual Set("5")
   }
 
+
+
+
+  test("choosing a set (TreeSet/SortedSet)") {
+    // The immutable version “implements immutable sets using a tree.”
+    // The mutable version is a mutable SortedSet with
+    // “an immutable AVL Tree as underlying data structure.”
+
+    val set = TreeSet("3", "1", "2", "4")
+
+    set.toList shouldEqual List("1", "2", "3", "4")
+
+    set | Set("5", "2", "4", "3") shouldEqual Set("1", "2", "3", "4", "5")
+    set & Set("5", "2", "4", "3") shouldEqual Set("2", "3", "4")
+    Set("5", "2", "4", "3") &~ set shouldEqual Set("5")
+  }
+
   // </editor-fold>
 }

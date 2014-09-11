@@ -2,8 +2,11 @@ package org.ak.scala.cookbook.ch10
 
 import org.scalatest.{FunSuite, Matchers}
 
+import scala.collection.immutable.{TreeSet, ListSet, HashSet}
 import scala.collection.mutable.{ArrayBuffer, ListBuffer}
-import scala.collection.{SortedMap, mutable}
+import scala.collection.{BitSet, SortedMap, mutable}
+import org.ak.scala.cookbook.StringUtils._
+import scala.language.implicitConversions
 
 /**
  * @author antonk

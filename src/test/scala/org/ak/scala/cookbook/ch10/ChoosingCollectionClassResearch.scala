@@ -13,6 +13,8 @@ class ChoosingCollectionClassResearch
   extends FunSuite
           with Matchers {
 
+  // <editor-fold desc="Choosing sequence">
+
   test("choosing an indexed immutable sequence (Vector)") {
     val vec = Vector(2, 4, 8, 16, 32)
 
@@ -155,8 +157,12 @@ class ChoosingCollectionClassResearch
   }
 
 
+  // </editor-fold>
+
   // TODO Add tests for Stack, Queue, DoubleLinkedList etc.
 
+
+  // <editor-fold desc="Choosing map">
 
   test("choosing a map (HashMap)") {
     // Implements maps using a hashtable
@@ -276,4 +282,11 @@ class ChoosingCollectionClassResearch
 
     map should be (empty)
   }
+
+  // </editor-fold>
+
+
+  // <editor-fold desc="Choosing set">
+
+  // </editor-fold>
 }

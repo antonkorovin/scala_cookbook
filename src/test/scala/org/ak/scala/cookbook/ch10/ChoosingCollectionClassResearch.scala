@@ -291,5 +291,21 @@ class ChoosingCollectionClassResearch
 
   // <editor-fold desc="Choosing set">
 
+  test("choosing a set (BitSet)") {
+    // A set of “non-negative integers represented as variable-size arrays of bits packed
+    // into 64-bit words.” Used to save memory when you have a set of integers.
+
+    val set = BitSet(3, 1, 2, 4)
+
+    set | Set(5, 2, 4, 3) shouldEqual Set(1, 2, 3, 4, 5)
+    set & Set(5, 2, 4, 3) shouldEqual Set(2, 3, 4)
+    set &~ Set(5, 2, 4, 3) shouldEqual Set(1)
+    Set(5, 2, 4, 3) &~ set shouldEqual Set(5)
+
+    set.toBitMask shouldEqual Array("11110".toInt(2))
+
+    set.toList shouldEqual List(1, 2, 3, 4)
+  }
+
   // </editor-fold>
 }

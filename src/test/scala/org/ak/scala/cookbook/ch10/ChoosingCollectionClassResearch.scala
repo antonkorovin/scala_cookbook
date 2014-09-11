@@ -322,5 +322,19 @@ class ChoosingCollectionClassResearch
     Set("5", "2", "4", "3") &~ set shouldEqual Set("5")
   }
 
+
+
+  test("choosing a set (ListSet)") {
+    // A set implemented using a list structure.
+
+    val set = ListSet("3", "1", "2", "4")
+
+    set.toList shouldEqual List("4", "2", "1", "3")
+
+    set | Set("5", "2", "4", "3") shouldEqual Set("1", "2", "3", "4", "5")
+    set & Set("5", "2", "4", "3") shouldEqual Set("2", "3", "4")
+    Set("5", "2", "4", "3") &~ set shouldEqual Set("5")
+  }
+
   // </editor-fold>
 }

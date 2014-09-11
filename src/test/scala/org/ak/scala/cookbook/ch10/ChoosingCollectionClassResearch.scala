@@ -307,5 +307,20 @@ class ChoosingCollectionClassResearch
     set.toList shouldEqual List(1, 2, 3, 4)
   }
 
+
+
+  test("choosing a set (HashSet)") {
+    // The immutable version “implements sets using a hash trie”;
+    // the mutable version “implements sets using a hashtable.”
+
+    val set = HashSet("3", "1", "2", "4")
+
+    set.toList shouldEqual List("4", "1", "2", "3")
+
+    set | Set("5", "2", "4", "3") shouldEqual Set("1", "2", "3", "4", "5")
+    set & Set("5", "2", "4", "3") shouldEqual Set("2", "3", "4")
+    Set("5", "2", "4", "3") &~ set shouldEqual Set("5")
+  }
+
   // </editor-fold>
 }

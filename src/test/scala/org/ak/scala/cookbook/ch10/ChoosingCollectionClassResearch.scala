@@ -165,6 +165,24 @@ class ChoosingCollectionClassResearch
   // TODO Add tests for Stack, Queue, DoubleLinkedList etc.
 
 
+  test("choosing a Queue") {
+    // `Queue` objects implement data structures that allow to
+    // insert and retrieve elements in a first-in-first-out (FIFO) manner.
+    val q = mutable.Queue[Int]()
+
+    q.enqueue(1)
+    q.enqueue(2, 3)
+
+    q.toList shouldEqual List(1, 2, 3)
+
+    q.dequeue() shouldEqual 1
+
+    q.toList shouldEqual List(2, 3)
+
+
+    q.enqueue(4 to 6: _*)
+    q.toList shouldEqual (2 to 6).toList
+  }
   // <editor-fold desc="Choosing map">
 
   test("choosing a map (HashMap)") {

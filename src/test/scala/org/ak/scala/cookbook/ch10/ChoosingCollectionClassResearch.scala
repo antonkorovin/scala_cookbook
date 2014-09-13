@@ -182,6 +182,25 @@ class ChoosingCollectionClassResearch
 
     q.enqueue(4 to 6: _*)
     q.toList shouldEqual (2 to 6).toList
+
+
+    // Returns the first element in the queue which satisfies the
+    // given predicate, and removes this element from the queue.
+    q.dequeueFirst(_ > 5) shouldEqual Some(6)
+    q.toList shouldEqual (2 to 5).toList
+
+    q.dequeueFirst(_ < 0) shouldEqual None
+
+    // Returns the first element in the queue, or throws an error if there
+    // is no element contained in the queue.
+    q.front shouldEqual q.head
+
+
+    // Returns all elements in the queue which satisfy the
+    // given predicate, and removes those elements from the queue.
+    val evens = q.dequeueAll(_ % 2 == 0)
+    evens shouldEqual List(2, 4)
+    q.toList shouldEqual List(3, 5)
   }
   // <editor-fold desc="Choosing map">
 

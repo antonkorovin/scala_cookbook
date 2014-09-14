@@ -202,6 +202,28 @@ class ChoosingCollectionClassResearch
     evens shouldEqual List(2, 4)
     q.toList shouldEqual List(3, 5)
   }
+
+
+  test("choosing a Stack") {
+    // A stack implements a data structure which allows to store and retrieve
+    // objects in a last-in-first-out (LIFO) fashion.
+    val stack = mutable.Stack[Int]()
+
+    stack.push(1)
+    stack.push(2)
+    stack.push(3)
+
+    stack.toList shouldEqual List(3, 2, 1)
+
+    stack.pop() shouldEqual 3
+    stack.pop() shouldEqual 2
+    stack.pop() shouldEqual 1
+
+    stack should have size 0
+  }
+
+
+
   // <editor-fold desc="Choosing map">
 
   test("choosing a map (HashMap)") {

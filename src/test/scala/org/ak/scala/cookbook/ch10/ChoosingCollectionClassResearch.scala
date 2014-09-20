@@ -413,4 +413,35 @@ class ChoosingCollectionClassResearch
   }
 
   // </editor-fold>
+  test("choosing an Enumeration") {
+    //  A finite collection of constant values (i.e., the days in a week or months in a year).
+
+    // //////////////////////
+
+    object WeekDay extends Enumeration {
+      type WeekDay = Value
+      val Mon, Tue, Wed, Thu, Fri, Sat, Sun = Value
+    }
+
+    import WeekDay._
+
+    def isWorkingDay(d: WeekDay) = ! (d == Sat || d == Sun)
+
+
+    // //////////////////////
+
+
+    (WeekDay.values filter isWorkingDay toList) shouldEqual List(Mon, Tue, Wed, Thu, Fri)
+
+    WeekDay.maxId shouldEqual WeekDay.values.size
+
+    WeekDay(3) shouldEqual Thu
+
+    WeekDay.withName("Mon") shouldEqual Mon
+
+    intercept[NoSuchElementException] {
+      WeekDay.withName("NonExistent") // throws an exception caused by `None.get`
+    }
+  }
+
 }

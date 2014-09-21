@@ -444,4 +444,28 @@ class ChoosingCollectionClassResearch
     }
   }
 
+
+  test("choosing an Iterator") {
+    // An iterator isn’t a collection; instead, it gives you a way to access the elements in a collection.
+    // It does, however, define many of the methods you’ll see in a normal collection class,
+    // including foreach, map, flatMap, etc. You can also convert an iterator to a collection when needed.
+
+    // //////////////////////
+
+    Iterator(1, 2, 3).contains(2) shouldEqual true
+    Iterator(1, 2, 3).contains(4) shouldEqual false
+    Iterator(1, 2, 3).isTraversableAgain shouldEqual false
+
+    Iterator.empty.hasNext shouldEqual false
+
+
+    intercept[NoSuchElementException] {
+      Iterator.empty.next()
+    }
+
+    Iterator.empty.hasDefiniteSize shouldEqual true
+    Iterator(1, 2, 3).hasDefiniteSize shouldEqual false
+
+  }
+
 }

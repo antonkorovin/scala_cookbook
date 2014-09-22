@@ -481,6 +481,30 @@ class ChoosingCollectionClassResearch
     Iterator.range(1, 4).toList shouldEqual List(1, 2, 3)
     Iterator.range(1, 5, 2).toList shouldEqual List(1, 3)
 
+    val plus3Iterator = Iterator.iterate(1)(_ + 3)
+    plus3Iterator.next() shouldEqual 1
+    plus3Iterator.next() shouldEqual 4
+    plus3Iterator.next() shouldEqual 7
+    plus3Iterator.next() shouldEqual 10
+
+
+    val incrementIterator = Iterator.from(5)
+    incrementIterator.next() shouldEqual 5
+    incrementIterator.next() shouldEqual 6
+    incrementIterator.next() shouldEqual 7
+
+    val incrementIteratorWithStep = Iterator.from(5, 2)
+    incrementIteratorWithStep.next() shouldEqual 5
+    incrementIteratorWithStep.next() shouldEqual 7
+    incrementIteratorWithStep.next() shouldEqual 9
+
+
+    (Iterator(1, 2, 3) ++ Iterator(4, 5, 6)).toList shouldEqual (1 to 6).toList
+
+    val filteredIterator = Iterator(1, 2, 3, 4).filter(_ % 2 ==0)
+    filteredIterator.next() shouldEqual 2
+    filteredIterator.next() shouldEqual 4
+    filteredIterator.hasNext shouldEqual false
   }
 
 }

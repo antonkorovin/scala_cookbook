@@ -466,6 +466,21 @@ class ChoosingCollectionClassResearch
     Iterator.empty.hasDefiniteSize shouldEqual true
     Iterator(1, 2, 3).hasDefiniteSize shouldEqual false
 
+    Iterator.fill(5)(2).size shouldEqual 5
+    Iterator.fill(5)(2).sum shouldEqual 10
+
+    // An infinite-length iterator returning the results of evaluating an expression.
+    Iterator.continually(42).next() shouldEqual 42
+
+    Iterator.single(42).size shouldEqual 1
+
+    // Creates an iterator producing the values of a given function
+    // over a range of integer values starting from 0.
+    Iterator.tabulate(5)(_ * 2).toList shouldEqual List(0, 2, 4, 6, 8)
+
+    Iterator.range(1, 4).toList shouldEqual List(1, 2, 3)
+    Iterator.range(1, 5, 2).toList shouldEqual List(1, 3)
+
   }
 
 }

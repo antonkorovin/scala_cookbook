@@ -533,4 +533,24 @@ class ChoosingCollectionClassResearch
     }
   }
 
+
+  test("choosing a Tuple") {
+    // Supports a heterogeneous collection of elements. There is no one “Tuple” class;
+    // tuples are implemented as case classes ranging from Tuple1 to Tuple22,
+    // which support 1 to 22 elements.
+
+    val t = (1, "Str")
+    t._1 shouldEqual 1
+    t._2 shouldEqual "Str"
+
+
+    t.productIterator.toList shouldEqual List(1, "Str")
+
+    val productIterator = t.productIterator
+    productIterator.next shouldEqual 1
+    productIterator.next shouldEqual "Str"
+
+    productIterator.hasNext shouldEqual false
+  }
+
 }

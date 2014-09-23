@@ -507,4 +507,30 @@ class ChoosingCollectionClassResearch
     filteredIterator.hasNext shouldEqual false
   }
 
+
+  test("choosing an Option") {
+    // Acts as a collection that contains zero or one elements.
+    // The Some class and None object extend Option.
+    // Some is a container for one element, and None holds zero elements.
+
+
+    Some(1).size shouldEqual 1
+    None.size shouldEqual 0
+    Some(1).isEmpty shouldEqual false
+    Some(1).isDefined shouldEqual true
+
+    None.isEmpty shouldEqual true
+    None.isDefined shouldEqual false
+
+
+    (for (v <- Some(1)) yield v).toList should have size 1
+
+
+    Some(1).get shouldEqual 1
+
+    intercept[NoSuchElementException] {
+      None.get
+    }
+  }
+
 }

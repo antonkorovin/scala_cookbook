@@ -413,6 +413,10 @@ class ChoosingCollectionClassResearch
   }
 
   // </editor-fold>
+
+
+  // <editor-fold desc="Other collections classes (and types that act like collections)">
+
   test("choosing an Enumeration") {
     //  A finite collection of constant values (i.e., the days in a week or months in a year).
 
@@ -553,4 +557,6 @@ class ChoosingCollectionClassResearch
     productIterator.hasNext shouldEqual false
   }
 
+
+    // </editor-fold>
 }

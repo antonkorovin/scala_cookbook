@@ -26,6 +26,16 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Traversable.count") {
+    // Counts the number of elements in the collection for which the predicate is satisfied.
+
+    val predicate = (x: Int) => x != 0
+
+    val c = Traversable(0, 1, 0, 2, 3)
+
+    c.count(predicate) shouldEqual 3
+  }
+
 
   // TODO Mutable collection methods
 

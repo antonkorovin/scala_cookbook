@@ -37,6 +37,21 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Seq.diff") {
+    // Returns the difference of the elements in c1 and c2.
+
+    val c1 = Seq(0, 1, 0, 2, 3)
+    val c2 = Seq(7, 1, 5, 2, 4)
+
+    c1.diff(c2) shouldEqual Seq(0, 0, 3)
+    c2.diff(c1) shouldEqual Seq(7, 5, 4)
+
+    c1.diff(Seq.empty) shouldEqual Seq(0, 1, 0, 2, 3)
+    Seq.empty.diff(c1) shouldEqual Seq.empty
+
+    c1.diff(c1) shouldEqual Seq.empty
+  }
+
   // TODO Mutable collection methods
 
 

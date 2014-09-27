@@ -63,6 +63,16 @@ class ChoosingCollectionMethodResearch
     c.drop(c.size * 10) shouldEqual Traversable.empty
   }
 
+
+  test("Traversable.dropWhile") {
+    // Returns a collection that contains the “longest prefix of elements that satisfy the predicate.”
+
+    val c = Traversable(0, 1, 0, 2, 3)
+
+    c.dropWhile(_ != 2) shouldEqual Traversable(2, 3)
+    c.dropWhile(_ >= 0) shouldEqual Traversable.empty
+  }
+
   // TODO Mutable collection methods
 
 

@@ -52,6 +52,17 @@ class ChoosingCollectionMethodResearch
     c1.diff(c1) shouldEqual Seq.empty
   }
 
+
+
+  test("Traversable.drop") {
+    // Returns all elements in the collection except the first n elements.
+
+    val c = Traversable(0, 1, 0, 2, 3)
+
+    c.drop(3) shouldEqual Traversable(2, 3)
+    c.drop(c.size * 10) shouldEqual Traversable.empty
+  }
+
   // TODO Mutable collection methods
 
 

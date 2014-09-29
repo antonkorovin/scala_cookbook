@@ -73,6 +73,17 @@ class ChoosingCollectionMethodResearch
     c.dropWhile(_ >= 0) shouldEqual Traversable.empty
   }
 
+
+  test("Traversable.exists") {
+    // Returns true if the predicate is true for any element in the collection.
+
+    val c = Traversable(0, 1, 0, 2, 3)
+
+    c.exists(_ < 0) shouldEqual false
+    c.exists(_ == 0) shouldEqual true
+    c.exists(_ > 0) shouldEqual true
+  }
+
   // TODO Mutable collection methods
 
 

@@ -84,6 +84,15 @@ class ChoosingCollectionMethodResearch
     c.exists(_ > 0) shouldEqual true
   }
 
+
+  test("Traversable.filter") {
+    // Returns all elements from the collection for which the predicate is true.
+
+    val c = Traversable(0, 1, 0, 2, 3)
+
+    c.filter(_ != 0) shouldEqual Traversable(1, 2, 3)
+  }
+
   // TODO Mutable collection methods
 
 

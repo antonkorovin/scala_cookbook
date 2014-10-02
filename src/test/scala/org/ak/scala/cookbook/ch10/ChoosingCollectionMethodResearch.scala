@@ -125,6 +125,18 @@ class ChoosingCollectionMethodResearch
     c2.flatten shouldEqual List(0, List(1), 0, 2, 3)
   }
 
+
+  test("Traversable.flatMap") {
+    // Returns a new collection by applying a function to all elements of the collection c (like map), and
+    // then flattening the elements of the resulting collections.
+
+    val c1 = List(List(0, 1), List(0), List(2, 3))
+
+    c1.flatMap(
+      _.reverse
+    ) shouldEqual List(1, 0, 0, 3, 2)
+  }
+
   // TODO Mutable collection methods
 
 

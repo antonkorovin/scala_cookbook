@@ -102,6 +102,16 @@ class ChoosingCollectionMethodResearch
     c.filterNot(_ == 0) shouldEqual Traversable(1, 2, 3)
   }
 
+
+  test("Traversable.find") {
+    // Returns the first element that matches the predicate as Some[A]. Returns None if no match is found.
+
+    val c = Traversable(0, 1, 0, 2, 3)
+
+    c.find(_ == 42) shouldEqual None
+    c.find(_ * 21 == 42) shouldEqual Some(2)
+  }
+
   // TODO Mutable collection methods
 
 

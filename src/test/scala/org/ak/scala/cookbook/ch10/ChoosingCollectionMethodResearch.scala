@@ -10,7 +10,8 @@ class ChoosingCollectionMethodResearch
   extends FunSuite
           with Matchers {
 
-  // TODO Common collection methods
+  // <editor-fold desc="Common collection methods">
+
   test("Traversable.collect") {
     // Builds a new collection by applying a partial function to all elements of the collection on which
     // the function is defined.
@@ -136,6 +137,11 @@ class ChoosingCollectionMethodResearch
       _.reverse
     ) shouldEqual List(1, 0, 0, 3, 2)
   }
+
+
+
+  // </editor-fold>
+
 
   // TODO Mutable collection methods
 

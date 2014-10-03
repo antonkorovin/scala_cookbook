@@ -139,6 +139,22 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Traversable.foldLeft") {
+    // Applies the operation to successive elements, going from left to right, starting at element z.
+
+    val c = Traversable(0, 1, 0, 2, 3)
+
+    // (((((10 - 0) - 1) - 0) - 2) - 3)
+    c.foldLeft(10)(
+      _ - _
+    ) shouldEqual 4
+
+
+    c.foldLeft("") (
+    _ + _
+    ) shouldEqual "01023"
+  }
+
 
   // </editor-fold>
 

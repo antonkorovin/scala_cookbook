@@ -178,6 +178,31 @@ class ChoosingCollectionMethodResearch
     ) shouldEqual "0123"
   }
 
+
+  test("Traversable.forAll") {
+    // Returns true if the predicate is true for all elements, false otherwise.
+
+    val c = Traversable(0, 1, 0, 2, 3)
+
+    c.forall(_ > 0) shouldEqual false
+    c.forall(_ >= 0) shouldEqual true
+  }
+
+
+  test("Traversable.foreach") {
+    // Applies the function f to all elements of the collection.
+
+
+    val c = Traversable(0, 1, 0, 2, 3)
+
+    val sb = StringBuilder.newBuilder
+    c.foreach {
+      sb.append
+    }
+
+    sb.toString shouldEqual "01023"
+  }
+
   // </editor-fold>
 
 

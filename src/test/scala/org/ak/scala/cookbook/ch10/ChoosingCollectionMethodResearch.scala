@@ -203,6 +203,25 @@ class ChoosingCollectionMethodResearch
     sb.toString shouldEqual "01023"
   }
 
+
+  test("Traversable.groupBy") {
+    // Partitions the collection into a Map of collections according to the function.
+
+    val c = Traversable(0, 1, 0, 2, 3)
+
+    c.groupBy(_ > 0) shouldEqual Map(
+      false -> Traversable(0, 0),
+      true -> Traversable(1, 2, 3)
+    )
+
+    c.groupBy(_.toString) shouldEqual Map(
+      "0" -> Traversable(0, 0),
+      "1" -> Traversable(1),
+      "2" -> Traversable(2),
+      "3" -> Traversable(3)
+    )
+  }
+
   // </editor-fold>
 
 

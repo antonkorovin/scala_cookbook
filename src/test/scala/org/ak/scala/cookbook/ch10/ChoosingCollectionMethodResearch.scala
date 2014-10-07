@@ -222,6 +222,18 @@ class ChoosingCollectionMethodResearch
     )
   }
 
+
+  test("Traversable.hasDefinitiveSize") {
+
+    // Tests whether the collection has a finite size. (Returns false for a Stream or Iterator, for
+    // example.)
+
+
+    Traversable(0, 1, 0, 2, 3).hasDefiniteSize shouldEqual true
+
+    Stream(1, 2, 3).hasDefiniteSize shouldEqual false
+  }
+
   // </editor-fold>
 
 

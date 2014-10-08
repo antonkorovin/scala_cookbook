@@ -234,6 +234,19 @@ class ChoosingCollectionMethodResearch
     Stream(1, 2, 3).hasDefiniteSize shouldEqual false
   }
 
+  test("Traversable.head") {
+
+    // Returns the first element of the collection. Throws a NoSuchElementException if the
+    // collection is empty.
+
+    Traversable(0, 1, 0, 2, 3).head shouldEqual 0
+
+
+    intercept[NoSuchElementException] {
+      Traversable.empty.head
+    }
+  }
+
   // </editor-fold>
 
 

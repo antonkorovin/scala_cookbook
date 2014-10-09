@@ -247,6 +247,16 @@ class ChoosingCollectionMethodResearch
     }
   }
 
+
+  test("Traversable.headOption") {
+    // Returns the first element of the collection as Some[A] if the element exists, or None if the
+    // collection is empty.
+
+    Traversable(0, 1, 0, 2, 3).headOption shouldEqual Some(0)
+
+    Traversable.empty[AnyRef].headOption shouldEqual None
+  }
+
   // </editor-fold>
 
 

@@ -257,6 +257,18 @@ class ChoosingCollectionMethodResearch
     Traversable.empty[AnyRef].headOption shouldEqual None
   }
 
+
+  test("Traversable.init") {
+    // Selects all elements from the collection except the last one. Throws an
+    // UnsupportedOperationException if the collection is empty.
+
+    Traversable(0, 1, 0, 2, 3).init shouldEqual Traversable(0, 1, 0, 2)
+
+    intercept[UnsupportedOperationException] {
+      Traversable.empty[AnyRef].init
+    }
+  }
+
   // </editor-fold>
 
 

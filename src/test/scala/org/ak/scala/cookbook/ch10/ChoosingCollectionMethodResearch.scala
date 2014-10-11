@@ -269,6 +269,18 @@ class ChoosingCollectionMethodResearch
     }
   }
 
+
+  test("Seq.intersect") {
+    // On collections that support it, it returns the intersection of the two collections (the elements
+    // common to both collections).
+
+
+    val c1 = Seq(0, 1, 0, 2, 3)
+    val c2 = Seq(7, 1, 5, 2, 4)
+
+    c1.intersect(c2) shouldEqual Seq(1, 2)
+  }
+
   // </editor-fold>
 
 

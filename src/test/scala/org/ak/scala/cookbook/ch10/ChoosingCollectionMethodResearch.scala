@@ -281,6 +281,15 @@ class ChoosingCollectionMethodResearch
     c1.intersect(c2) shouldEqual Seq(1, 2)
   }
 
+
+  test("Traversable.isEmpty") {
+    // Returns true if the collection is empty, false otherwise.
+
+    Traversable(0, 1, 0, 2, 3).isEmpty shouldEqual false
+    Traversable.empty.isEmpty shouldEqual true
+    Traversable().isEmpty shouldEqual true
+  }
+
   // </editor-fold>
 
 

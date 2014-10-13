@@ -290,6 +290,20 @@ class ChoosingCollectionMethodResearch
     Traversable().isEmpty shouldEqual true
   }
 
+
+  test("Traversable.last") {
+
+    // Returns the last element from the collection. Throws a NoSuchElementException if the
+    // collection is empty.
+
+    Traversable(0, 1, 0, 2, 3).last shouldEqual 3
+
+
+    intercept[NoSuchElementException] {
+      Traversable.empty.last
+    }
+  }
+
   // </editor-fold>
 
 

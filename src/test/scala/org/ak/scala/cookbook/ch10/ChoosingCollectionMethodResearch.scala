@@ -304,6 +304,16 @@ class ChoosingCollectionMethodResearch
     }
   }
 
+
+  test("Traversable.lastOption") {
+    // Returns the last element of the collection as Some[A] if the element exists, or None if the
+    // collection is empty.
+
+    Traversable(0, 1, 0, 2, 3).lastOption shouldEqual Some(3)
+
+    Traversable.empty[AnyRef].lastOption shouldEqual None
+  }
+
   // </editor-fold>
 
 

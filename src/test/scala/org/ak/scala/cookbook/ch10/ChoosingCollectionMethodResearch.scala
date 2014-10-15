@@ -314,6 +314,14 @@ class ChoosingCollectionMethodResearch
     Traversable.empty[AnyRef].lastOption shouldEqual None
   }
 
+
+  test("Traversable.map") {
+    // Creates a new collection by applying the function to all the elements of the collection.
+
+    Traversable(0, 1, 0, 2, 3).map(_ * 2) shouldEqual Traversable(0, 2, 0, 4, 6)
+    Traversable.empty[Int].map(_ * 2) shouldEqual Traversable.empty[Int]
+  }
+
   // </editor-fold>
 
 

@@ -322,6 +322,16 @@ class ChoosingCollectionMethodResearch
     Traversable.empty[Int].map(_ * 2) shouldEqual Traversable.empty[Int]
   }
 
+
+  test("Traversable.max") {
+    // Returns the largest element from the collection.
+    Traversable(0, 1, 0, 2, 3).max shouldEqual 3
+
+    intercept[UnsupportedOperationException] {
+      Traversable.empty[Int].max
+    }
+  }
+
   // </editor-fold>
 
 

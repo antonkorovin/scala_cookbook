@@ -332,6 +332,15 @@ class ChoosingCollectionMethodResearch
     }
   }
 
+  test("Traversable.min") {
+    //  Returns the smallest element from the collection.
+    Traversable(0, 1, 0, 2, 3).min shouldEqual 0
+
+    intercept[UnsupportedOperationException] {
+      Traversable.empty[Int].min
+    }
+  }
+
   // </editor-fold>
 
 

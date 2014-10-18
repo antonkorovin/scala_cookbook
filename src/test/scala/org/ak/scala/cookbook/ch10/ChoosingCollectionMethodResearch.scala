@@ -341,6 +341,15 @@ class ChoosingCollectionMethodResearch
     }
   }
 
+
+  test("Traversable.nonEmpty") {
+    // Returns true if the collection is not empty, false otherwise.
+
+    Traversable(0, 1, 0, 2, 3).nonEmpty shouldEqual true
+    Traversable.empty.nonEmpty shouldEqual false
+    Traversable().nonEmpty shouldEqual false
+  }
+
   // </editor-fold>
 
 

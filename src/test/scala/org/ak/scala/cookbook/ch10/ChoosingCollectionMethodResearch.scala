@@ -2,6 +2,8 @@ package org.ak.scala.cookbook.ch10
 
 import org.scalatest.{FunSuite, Matchers}
 
+import scala.collection.parallel.mutable.ParArray
+
 /**
  * @author antonk
  * @since  9/23/14 - 10:59 PM
@@ -348,6 +350,13 @@ class ChoosingCollectionMethodResearch
     Traversable(0, 1, 0, 2, 3).nonEmpty shouldEqual true
     Traversable.empty.nonEmpty shouldEqual false
     Traversable().nonEmpty shouldEqual false
+  }
+
+
+  test("Traversable.par") {
+    // Returns a parallel implementation of the collection, e.g., Array returns ParArray.
+
+    Array(0, 1, 0, 2, 3).par shouldEqual ParArray(0, 1, 0, 2, 3)
   }
 
   // </editor-fold>

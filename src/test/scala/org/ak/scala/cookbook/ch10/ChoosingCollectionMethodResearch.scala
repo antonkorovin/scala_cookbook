@@ -359,6 +359,17 @@ class ChoosingCollectionMethodResearch
     Array(0, 1, 0, 2, 3).par shouldEqual ParArray(0, 1, 0, 2, 3)
   }
 
+
+
+  test("Traversable.partition") {
+    // Returns two collections according to the predicate algorithm.
+
+    val (left, right) = Traversable(0, 1, 0, 2, 3).partition(_ < 2)
+
+    left  shouldEqual Traversable(0, 1, 0)
+    right shouldEqual Traversable(2, 3)
+  }
+
   // </editor-fold>
 
 

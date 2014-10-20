@@ -370,6 +370,28 @@ class ChoosingCollectionMethodResearch
     right shouldEqual Traversable(2, 3)
   }
 
+
+  test("Traversable.reduceLeft") {
+    // The same as foldLeft, but begins at the first element of the collection.
+
+    pending
+  }
+
+
+  test("Traversable.reduceRight") {
+    // The same as foldRight, but begins at the last element of the collection.
+
+    pending
+  }
+
+
+  test("Seq.reverse") {
+    // Returns a collection with the elements in reverse order. (Not available on Traversable, but
+    // common to most collections, from GenSeqLike.)
+
+    pending
+  }
+
   // </editor-fold>
 
 

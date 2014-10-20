@@ -374,7 +374,18 @@ class ChoosingCollectionMethodResearch
   test("Traversable.reduceLeft") {
     // The same as foldLeft, but begins at the first element of the collection.
 
-    pending
+    val c = Traversable(0, 1, 0, 2, 3)
+
+    // ((((0 - 1) - 0) - 2) - 3)
+    c.reduceLeft(
+      _ - _
+    ) shouldEqual -6
+
+
+    c.reduceLeft (
+      _ + _
+    ) shouldEqual 6
+
   }
 
 

@@ -170,6 +170,7 @@ class ChoosingCollectionMethodResearch
 
 
     // Same. 'z' is always the second argument
+    // (0 - (1 - (2 - (3 - 20))))
     c.foldRight(20)(
       _ - _
     ) shouldEqual 18
@@ -392,7 +393,16 @@ class ChoosingCollectionMethodResearch
   test("Traversable.reduceRight") {
     // The same as foldRight, but begins at the last element of the collection.
 
-    pending
+    val c = Traversable(0, 1, 2, 3)
+
+    // (0 - (1 - (2 - 3)))
+    c.reduceRight(
+      (nextElement, z) => nextElement - z
+    ) shouldEqual -2
+
+
+    // Same. 'z' is always the second argument
+    // (0 - (1 - (2 - 3)))
   }
 
 

@@ -152,8 +152,8 @@ class ChoosingCollectionMethodResearch
     ) shouldEqual 4
 
 
-    c.foldLeft("") (
-    _ + _
+    c.foldLeft("")(
+      _ + _
     ) shouldEqual "01023"
   }
 
@@ -176,7 +176,7 @@ class ChoosingCollectionMethodResearch
     ) shouldEqual 18
 
 
-    c.foldRight("") (
+    c.foldRight("")(
       _ + _
     ) shouldEqual "0123"
   }
@@ -367,7 +367,7 @@ class ChoosingCollectionMethodResearch
 
     val (left, right) = Traversable(0, 1, 0, 2, 3).partition(_ < 2)
 
-    left  shouldEqual Traversable(0, 1, 0)
+    left shouldEqual Traversable(0, 1, 0)
     right shouldEqual Traversable(2, 3)
   }
 
@@ -383,7 +383,7 @@ class ChoosingCollectionMethodResearch
     ) shouldEqual -6
 
 
-    c.reduceLeft (
+    c.reduceLeft(
       _ + _
     ) shouldEqual 6
 

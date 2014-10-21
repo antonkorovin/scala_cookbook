@@ -413,6 +413,104 @@ class ChoosingCollectionMethodResearch
     pending
   }
 
+
+  test("Traversable.size") {
+    // Returns the size of the collection.
+    pending
+  }
+
+
+  test("Traversable.slice") {
+    // Returns the interval of elements beginning at element from and ending at element to.
+
+    pending
+  }
+
+
+  test("Traversable.sortWith") {
+    // Returns a version of the collection sorted by the comparison function f.
+
+    pending
+  }
+
+  test("Traversable.span") {
+    // Returns a collection of two collections; the first created by c.takeWhile(p), and the second
+    // created by c.dropWhile(p).
+
+    pending
+  }
+
+
+  test("Traversable.splitAt") {
+    // Returns a collection of two collections by splitting the collection c at element n.
+    pending
+  }
+
+
+  test("Traversable.sum") {
+    // Returns the sum of all elements in the collection.
+
+    pending
+  }
+
+
+  test("Traversable.tail") {
+    // Returns all elements from the collection except the first element.
+
+    pending
+  }
+
+
+  test("Traversable.take") {
+    // Returns the first n elements of the collection.
+
+    pending
+  }
+
+
+  test("Traversable.takeWhile") {
+    // Returns elements from the collection while the predicate is true. Stops when the predicate
+    // becomes false.
+
+    pending
+  }
+
+
+  test("Traversable.union") {
+    // Returns the union (all elements) of two collections.
+
+    pending
+  }
+
+  test("Traversable.unzip") {
+    // The opposite of zip, breaks a collection into two collections by dividing each element into two
+    // pieces, as in breaking up a collection of Tuple2 elements.
+
+    pending
+  }
+
+
+  test("Traversable.view") {
+    // Returns a nonstrict (lazy) view of the collection.
+
+    pending
+  }
+
+
+  test("Traversable.zip") {
+    // Creates a collection of pairs by matching the element 0 of c1 with element 0 of c2, element 1
+    // of c1 with element 1 of c2, etc.
+
+    pending
+  }
+
+
+  test("Traversable.zipWithIndex") {
+    // Zips the collection with its indices.
+
+    pending
+  }
+
   // </editor-fold>
 
 

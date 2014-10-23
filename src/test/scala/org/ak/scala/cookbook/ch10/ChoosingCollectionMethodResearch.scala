@@ -410,7 +410,8 @@ class ChoosingCollectionMethodResearch
     // Returns a collection with the elements in reverse order. (Not available on Traversable, but
     // common to most collections, from GenSeqLike.)
 
-    pending
+    Seq(0, 1, 0, 2, 3).reverse shouldEqual Seq(3, 2, 0, 1, 0)
+    Seq.empty[AnyRef].reverse shouldEqual Seq.empty[AnyRef]
   }
 
 

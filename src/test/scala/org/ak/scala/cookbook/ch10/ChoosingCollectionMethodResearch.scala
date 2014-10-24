@@ -417,7 +417,10 @@ class ChoosingCollectionMethodResearch
 
   test("Traversable.size") {
     // Returns the size of the collection.
-    pending
+
+    Traversable(0, 1, 0, 2, 3).size shouldEqual 5
+    Traversable.empty.size shouldEqual 0
+    Traversable().size shouldEqual 0
   }
 
 

@@ -427,7 +427,10 @@ class ChoosingCollectionMethodResearch
   test("Traversable.slice") {
     // Returns the interval of elements beginning at element from and ending at element to.
 
-    pending
+    // inclusive 'from', exclusive 'to'
+    Traversable(0, 1, 0, 2, 3).slice(1, 3) shouldEqual Traversable(1, 0)
+    Traversable(0, 1, 0, 2, 3).slice(2, 6) shouldEqual Traversable(0, 2, 3)
+    Traversable(0, 1, 0, 2, 3).slice(5, 6) shouldEqual Traversable.empty
   }
 
 

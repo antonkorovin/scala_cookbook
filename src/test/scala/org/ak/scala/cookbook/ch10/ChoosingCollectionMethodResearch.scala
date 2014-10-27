@@ -443,11 +443,13 @@ class ChoosingCollectionMethodResearch
     Seq(0, 1, 0, 2, 3).sortWith(_ < _) shouldEqual Seq(0, 0, 1, 2, 3)
   }
 
+
   test("Traversable.span") {
     // Returns a collection of two collections; the first created by c.takeWhile(p), and the second
     // created by c.dropWhile(p).
 
-    pending
+    Traversable(0, 1, 0, 2, 3).span(_ < 2) shouldEqual(Traversable(0, 1, 0), Traversable(2, 3))
+    Traversable.empty[Int].span(_ < 2) shouldEqual(Traversable.empty[Int], Traversable.empty[Int])
   }
 
 

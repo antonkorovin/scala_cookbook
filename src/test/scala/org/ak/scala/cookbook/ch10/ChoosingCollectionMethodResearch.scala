@@ -455,7 +455,10 @@ class ChoosingCollectionMethodResearch
 
   test("Traversable.splitAt") {
     // Returns a collection of two collections by splitting the collection c at element n.
-    pending
+
+    Traversable(0, 1, 0, 2, 3).splitAt(2) shouldEqual(Traversable(0, 1), Traversable(0, 2, 3))
+    Traversable(0, 1, 0, 2, 3).splitAt(0) shouldEqual(Traversable.empty, Traversable(0, 1, 0, 2, 3))
+    Traversable(0, 1, 0, 2, 3).splitAt(5) shouldEqual(Traversable(0, 1, 0, 2, 3), Traversable.empty)
   }
 
 

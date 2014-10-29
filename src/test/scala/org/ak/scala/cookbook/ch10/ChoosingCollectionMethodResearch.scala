@@ -465,7 +465,8 @@ class ChoosingCollectionMethodResearch
   test("Traversable.sum") {
     // Returns the sum of all elements in the collection.
 
-    pending
+    Traversable(0, 1, 0, 2, 3).sum shouldEqual 6
+    Traversable.empty[Int].sum shouldEqual 0
   }
 
 

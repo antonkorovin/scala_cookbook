@@ -473,7 +473,12 @@ class ChoosingCollectionMethodResearch
   test("Traversable.tail") {
     // Returns all elements from the collection except the first element.
 
-    pending
+    Traversable(0, 1, 0, 2, 3).tail shouldEqual Traversable(1, 0, 2, 3)
+    Traversable(0).tail shouldEqual Traversable.empty
+
+    intercept[UnsupportedOperationException] {
+      Traversable.empty.tail
+    }
   }
 
 

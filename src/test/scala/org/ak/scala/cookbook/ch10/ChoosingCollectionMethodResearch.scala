@@ -485,7 +485,10 @@ class ChoosingCollectionMethodResearch
   test("Traversable.take") {
     // Returns the first n elements of the collection.
 
-    pending
+    Traversable(0, 1, 0, 2, 3).take(3) shouldEqual Traversable(0, 1, 0)
+    Traversable(0, 1, 0, 2, 3).take(10) shouldEqual Traversable(0, 1, 0, 2, 3)
+    Traversable(0, 1, 0, 2, 3).take(0) shouldEqual Traversable.empty
+    Traversable.empty[AnyRef].take(10) shouldEqual Traversable.empty
   }
 
 

@@ -529,11 +529,20 @@ class ChoosingCollectionMethodResearch
   }
 
 
-  test("Traversable.zip") {
+  test("Seq.zip") {
     // Creates a collection of pairs by matching the element 0 of c1 with element 0 of c2, element 1
     // of c1 with element 1 of c2, etc.
 
-    pending
+    val c1 = Seq(0, 1, 0, 2, 3)
+    val c2 = Seq(7, 1, 5, 2, 4)
+
+    c1.zip(c2) shouldEqual Seq((0, 7), (1, 1), (0, 5), (2, 2), (3, 4))
+
+
+    val c3 = Seq(0, 1, 0, 2, 3)
+    val c4 = Seq(7, 1, 5)
+
+    c3.zip(c4) shouldEqual Seq((0, 7), (1, 1), (0, 5))
   }
 
 

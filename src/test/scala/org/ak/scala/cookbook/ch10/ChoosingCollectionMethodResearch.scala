@@ -503,10 +503,15 @@ class ChoosingCollectionMethodResearch
   }
 
 
-  test("Traversable.union") {
+  test("Seq.union") {
     // Returns the union (all elements) of two collections.
 
-    pending
+
+    val c1 = Seq(0, 1, 0, 2, 3)
+    val c2 = Seq(7, 1, 5, 2, 4)
+
+    c1.union(c2) shouldEqual Seq(0, 1, 0, 2, 3, 7, 1, 5, 2, 4)
+    c2.union(c1) shouldEqual Seq(7, 1, 5, 2, 4, 0, 1, 0, 2, 3)
   }
 
   test("Traversable.unzip") {

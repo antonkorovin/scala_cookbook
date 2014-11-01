@@ -496,7 +496,10 @@ class ChoosingCollectionMethodResearch
     // Returns elements from the collection while the predicate is true. Stops when the predicate
     // becomes false.
 
-    pending
+    Traversable(0, 1, 0, 2, 3).takeWhile(_ != 2) shouldEqual Traversable(0, 1, 0)
+    Traversable(0, 1, 0, 2, 3).takeWhile(_ >= 0) shouldEqual Traversable(0, 1, 0, 2, 3)
+    Traversable(0, 1, 0, 2, 3).takeWhile(_ < 0) shouldEqual Traversable.empty
+    Traversable.empty[Int].takeWhile(_ < 0) shouldEqual Traversable.empty
   }
 
 

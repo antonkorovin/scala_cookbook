@@ -518,7 +518,12 @@ class ChoosingCollectionMethodResearch
     // The opposite of zip, breaks a collection into two collections by dividing each element into two
     // pieces, as in breaking up a collection of Tuple2 elements.
 
-    pending
+    Traversable(
+      (0, 7), (1, 1), (0, 5), (2, 2), (3, 4)
+    ).unzip shouldEqual(
+      Traversable(0, 1, 0, 2, 3),
+      Traversable(7, 1, 5, 2, 4)
+      )
   }
 
 

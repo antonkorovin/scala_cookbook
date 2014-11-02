@@ -2,6 +2,7 @@ package org.ak.scala.cookbook.ch10
 
 import org.scalatest.{FunSuite, Matchers}
 
+import scala.collection.SeqView
 import scala.collection.parallel.mutable.ParArray
 
 /**
@@ -530,7 +531,7 @@ class ChoosingCollectionMethodResearch
   test("Traversable.view") {
     // Returns a nonstrict (lazy) view of the collection.
 
-    pending
+    Traversable(0, 1, 0, 2, 3).view.isInstanceOf[SeqView[_, _]] shouldEqual true
   }
 
 

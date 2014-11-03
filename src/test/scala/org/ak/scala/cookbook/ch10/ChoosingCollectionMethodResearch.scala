@@ -552,10 +552,12 @@ class ChoosingCollectionMethodResearch
   }
 
 
-  test("Traversable.zipWithIndex") {
+  test("Seq.zipWithIndex") {
     // Zips the collection with its indices.
 
-    pending
+    val c1 = Seq(0, 1, 0, 2, 3)
+
+    c1.zipWithIndex shouldEqual Seq((0, 0), (1, 1), (0, 2), (2, 3), (3, 4))
   }
 
   // </editor-fold>

@@ -566,7 +566,11 @@ class ChoosingCollectionMethodResearch
   // <editor-fold desc="Mutable collection methods">
 
 
-  // TODO Immutable collection operators
+  // </editor-fold>
+
+
+  // <editor-fold desc="Immutable collection operators">
+
 
   // </editor-fold>
 

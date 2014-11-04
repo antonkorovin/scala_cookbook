@@ -563,10 +563,12 @@ class ChoosingCollectionMethodResearch
   // </editor-fold>
 
 
-  // TODO Mutable collection methods
+  // <editor-fold desc="Mutable collection methods">
 
 
   // TODO Immutable collection operators
+
+  // </editor-fold>
 
 
   // TODO Maps

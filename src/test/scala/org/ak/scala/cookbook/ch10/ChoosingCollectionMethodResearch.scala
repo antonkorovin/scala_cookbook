@@ -575,5 +575,9 @@ class ChoosingCollectionMethodResearch
   // </editor-fold>
 
 
-  // TODO Maps
+  // <editor-fold desc="Maps">
+
+
+  // </editor-fold>
+
 }

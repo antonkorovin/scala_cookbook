@@ -565,6 +565,23 @@ class ChoosingCollectionMethodResearch
 
   // <editor-fold desc="Mutable collection methods">
 
+  test("Mutable.+=") {
+    val arr = ArrayBuffer[Int]()
+    arr should be(empty)
+
+    // Adds the element x to the collection c.
+    arr += 1
+    arr += 2
+    arr += 3
+
+    arr shouldEqual ArrayBuffer(1, 2, 3)
+
+    // Adds the elements x, y, and z to the collection c.
+    arr +=(4, 5, 6)
+
+    arr shouldEqual ArrayBuffer(1, 2, 3, 4, 5, 6)
+  }
+
 
   // </editor-fold>
 

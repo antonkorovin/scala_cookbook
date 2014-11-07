@@ -3,6 +3,7 @@ package org.ak.scala.cookbook.ch10
 import org.scalatest.{FunSuite, Matchers}
 
 import scala.collection.SeqView
+import scala.collection.mutable.ArrayBuffer
 import scala.collection.parallel.mutable.ParArray
 
 /**
@@ -582,6 +583,17 @@ class ChoosingCollectionMethodResearch
     arr shouldEqual ArrayBuffer(1, 2, 3, 4, 5, 6)
   }
 
+
+
+  test("Mutable.++=") {
+    val arr1 = ArrayBuffer(1, 2, 3)
+    val arr2 = ArrayBuffer(4, 5, 6)
+
+    // Adds the elements in the collection c2 to the collection c1.
+    arr1 ++= arr2
+
+    arr1 shouldEqual ArrayBuffer(1, 2, 3, 4, 5, 6)
+  }
 
   // </editor-fold>
 

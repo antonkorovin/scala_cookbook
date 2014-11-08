@@ -595,6 +595,23 @@ class ChoosingCollectionMethodResearch
     arr1 shouldEqual ArrayBuffer(1, 2, 3, 4, 5, 6)
   }
 
+
+  test("Mutable.-=") {
+    val arr = ArrayBuffer(1, 2, 3, 4, 5, 6)
+
+    // Removes the element x from the collection c.
+    arr -= 1
+    arr -= 2
+    arr -= 3
+
+    arr shouldEqual ArrayBuffer(4, 5, 6)
+
+    // Removes the elements x , y, and z from the collection c.
+    arr -=(4, 5, 6)
+
+    arr should be(empty)
+  }
+
   // </editor-fold>
 
 

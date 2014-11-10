@@ -623,6 +623,16 @@ class ChoosingCollectionMethodResearch
     arr1 shouldEqual ArrayBuffer(1, 2, 3)
   }
 
+
+  test("Mutable.(n)=x") {
+    val arr = ArrayBuffer(1, 2, 3, 4, 5, 6)
+
+    // Assigns the value x to the element c(n).
+    arr(2) = 42
+
+    arr shouldEqual ArrayBuffer(1, 2, 42, 4, 5, 6)
+  }
+
   // </editor-fold>
 
 

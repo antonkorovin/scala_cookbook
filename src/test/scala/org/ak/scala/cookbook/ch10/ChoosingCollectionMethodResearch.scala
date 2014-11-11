@@ -633,6 +633,17 @@ class ChoosingCollectionMethodResearch
     arr shouldEqual ArrayBuffer(1, 2, 42, 4, 5, 6)
   }
 
+
+  test("Mutable.clear") {
+    val arr = ArrayBuffer(1, 2, 3, 4, 5, 6)
+
+    // Removes all elements from the collection.
+    arr.clear()
+
+    arr should be(empty)
+  }
+
+
   // </editor-fold>
 
 

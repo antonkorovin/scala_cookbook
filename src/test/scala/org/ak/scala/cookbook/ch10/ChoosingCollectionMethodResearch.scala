@@ -663,6 +663,32 @@ class ChoosingCollectionMethodResearch
 
   // <editor-fold desc="Immutable collection operators">
 
+  test("Immutable.++") {
+    // Creates a new collection by appending the elements in the collection c2 to the collection c1.
+
+    pending
+  }
+
+
+  test("Immutable.:+") {
+    // Returns a new collection with the element e appended to the collection c.
+
+    pending
+  }
+
+
+  test("Immutable.+:") {
+    // Returns a new collection with the element e prepended to the collection c.
+
+    pending
+  }
+
+
+  test("Immutable.::") {
+    // Returns a List with the element e prepended to the List named list. (:: works only on List.)
+
+    pending
+  }
 
   // </editor-fold>
 

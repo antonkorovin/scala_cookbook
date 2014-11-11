@@ -644,6 +644,20 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Mutable.remove") {
+    val arr = ArrayBuffer(1, 2, 3, 4, 5, 6)
+
+    // Removes the element at position n, or the elements beginning at position n and continuing for length
+    arr.remove(2)
+
+    arr shouldEqual ArrayBuffer(1, 2, 4, 5, 6)
+
+    arr.remove(1, 2)
+
+    arr shouldEqual ArrayBuffer(1, 5, 6)
+  }
+
+
   // </editor-fold>
 
 

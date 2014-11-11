@@ -695,6 +695,20 @@ class ChoosingCollectionMethodResearch
 
   // <editor-fold desc="Maps">
 
+  test("ImmutableMap.-") {
+    // Returns a map with the key k (and its corresponding value) removed.
+    // Returns a map with the keys k1, k2, and k3 removed.
+
+    pending
+  }
+
+
+  test("ImmutableMap.--") {
+    //  Returns a map with the keys in the collection removed. (Although List is shown,
+    // this can be any sequential collection.)
+
+    pending
+  }
 
   // </editor-fold>
 

@@ -666,7 +666,10 @@ class ChoosingCollectionMethodResearch
   test("Immutable.++") {
     // Creates a new collection by appending the elements in the collection c2 to the collection c1.
 
-    pending
+    val seq1 = Seq(1, 2, 3)
+    val seq2 = Seq(4, 5, 6)
+
+    seq1 ++ seq2 shouldEqual Seq(1, 2, 3, 4, 5, 6)
   }
 
 

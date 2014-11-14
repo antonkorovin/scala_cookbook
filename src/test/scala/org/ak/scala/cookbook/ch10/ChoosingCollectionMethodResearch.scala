@@ -687,7 +687,11 @@ class ChoosingCollectionMethodResearch
   test("Immutable.+:") {
     // Returns a new collection with the element e prepended to the collection c.
 
-    pending
+    val seq1 = Seq(1, 2, 3)
+    val seq2 = 4 +: seq1
+    val seq3 = 6 +: 5 +: seq2
+
+    seq3 shouldEqual Seq(6, 5, 4, 1, 2, 3)
   }
 
 

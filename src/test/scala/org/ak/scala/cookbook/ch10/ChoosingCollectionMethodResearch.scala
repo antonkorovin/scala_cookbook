@@ -698,7 +698,13 @@ class ChoosingCollectionMethodResearch
   test("Immutable.::") {
     // Returns a List with the element e prepended to the List named list. (:: works only on List.)
 
-    pending
+    val list1 = List(1, 2, 3)
+    val list2 = 4 :: list1
+    val list3 = 6 :: 5 :: list2
+
+    list3 shouldEqual List(6, 5, 4, 1, 2, 3)
+
+    1 :: 2 :: 3 :: Nil shouldEqual List(1, 2, 3)
   }
 
   // </editor-fold>

@@ -716,7 +716,13 @@ class ChoosingCollectionMethodResearch
     // Returns a map with the key k (and its corresponding value) removed.
     // Returns a map with the keys k1, k2, and k3 removed.
 
-    pending
+    val m = Map(1 -> "one", 2 -> "two", 3 -> "three")
+
+    val m2 = m - 2
+    val m3 = m -(2, 3)
+
+    m2 shouldEqual Map(1 -> "one", 3 -> "three")
+    m3 shouldEqual Map(1 -> "one")
   }
 
 

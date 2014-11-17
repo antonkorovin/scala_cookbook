@@ -727,8 +727,17 @@ class ChoosingCollectionMethodResearch
 
 
   test("ImmutableMap.--") {
-    //  Returns a map with the keys in the collection removed. (Although List is shown,
+    // Returns a map with the keys in the collection removed. (Although List is shown,
     // this can be any sequential collection.)
+
+    val m = Map(1 -> "one", 2 -> "two", 3 -> "three")
+
+    val m2 = m -- (2 :: Nil)
+    val m3 = m -- (2 :: 3 :: Nil)
+
+    m2 shouldEqual Map(1 -> "one", 3 -> "three")
+    m3 shouldEqual Map(1 -> "one")
+  }
 
     pending
   }

@@ -739,6 +739,32 @@ class ChoosingCollectionMethodResearch
     m3 shouldEqual Map(1 -> "one")
   }
 
+
+  // ////////////////////////////////////////////
+
+
+  test("MutableMap.+=") {
+    // Add the key/value pair(s) to the mutable map mm.
+
+    pending
+  }
+
+
+  test("MutableMap.++=") {
+    // Add the elements in the collection c to the mutable map mm.
+
+    pending
+  }
+
+  test("MutableMap.-= key(s)") {
+    // Remove map entries from the mutable map mm based on the given key(s).
+
+    pending
+  }
+
+  test("MutableMap.-= collection") {
+    // Remove the map entries from the mutable map mm based on the keys in the collection c.
+
     pending
   }
 

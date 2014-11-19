@@ -768,6 +768,101 @@ class ChoosingCollectionMethodResearch
     pending
   }
 
+
+  // ////////////////////////////////////////////
+
+
+  test("Map.(k)") {
+    // Returns the value associated with the key k.
+
+    pending
+  }
+
+
+  test("Map.contains") {
+    // Returns true if the map m contains the key k.
+
+    pending
+  }
+
+
+  test("Map.filter") {
+    // Returns a map whose keys and values match the condition of the predicate p.
+
+    pending
+  }
+
+
+  test("Map.filterKeys") {
+    // Returns a map whose keys match the condition of the predicate p.
+
+    pending
+  }
+
+
+  test("Map.get") {
+    // Returns the value for the key k as Some[A] if the key is found, None otherwise.
+
+    pending
+  }
+
+
+  test("Map.getOrElse") {
+    // Returns the value for the key k if the key is found, otherwise returns the default value d.
+
+    pending
+  }
+
+
+  test("Map.isDefinedAt") {
+    // Returns true if the map contains the key k.
+
+    pending
+  }
+
+
+  test("Map.keys") {
+    // Returns the keys from the map as an Iterable.
+
+    pending
+  }
+
+
+  test("Map.keyIterator") {
+    // Returns the keys from the map as an Iterator.
+
+    pending
+  }
+
+
+  test("Map.keySet") {
+    // Returns the keys from the map as a Set.
+
+    pending
+  }
+
+
+  test("Map.mapValues") {
+    // Returns a new map by applying the function f to every value in the initial map.
+
+    pending
+  }
+
+
+  test("Map.values") {
+    // Returns the values from the map as an Iterable.
+
+    pending
+  }
+
+
+  test("Map.valuesIterator") {
+    // Returns the values from the map as an Iterator.
+
+    pending
+  }
+
+
   // </editor-fold>
 
 }

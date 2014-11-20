@@ -3,7 +3,7 @@ package org.ak.scala.cookbook.ch10
 import org.scalatest.{FunSuite, Matchers}
 
 import scala.collection.SeqView
-import scala.collection.mutable.ArrayBuffer
+import scala.collection.mutable
 import scala.collection.parallel.mutable.ParArray
 
 /**
@@ -567,7 +567,7 @@ class ChoosingCollectionMethodResearch
   // <editor-fold desc="Mutable collection methods">
 
   test("Mutable.+=") {
-    val arr = ArrayBuffer[Int]()
+    val arr = mutable.ArrayBuffer[Int]()
     arr should be(empty)
 
     // Adds the element x to the collection c.
@@ -575,36 +575,36 @@ class ChoosingCollectionMethodResearch
     arr += 2
     arr += 3
 
-    arr shouldEqual ArrayBuffer(1, 2, 3)
+    arr shouldEqual mutable.ArrayBuffer(1, 2, 3)
 
     // Adds the elements x, y, and z to the collection c.
     arr +=(4, 5, 6)
 
-    arr shouldEqual ArrayBuffer(1, 2, 3, 4, 5, 6)
+    arr shouldEqual mutable.ArrayBuffer(1, 2, 3, 4, 5, 6)
   }
 
 
 
   test("Mutable.++=") {
-    val arr1 = ArrayBuffer(1, 2, 3)
-    val arr2 = ArrayBuffer(4, 5, 6)
+    val arr1 = mutable.ArrayBuffer(1, 2, 3)
+    val arr2 = mutable.ArrayBuffer(4, 5, 6)
 
     // Adds the elements in the collection c2 to the collection c1.
     arr1 ++= arr2
 
-    arr1 shouldEqual ArrayBuffer(1, 2, 3, 4, 5, 6)
+    arr1 shouldEqual mutable.ArrayBuffer(1, 2, 3, 4, 5, 6)
   }
 
 
   test("Mutable.-=") {
-    val arr = ArrayBuffer(1, 2, 3, 4, 5, 6)
+    val arr = mutable.ArrayBuffer(1, 2, 3, 4, 5, 6)
 
     // Removes the element x from the collection c.
     arr -= 1
     arr -= 2
     arr -= 3
 
-    arr shouldEqual ArrayBuffer(4, 5, 6)
+    arr shouldEqual mutable.ArrayBuffer(4, 5, 6)
 
     // Removes the elements x , y, and z from the collection c.
     arr -=(4, 5, 6)
@@ -614,28 +614,28 @@ class ChoosingCollectionMethodResearch
 
 
   test("Mutable.--=") {
-    val arr1 = ArrayBuffer(1, 2, 3, 4, 5, 6)
-    val arr2 = ArrayBuffer[Int](4, 5, 6)
+    val arr1 = mutable.ArrayBuffer(1, 2, 3, 4, 5, 6)
+    val arr2 = mutable.ArrayBuffer[Int](4, 5, 6)
 
     // Removes the elements in the collection c2 from the collection c1.
     arr1 --= arr2
 
-    arr1 shouldEqual ArrayBuffer(1, 2, 3)
+    arr1 shouldEqual mutable.ArrayBuffer(1, 2, 3)
   }
 
 
   test("Mutable.(n)=x") {
-    val arr = ArrayBuffer(1, 2, 3, 4, 5, 6)
+    val arr = mutable.ArrayBuffer(1, 2, 3, 4, 5, 6)
 
     // Assigns the value x to the element c(n).
     arr(2) = 42
 
-    arr shouldEqual ArrayBuffer(1, 2, 42, 4, 5, 6)
+    arr shouldEqual mutable.ArrayBuffer(1, 2, 42, 4, 5, 6)
   }
 
 
   test("Mutable.clear") {
-    val arr = ArrayBuffer(1, 2, 3, 4, 5, 6)
+    val arr = mutable.ArrayBuffer(1, 2, 3, 4, 5, 6)
 
     // Removes all elements from the collection.
     arr.clear()
@@ -645,16 +645,16 @@ class ChoosingCollectionMethodResearch
 
 
   test("Mutable.remove") {
-    val arr = ArrayBuffer(1, 2, 3, 4, 5, 6)
+    val arr = mutable.ArrayBuffer(1, 2, 3, 4, 5, 6)
 
     // Removes the element at position n, or the elements beginning at position n and continuing for length
     arr.remove(2)
 
-    arr shouldEqual ArrayBuffer(1, 2, 4, 5, 6)
+    arr shouldEqual mutable.ArrayBuffer(1, 2, 4, 5, 6)
 
     arr.remove(1, 2)
 
-    arr shouldEqual ArrayBuffer(1, 5, 6)
+    arr shouldEqual mutable.ArrayBuffer(1, 5, 6)
   }
 
 
@@ -828,7 +828,7 @@ class ChoosingCollectionMethodResearch
   }
 
 
-  test("Map.keyIterator") {
+  test("Map.keysIterator") {
     // Returns the keys from the map as an Iterator.
 
     pending

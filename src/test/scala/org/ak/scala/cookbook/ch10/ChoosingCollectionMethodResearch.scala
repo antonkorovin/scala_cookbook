@@ -763,7 +763,16 @@ class ChoosingCollectionMethodResearch
   test("MutableMap.++=") {
     // Add the elements in the collection c to the mutable map mm.
 
-    pending
+    val m = mutable.Map(1 -> "one")
+
+    m ++= List(2 -> "two", 3 -> "three", 4 -> "four")
+
+    m shouldEqual mutable.Map(
+      1 -> "one",
+      2 -> "two",
+      3 -> "three",
+      4 -> "four"
+    )
   }
 
   test("MutableMap.-= key(s)") {

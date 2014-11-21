@@ -778,8 +778,29 @@ class ChoosingCollectionMethodResearch
   test("MutableMap.-= key(s)") {
     // Remove map entries from the mutable map mm based on the given key(s).
 
-    pending
+    val m = mutable.Map(
+      1 -> "one",
+      2 -> "two",
+      3 -> "three",
+      4 -> "four"
+    )
+
+
+    m -= (2, 4)
+
+    m shouldEqual mutable.Map(
+      1 -> "one",
+      3 -> "three"
+    )
+
+
+    m -= 1
+
+    m shouldEqual mutable.Map(
+      3 -> "three"
+    )
   }
+
 
   test("MutableMap.-= collection") {
     // Remove the map entries from the mutable map mm based on the keys in the collection c.

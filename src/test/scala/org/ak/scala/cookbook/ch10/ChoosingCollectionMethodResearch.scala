@@ -827,7 +827,18 @@ class ChoosingCollectionMethodResearch
   test("Map.(k)") {
     // Returns the value associated with the key k.
 
-    pending
+    val m = Map(
+      1 -> "one",
+      2 -> "two",
+      3 -> "three",
+      4 -> "four"
+    )
+
+    m(1) shouldEqual "one"
+
+    intercept[NoSuchElementException] {
+      m(0)
+    }
   }
 
 

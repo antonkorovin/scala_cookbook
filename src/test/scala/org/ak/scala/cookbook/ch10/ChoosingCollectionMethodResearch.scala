@@ -845,7 +845,15 @@ class ChoosingCollectionMethodResearch
   test("Map.contains") {
     // Returns true if the map m contains the key k.
 
-    pending
+    val m = Map(
+      1 -> "one",
+      2 -> "two",
+      3 -> "three",
+      4 -> "four"
+    )
+
+    m.contains(1) shouldEqual true
+    m.contains(0) shouldEqual false
   }
 
 

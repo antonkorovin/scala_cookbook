@@ -860,7 +860,28 @@ class ChoosingCollectionMethodResearch
   test("Map.filter") {
     // Returns a map whose keys and values match the condition of the predicate p.
 
-    pending
+    val m = Map(
+      1 -> "one",
+      2 -> "two",
+      3 -> "three",
+      4 -> "four"
+    )
+
+
+    val filteredByKeys = m.filter(_._1 % 2 == 0)
+
+    filteredByKeys shouldEqual Map(
+      2 -> "two",
+      4 -> "four"
+    )
+
+
+    val filteredByValues = m.filter(_._2.length > 3)
+
+    filteredByValues shouldEqual Map(
+      3 -> "three",
+      4 -> "four"
+    )
   }
 
 

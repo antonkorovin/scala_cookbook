@@ -908,7 +908,15 @@ class ChoosingCollectionMethodResearch
   test("Map.get") {
     // Returns the value for the key k as Some[A] if the key is found, None otherwise.
 
-    pending
+    val m = Map(
+      1 -> "one",
+      2 -> "two",
+      3 -> "three",
+      4 -> "four"
+    )
+
+    m.get(1) shouldEqual Some("one")
+    m.get(0) shouldEqual None
   }
 
 

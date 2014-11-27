@@ -923,7 +923,15 @@ class ChoosingCollectionMethodResearch
   test("Map.getOrElse") {
     // Returns the value for the key k if the key is found, otherwise returns the default value d.
 
-    pending
+    val m = Map(
+      1 -> "one",
+      2 -> "two",
+      3 -> "three",
+      4 -> "four"
+    )
+
+    m.getOrElse(1, "default") shouldEqual "one"
+    m.getOrElse(0, "default") shouldEqual "default"
   }
 
 

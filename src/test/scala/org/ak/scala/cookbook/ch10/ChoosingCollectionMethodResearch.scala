@@ -938,7 +938,15 @@ class ChoosingCollectionMethodResearch
   test("Map.isDefinedAt") {
     // Returns true if the map contains the key k.
 
-    pending
+    val m = Map(
+      1 -> "one",
+      2 -> "two",
+      3 -> "three",
+      4 -> "four"
+    )
+
+    m.isDefinedAt(1) shouldEqual true
+    m.isDefinedAt(0) shouldEqual false
   }
 
 

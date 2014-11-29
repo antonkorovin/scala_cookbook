@@ -953,7 +953,14 @@ class ChoosingCollectionMethodResearch
   test("Map.keys") {
     // Returns the keys from the map as an Iterable.
 
-    pending
+    val m = Map(
+      1 -> "one",
+      2 -> "two",
+      3 -> "three",
+      4 -> "four"
+    )
+
+    m.keys shouldEqual Set(1, 2, 3, 4).asInstanceOf[Iterable[_]]
   }
 
 

@@ -987,7 +987,14 @@ class ChoosingCollectionMethodResearch
   test("Map.keySet") {
     // Returns the keys from the map as a Set.
 
-    pending
+    val m = Map(
+      1 -> "one",
+      2 -> "two",
+      3 -> "three",
+      4 -> "four"
+    )
+
+    m.keySet shouldEqual Set(1, 2, 3, 4)
   }
 
 

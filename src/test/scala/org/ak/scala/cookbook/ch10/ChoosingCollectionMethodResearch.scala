@@ -1001,7 +1001,19 @@ class ChoosingCollectionMethodResearch
   test("Map.mapValues") {
     // Returns a new map by applying the function f to every value in the initial map.
 
-    pending
+    val m = Map(
+      1 -> "one",
+      2 -> "two",
+      3 -> "three",
+      4 -> "four"
+    )
+
+    m.mapValues(_.toUpperCase) shouldEqual Map(
+      1 -> "ONE",
+      2 -> "TWO",
+      3 -> "THREE",
+      4 -> "FOUR"
+    )
   }
 
 

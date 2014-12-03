@@ -1020,7 +1020,14 @@ class ChoosingCollectionMethodResearch
   test("Map.values") {
     // Returns the values from the map as an Iterable.
 
-    pending
+    val m = Map(
+      1 -> "one",
+      2 -> "two",
+      3 -> "three",
+      4 -> "four"
+    )
+
+    m.values should contain only ("one", "two", "three", "four")
   }
 
 

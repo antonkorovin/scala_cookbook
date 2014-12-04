@@ -1034,7 +1034,20 @@ class ChoosingCollectionMethodResearch
   test("Map.valuesIterator") {
     // Returns the values from the map as an Iterator.
 
-    pending
+    val m = Map(
+      1 -> "one",
+      2 -> "two",
+      3 -> "three",
+      4 -> "four"
+    )
+
+    val valuesItr = m.valuesIterator
+    val expItr = Iterator("one", "two", "three", "four")
+
+
+    while (valuesItr.hasNext || expItr.hasNext) {
+      valuesItr.next shouldEqual expItr.next
+    }
   }
 
 

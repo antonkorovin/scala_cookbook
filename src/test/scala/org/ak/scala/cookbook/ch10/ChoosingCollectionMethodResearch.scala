@@ -42,23 +42,6 @@ class ChoosingCollectionMethodResearch
   }
 
 
-  test("Seq.diff") {
-    // Returns the difference of the elements in c1 and c2.
-
-    val c1 = Seq(0, 1, 0, 2, 3)
-    val c2 = Seq(7, 1, 5, 2, 4)
-
-    c1.diff(c2) shouldEqual Seq(0, 0, 3)
-    c2.diff(c1) shouldEqual Seq(7, 5, 4)
-
-    c1.diff(Seq.empty) shouldEqual Seq(0, 1, 0, 2, 3)
-    Seq.empty.diff(c1) shouldEqual Seq.empty
-
-    c1.diff(c1) shouldEqual Seq.empty
-  }
-
-
-
   test("Traversable.drop") {
     // Returns all elements in the collection except the first n elements.
 
@@ -275,18 +258,6 @@ class ChoosingCollectionMethodResearch
   }
 
 
-  test("Seq.intersect") {
-    // On collections that support it, it returns the intersection of the two collections (the elements
-    // common to both collections).
-
-
-    val c1 = Seq(0, 1, 0, 2, 3)
-    val c2 = Seq(7, 1, 5, 2, 4)
-
-    c1.intersect(c2) shouldEqual Seq(1, 2)
-  }
-
-
   test("Traversable.isEmpty") {
     // Returns true if the collection is empty, false otherwise.
 
@@ -407,16 +378,6 @@ class ChoosingCollectionMethodResearch
     // (0 - (1 - (2 - 3)))
   }
 
-
-  test("Seq.reverse") {
-    // Returns a collection with the elements in reverse order. (Not available on Traversable, but
-    // common to most collections, from GenSeqLike.)
-
-    Seq(0, 1, 0, 2, 3).reverse shouldEqual Seq(3, 2, 0, 1, 0)
-    Seq.empty[AnyRef].reverse shouldEqual Seq.empty[AnyRef]
-  }
-
-
   test("Traversable.size") {
     // Returns the size of the collection.
 
@@ -433,16 +394,6 @@ class ChoosingCollectionMethodResearch
     Traversable(0, 1, 0, 2, 3).slice(1, 3) shouldEqual Traversable(1, 0)
     Traversable(0, 1, 0, 2, 3).slice(2, 6) shouldEqual Traversable(0, 2, 3)
     Traversable(0, 1, 0, 2, 3).slice(5, 6) shouldEqual Traversable.empty
-  }
-
-
-  test("Seq.sortWith") {
-    // Returns a version of the collection sorted by the comparison function f.
-
-    // *  The sort is stable. That is, elements that are equal (as determined by `lt`)
-    // *  appear in the same order in the sorted sequence as in the original.
-    Seq(0, 1, 0, 2, 3).sortWith(_ > _) shouldEqual Seq(3, 2, 1, 0, 0)
-    Seq(0, 1, 0, 2, 3).sortWith(_ < _) shouldEqual Seq(0, 0, 1, 2, 3)
   }
 
 
@@ -505,16 +456,6 @@ class ChoosingCollectionMethodResearch
   }
 
 
-  test("Seq.union") {
-    // Returns the union (all elements) of two collections.
-
-
-    val c1 = Seq(0, 1, 0, 2, 3)
-    val c2 = Seq(7, 1, 5, 2, 4)
-
-    c1.union(c2) shouldEqual Seq(0, 1, 0, 2, 3, 7, 1, 5, 2, 4)
-    c2.union(c1) shouldEqual Seq(7, 1, 5, 2, 4, 0, 1, 0, 2, 3)
-  }
 
   test("Traversable.unzip") {
     // The opposite of zip, breaks a collection into two collections by dividing each element into two
@@ -533,6 +474,73 @@ class ChoosingCollectionMethodResearch
     // Returns a nonstrict (lazy) view of the collection.
 
     Traversable(0, 1, 0, 2, 3).view.isInstanceOf[SeqView[_, _]] shouldEqual true
+  }
+
+
+
+  // </editor-fold>
+
+
+  // <editor-fold desc="Seq specific methods">
+
+
+  test("Seq.diff") {
+    // Returns the difference of the elements in c1 and c2.
+
+    val c1 = Seq(0, 1, 0, 2, 3)
+    val c2 = Seq(7, 1, 5, 2, 4)
+
+    c1.diff(c2) shouldEqual Seq(0, 0, 3)
+    c2.diff(c1) shouldEqual Seq(7, 5, 4)
+
+    c1.diff(Seq.empty) shouldEqual Seq(0, 1, 0, 2, 3)
+    Seq.empty.diff(c1) shouldEqual Seq.empty
+
+    c1.diff(c1) shouldEqual Seq.empty
+  }
+
+
+  test("Seq.intersect") {
+    // On collections that support it, it returns the intersection of the two collections (the elements
+    // common to both collections).
+
+
+    val c1 = Seq(0, 1, 0, 2, 3)
+    val c2 = Seq(7, 1, 5, 2, 4)
+
+    c1.intersect(c2) shouldEqual Seq(1, 2)
+  }
+
+
+  test("Seq.reverse") {
+    // Returns a collection with the elements in reverse order. (Not available on Traversable, but
+    // common to most collections, from GenSeqLike.)
+
+    Seq(0, 1, 0, 2, 3).reverse shouldEqual Seq(3, 2, 0, 1, 0)
+    Seq.empty[AnyRef].reverse shouldEqual Seq.empty[AnyRef]
+  }
+
+
+
+  test("Seq.sortWith") {
+    // Returns a version of the collection sorted by the comparison function f.
+
+    // *  The sort is stable. That is, elements that are equal (as determined by `lt`)
+    // *  appear in the same order in the sorted sequence as in the original.
+    Seq(0, 1, 0, 2, 3).sortWith(_ > _) shouldEqual Seq(3, 2, 1, 0, 0)
+    Seq(0, 1, 0, 2, 3).sortWith(_ < _) shouldEqual Seq(0, 0, 1, 2, 3)
+  }
+
+
+  test("Seq.union") {
+    // Returns the union (all elements) of two collections.
+
+
+    val c1 = Seq(0, 1, 0, 2, 3)
+    val c2 = Seq(7, 1, 5, 2, 4)
+
+    c1.union(c2) shouldEqual Seq(0, 1, 0, 2, 3, 7, 1, 5, 2, 4)
+    c2.union(c1) shouldEqual Seq(7, 1, 5, 2, 4, 0, 1, 0, 2, 3)
   }
 
 

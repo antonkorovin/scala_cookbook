@@ -31,6 +31,11 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Traversable.copyToArray") {
+    pending
+  }
+
+
   test("Traversable.count") {
     // Counts the number of elements in the collection for which the predicate is satisfied.
 
@@ -101,6 +106,8 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Traversable.fold") {
+    pending
   test("Traversable.flatten") {
     // Converts a collection of collections (such as a list of lists) to a single collection (single list).
 
@@ -267,6 +274,11 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Traversable.isTraversableAgain") {
+    pending
+  }
+
+
   test("Traversable.last") {
 
     // Returns the last element from the collection. Throws a NoSuchElementException if the
@@ -308,6 +320,12 @@ class ChoosingCollectionMethodResearch
     }
   }
 
+
+  test("Traversable.maxBy") {
+    pending
+  }
+
+
   test("Traversable.min") {
     //  Returns the smallest element from the collection.
     Traversable(0, 1, 0, 2, 3).min shouldEqual 0
@@ -315,6 +333,16 @@ class ChoosingCollectionMethodResearch
     intercept[UnsupportedOperationException] {
       Traversable.empty[Int].min
     }
+  }
+
+
+  test("Traversable.minBy") {
+    pending
+  }
+
+
+  test("Traversable.mkString") {
+    pending
   }
 
 
@@ -345,6 +373,10 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Traversable.product") {
+    pending
+  }
+
   test("Traversable.reduceLeft") {
     // The same as foldLeft, but begins at the first element of the collection.
 
@@ -360,6 +392,15 @@ class ChoosingCollectionMethodResearch
       _ + _
     ) shouldEqual 6
 
+
+    intercept[UnsupportedOperationException] {
+      Traversable.empty[Int].reduceLeft(_ - _)
+    }
+  }
+
+
+  test("Traversable.reduceLeftOption") {
+    pending
   }
 
 
@@ -377,6 +418,12 @@ class ChoosingCollectionMethodResearch
     // Same. 'z' is always the second argument
     // (0 - (1 - (2 - 3)))
   }
+
+
+  test("Traversable.reduceRightOption") {
+    pending
+  }
+
 
   test("Traversable.size") {
     // Returns the size of the collection.
@@ -456,6 +503,65 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Traversable.toArray") {
+    pending
+  }
+
+
+  test("Traversable.toBuffer") {
+    pending
+  }
+
+
+  test("Traversable.toIndexedSeq") {
+    pending
+  }
+
+
+  test("Traversable.toIterable") {
+    pending
+  }
+
+
+  test("Traversable.toIterator") {
+    pending
+  }
+
+
+  test("Traversable.toList") {
+    pending
+  }
+
+
+  test("Traversable.toMap") {
+    pending
+  }
+
+
+  test("Traversable.toSeq") {
+    pending
+  }
+
+
+  test("Traversable.toSet") {
+    pending
+  }
+
+
+  test("Traversable.toStream") {
+    pending
+  }
+
+
+  test("Traversable.toTraversable") {
+    pending
+  }
+
+
+  test("Traversable.toVector") {
+    pending
+  }
+
 
   test("Traversable.unzip") {
     // The opposite of zip, breaks a collection into two collections by dividing each element into two
@@ -497,6 +603,20 @@ class ChoosingCollectionMethodResearch
     Seq.empty.diff(c1) shouldEqual Seq.empty
 
     c1.diff(c1) shouldEqual Seq.empty
+  }
+
+
+
+
+  test("Seq.indexWhere") {
+    // Finds index of the first element satisfying some predicate after or at some start index.
+
+    pending
+  }
+
+
+  test("Seq.indexWhere") {
+    pending
   }
 
 

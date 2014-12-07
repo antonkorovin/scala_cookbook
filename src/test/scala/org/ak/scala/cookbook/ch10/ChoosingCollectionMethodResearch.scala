@@ -2,9 +2,8 @@ package org.ak.scala.cookbook.ch10
 
 import org.scalatest.{FunSuite, Matchers}
 
-import scala.collection.SeqView
-import scala.collection.mutable
 import scala.collection.parallel.mutable.ParArray
+import scala.collection.{SeqView, mutable}
 
 /**
  * @author antonk
@@ -877,7 +876,7 @@ class ChoosingCollectionMethodResearch
     val m = mutable.Map(1 -> "one")
 
     m += 2 -> "two"
-    m += (3 -> "three", 4 -> "four")
+    m +=(3 -> "three", 4 -> "four")
 
     m shouldEqual mutable.Map(
       1 -> "one",
@@ -914,7 +913,7 @@ class ChoosingCollectionMethodResearch
     )
 
 
-    m -= (2, 4)
+    m -=(2, 4)
 
     m shouldEqual mutable.Map(
       1 -> "one",
@@ -1155,7 +1154,7 @@ class ChoosingCollectionMethodResearch
       4 -> "four"
     )
 
-    m.values should contain only ("one", "two", "three", "four")
+    m.values should contain only("one", "two", "three", "four")
   }
 
 

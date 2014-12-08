@@ -107,28 +107,6 @@ class ChoosingCollectionMethodResearch
 
   test("Traversable.fold") {
     pending
-  test("Traversable.flatten") {
-    // Converts a collection of collections (such as a list of lists) to a single collection (single list).
-
-    val c1 = List(List(0, 1), List(0), List(2), List(3))
-
-    c1.flatten shouldEqual List(0, 1, 0, 2, 3)
-
-    // But ...
-    val c2 = List(List(0, List(1)), List(0), List(2), List(3))
-    c2.flatten shouldEqual List(0, List(1), 0, 2, 3)
-  }
-
-
-  test("Traversable.flatMap") {
-    // Returns a new collection by applying a function to all elements of the collection c (like map), and
-    // then flattening the elements of the resulting collections.
-
-    val c1 = List(List(0, 1), List(0), List(2, 3))
-
-    c1.flatMap(
-      _.reverse
-    ) shouldEqual List(1, 0, 0, 3, 2)
   }
 
 
@@ -195,6 +173,31 @@ class ChoosingCollectionMethodResearch
     }
 
     sb.toString shouldEqual "01023"
+  }
+
+
+  test("Traversable.flatten") {
+    // Converts a collection of collections (such as a list of lists) to a single collection (single list).
+
+    val c1 = List(List(0, 1), List(0), List(2), List(3))
+
+    c1.flatten shouldEqual List(0, 1, 0, 2, 3)
+
+    // But ...
+    val c2 = List(List(0, List(1)), List(0), List(2), List(3))
+    c2.flatten shouldEqual List(0, List(1), 0, 2, 3)
+  }
+
+
+  test("Traversable.flatMap") {
+    // Returns a new collection by applying a function to all elements of the collection c (like map), and
+    // then flattening the elements of the resulting collections.
+
+    val c1 = List(List(0, 1), List(0), List(2, 3))
+
+    c1.flatMap(
+      _.reverse
+    ) shouldEqual List(1, 0, 0, 3, 2)
   }
 
 

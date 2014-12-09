@@ -15,6 +15,19 @@ class ChoosingCollectionMethodResearch
 
   // <editor-fold desc="Common collection methods">
 
+  test("Traversable.aggregate") {
+    // Builds a new collection by applying a partial function to all elements of the collection on which
+    // the function is defined.
+
+    val c = Traversable(0, 1, 0, 2, 3)
+
+    c.aggregate(List[Int]())(
+      (res, element) => element * 10 :: res,
+      _ ::: _
+    ) shouldEqual List(30, 20, 0, 10, 0)
+  }
+
+
   test("Traversable.collect") {
     // Builds a new collection by applying a partial function to all elements of the collection on which
     // the function is defined.

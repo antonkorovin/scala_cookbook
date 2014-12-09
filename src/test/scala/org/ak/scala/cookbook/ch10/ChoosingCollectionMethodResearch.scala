@@ -500,6 +500,19 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Traversable.scan") {
+    // Computes a prefix scan of the elements of the collection.
+
+    val c = Traversable(0, 1, 0, 2, 3)
+
+    c.scan(42) {
+      (z, e) =>
+        e + z
+    } shouldEqual Traversable(42, 42, 43, 43, 45, 48)
+  }
+
+
+  test("Traversable.scanLeft") {
   test("Traversable.slice") {
     // Returns the interval of elements beginning at element from and ending at element to.
 

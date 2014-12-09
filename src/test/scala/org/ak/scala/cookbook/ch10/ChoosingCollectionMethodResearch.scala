@@ -513,6 +513,17 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.scanLeft") {
+    // Produces a collection containing cumulative results of applying the
+    // operator going left to right.
+
+    val c = Traversable(0, 1, 0, 2, 3)
+
+    c.scanLeft(42) {
+      (z, e) =>
+        e + z
+    } shouldEqual Traversable(42, 42, 43, 43, 45, 48)
+  }
+
   test("Traversable.slice") {
     // Returns the interval of elements beginning at element from and ending at element to.
 

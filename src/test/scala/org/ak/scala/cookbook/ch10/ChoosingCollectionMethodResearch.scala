@@ -697,6 +697,15 @@ class ChoosingCollectionMethodResearch
 
   // <editor-fold desc="Seq specific methods">
 
+  test("Seq.contains") {
+    // Tests whether this coll contains a given value as an element.
+
+    val c = Seq(0, 1, 0, 2, 3)
+
+    c.contains(2) shouldBe true
+    c.contains(42) shouldBe false
+  }
+
 
   test("Seq.diff") {
     // Returns the difference of the elements in c1 and c2.

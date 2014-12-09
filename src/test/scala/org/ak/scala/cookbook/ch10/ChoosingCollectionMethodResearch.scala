@@ -412,6 +412,29 @@ class ChoosingCollectionMethodResearch
     pending
   }
 
+
+  test("Traversable.reduce") {
+    // Reduces the elements of this coll using the specified associative binary operator.
+
+    val c = Traversable(0, 1, 0, 2, 3)
+
+    // ((((0 - 1) - 0) - 2) - 3)
+    c.reduce(
+      _ - _
+    ) shouldEqual -6
+
+
+    c.reduce(
+      _ + _
+    ) shouldEqual 6
+
+
+    intercept[UnsupportedOperationException] {
+      Traversable.empty[Int].reduce(_ - _)
+    }
+  }
+
+
   test("Traversable.reduceLeft") {
     // The same as foldLeft, but begins at the first element of the collection.
 

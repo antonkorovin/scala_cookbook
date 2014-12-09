@@ -43,6 +43,26 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Traversable.collectFirst") {
+    // Builds a new collection by applying a partial function to all elements of the collection on which
+    // the function is defined.
+
+    val divideAsMatch: PartialFunction[Int, Int] = {
+      case d: Int if d != 0 => 42 / d
+    }
+
+    val absForNegatives: PartialFunction[Int, Int] = {
+      case d: Int if d < 0 => Math.abs(d)
+    }
+
+
+    val c = Traversable(0, 1, 0, 2, 3)
+
+    c.collectFirst(divideAsMatch) shouldEqual Some(42)
+    c.collectFirst(absForNegatives) shouldEqual None
+  }
+
+
   test("Traversable.copyToArray") {
     pending
   }

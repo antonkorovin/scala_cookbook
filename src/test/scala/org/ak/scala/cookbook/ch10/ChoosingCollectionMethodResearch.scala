@@ -707,6 +707,16 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Seq.containsSlice") {
+    // Tests whether this coll contains a given sequence as a slice.
+
+    val c = Seq(0, 1, 0, 2, 3)
+
+    c.containsSlice(Seq(1, 0, 2)) shouldBe true
+    c.containsSlice(Seq(1, 2, 3)) shouldBe false
+  }
+
+
   test("Seq.diff") {
     // Returns the difference of the elements in c1 and c2.
 

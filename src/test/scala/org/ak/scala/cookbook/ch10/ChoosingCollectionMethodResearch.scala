@@ -475,6 +475,14 @@ class ChoosingCollectionMethodResearch
 
     // Same. 'z' is always the second argument
     // (0 - (1 - (2 - 3)))
+    c.reduceRight(
+      _ - _
+    ) shouldEqual -2
+
+
+    intercept[UnsupportedOperationException] {
+      Traversable.empty[Int].reduceRight(_ - _)
+    }
   }
 
 
@@ -499,6 +507,8 @@ class ChoosingCollectionMethodResearch
     Traversable(0, 1, 0, 2, 3).slice(1, 3) shouldEqual Traversable(1, 0)
     Traversable(0, 1, 0, 2, 3).slice(2, 6) shouldEqual Traversable(0, 2, 3)
     Traversable(0, 1, 0, 2, 3).slice(5, 6) shouldEqual Traversable.empty
+
+    Traversable.empty.slice(0, 42) shouldEqual Traversable.empty
   }
 
 
@@ -517,6 +527,8 @@ class ChoosingCollectionMethodResearch
     Traversable(0, 1, 0, 2, 3).splitAt(2) shouldEqual(Traversable(0, 1), Traversable(0, 2, 3))
     Traversable(0, 1, 0, 2, 3).splitAt(0) shouldEqual(Traversable.empty, Traversable(0, 1, 0, 2, 3))
     Traversable(0, 1, 0, 2, 3).splitAt(5) shouldEqual(Traversable(0, 1, 0, 2, 3), Traversable.empty)
+
+    Traversable.empty.splitAt(42) shouldEqual(Traversable.empty, Traversable.empty)
   }
 
 

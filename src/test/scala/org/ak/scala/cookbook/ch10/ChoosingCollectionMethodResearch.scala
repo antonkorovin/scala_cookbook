@@ -733,6 +733,15 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Seq.endsWith") {
+    // Tests whether this coll ends with the given sequence.
+
+    val c = Seq(0, 1, 0, 2, 3)
+
+    c.endsWith(Seq(1, 0, 2)) shouldBe false
+    c.endsWith(Seq(0, 2, 3)) shouldBe true
+  }
+
 
 
   test("Seq.indexWhere") {

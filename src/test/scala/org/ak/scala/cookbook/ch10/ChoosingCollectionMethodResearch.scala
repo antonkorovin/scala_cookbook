@@ -743,6 +743,17 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Seq.indexOf") {
+    // Finds index of first occurrence of some value in this $coll after or at some start index.
+
+    val c = Seq(0, 1, 0, 2, 3)
+
+    c.indexOf(2) shouldBe 3
+    c.indexOf(42) shouldBe -1
+
+    c.indexOf(0, from = 1) shouldBe 2
+  }
+
 
   test("Seq.indexWhere") {
     // Finds index of the first element satisfying some predicate after or at some start index.

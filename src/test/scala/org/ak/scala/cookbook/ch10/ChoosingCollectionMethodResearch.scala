@@ -755,6 +755,15 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Seq.segmentLength") {
+    // Computes length of longest segment whose elements all satisfy some predicate.
+
+    val c = Seq(0, 1, 0, 2, 3)
+
+    c.segmentLength(_ <= 2, 1) shouldEqual 3
+    c.segmentLength(_ > 42, 0) shouldEqual 0
+  }
+
   test("Seq.indexWhere") {
     // Finds index of the first element satisfying some predicate after or at some start index.
 

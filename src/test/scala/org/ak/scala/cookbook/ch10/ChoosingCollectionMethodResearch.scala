@@ -774,6 +774,19 @@ class ChoosingCollectionMethodResearch
     c.prefixLength(_ > 42) shouldEqual 0
   }
 
+
+  test("Seq.indexOfSlice") {
+    // Finds first index where this $coll contains a given sequence as a slice.
+
+    val c = Seq(0, 1, 0, 2, 3)
+
+    c.indexOfSlice(Seq(0, 2)) shouldBe 2
+    c.indexOfSlice(Seq(0, 1, 42)) shouldBe -1
+
+    c.indexOfSlice(Seq(0, 1, 0), from = 1) shouldBe -1
+  }
+
+
   test("Seq.indexWhere") {
     // Finds index of the first element satisfying some predicate after or at some start index.
 

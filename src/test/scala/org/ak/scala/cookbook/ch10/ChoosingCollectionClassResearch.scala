@@ -6,6 +6,7 @@ import scala.collection.immutable.{TreeSet, ListSet, HashSet}
 import scala.collection.mutable.{ArrayBuffer, ListBuffer}
 import scala.collection.{BitSet, SortedMap, mutable}
 import org.ak.scala.cookbook.StringUtils._
+import scala.language.postfixOps
 import scala.language.implicitConversions
 
 /**

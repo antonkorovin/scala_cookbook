@@ -64,7 +64,37 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.copyToArray") {
-    pending
+    val c = Traversable(1, 2, 3, 4, 5)
+
+    // Copies values of this $coll to an array.
+    // Fills the given array `xs` with values of this $coll.
+    // Copying will stop once either the end of the current $coll is reached,
+    // or the end of the array is reached.
+    val xs1 = new Array[Int](c.size)
+    c.copyToArray(xs1)
+
+    xs1 shouldEqual Array(1, 2, 3, 4, 5)
+
+
+    // Copies values of this $coll to an array.
+    // Fills the given array `xs` with values of this $coll, beginning at index `start`.
+    // Copying will stop once either the end of the current $coll is reached,
+    // or the end of the array is reached.
+    val xs2 = new Array[Int](c.size - 1)
+    c.copyToArray(xs2, start = 1)
+
+    xs2 shouldEqual Array(0, 1, 2, 3)
+
+
+    // Copies elements of this $coll to an array.
+    // Fills the given array `xs` with at most `len` elements of
+    // this $coll, starting at position `start`.
+    // Copying will stop once either the end of the current $coll is reached,
+    // or the end of the array is reached, or `len` elements have been copied.
+    val xs3 = new Array[Int](c.size - 2)
+    c.copyToArray(xs3, start = 1, len = 3)
+
+    xs3 shouldEqual Array(0, 1, 2)
   }
 
 

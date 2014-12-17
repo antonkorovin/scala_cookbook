@@ -169,7 +169,19 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.fold") {
-    pending
+    // Folds the elements of this $coll using the specified associative binary operator.
+
+    val c = Traversable(0, 1, 0, 2, 3)
+
+    // (((((10 - 0) - 1) - 0) - 2) - 3)
+    c.fold(10)(
+      _ - _
+    ) shouldEqual 4
+
+
+    c.fold(0)(
+      (a, b) => a + b
+    ) shouldEqual 6
   }
 
 

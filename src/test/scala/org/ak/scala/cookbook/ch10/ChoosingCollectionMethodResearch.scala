@@ -352,7 +352,12 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.isTraversableAgain") {
-    pending
+    // Tests whether this $coll can be repeatedly traversed.  Always
+    // true for Traversables and false for Iterators unless overridden.
+
+    Traversable(0, 1, 0, 2, 3).isTraversableAgain shouldBe true
+    Iterator(0, 1, 0, 2, 3).isTraversableAgain shouldBe false
+    Stream(0, 1, 0, 2, 3).isTraversableAgain shouldBe true
   }
 
 

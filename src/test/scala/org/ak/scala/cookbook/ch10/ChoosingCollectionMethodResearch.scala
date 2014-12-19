@@ -404,7 +404,8 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.maxBy") {
-    pending
+    // Finds the first element which yields the largest value measured by function f.
+    Traversable(0, -1, 0, -2, -3).maxBy(Math.abs) shouldEqual -3
   }
 
 

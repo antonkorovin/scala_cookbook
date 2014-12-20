@@ -420,7 +420,8 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.minBy") {
-    pending
+    // Finds the first element which yields the largest value measured by function f.
+    Traversable(0, -1, 0, -2, -3).minBy(Math.abs) shouldEqual 0
   }
 
 

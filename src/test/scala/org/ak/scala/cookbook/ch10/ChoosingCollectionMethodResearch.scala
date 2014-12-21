@@ -470,7 +470,9 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.product") {
-    pending
+    // Multiplies up the elements of this collection.
+
+    Traversable(1, 2, 3, 4).product shouldEqual 24
   }
 
 

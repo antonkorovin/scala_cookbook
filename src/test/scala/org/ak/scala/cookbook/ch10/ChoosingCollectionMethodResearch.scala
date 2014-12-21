@@ -426,7 +426,19 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.mkString") {
-    pending
+    val c = Traversable(0, 1, 0, 2, 3)
+
+    // Displays all elements of this $coll in a string.
+    c.mkString shouldEqual "01023"
+
+
+    // Displays all elements of this $coll in a string using a separator string.
+    c.mkString(sep = "|") shouldEqual "0|1|0|2|3"
+
+
+    // Displays all elements of this $coll in a string using start, end, and
+    // separator strings.
+    c.mkString(sep = "|", start = "{", end = "}") shouldEqual "{0|1|0|2|3}"
   }
 
 

@@ -565,7 +565,24 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.reduceRightOption") {
-    pending
+    // Optionally applies a binary operator to all elements of this $coll, going
+    // right to left.
+
+    val c = Traversable(0, 1, 2, 3)
+
+    // (0 - (1 - (2 - 3)))
+    c.reduceRightOption(
+      (nextElement, z) => nextElement - z
+    ) shouldEqual Some(-2)
+
+
+    // Same. 'z' is always the second argument
+    // (0 - (1 - (2 - 3)))
+    c.reduceRightOption(
+      _ - _
+    ) shouldEqual Some(-2)
+
+    Traversable.empty[Int].reduceRightOption(_ - _) shouldEqual None
   }
 
 

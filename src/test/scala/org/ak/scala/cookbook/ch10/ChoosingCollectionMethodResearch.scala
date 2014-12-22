@@ -766,6 +766,45 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Traversable.transpose") {
+    // Transposes this $coll of traversable collections into
+    // a $coll of ${coll}s
+
+    Traversable.empty.transpose shouldEqual Traversable.empty
+
+    intercept[IllegalArgumentException]{
+      // transpose requires all collections have the same size
+      Traversable(Traversable(1, 2), Traversable(1)).transpose
+    }
+
+    intercept[IllegalArgumentException]{
+      // transpose requires all collections have the same size
+      Traversable(Traversable(1), Traversable(1, 2)).transpose
+    }
+
+
+    Traversable(
+      Traversable(1, 2), Traversable(3, 4)
+    ).transpose shouldEqual Traversable(
+      Traversable(1, 3), Traversable(2, 4)
+    )
+
+
+    Traversable(
+      Traversable(1, 2, 3), Traversable(4, 5, 6)
+    ).transpose shouldEqual Traversable(
+      Traversable(1, 4), Traversable(2, 5), Traversable(3, 6)
+    )
+
+
+    Traversable(
+      Traversable(1, 2, 3), Traversable(4, 5, 6), Traversable(7, 8, 9)
+    ).transpose shouldEqual Traversable(
+      Traversable(1, 4, 7), Traversable(2, 5, 8), Traversable(3, 6, 9)
+    )
+  }
+
+
   test("Traversable.unzip") {
     // The opposite of zip, breaks a collection into two collections by dividing each element into two
     // pieces, as in breaking up a collection of Tuple2 elements.

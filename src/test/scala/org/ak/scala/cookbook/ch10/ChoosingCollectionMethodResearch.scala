@@ -818,6 +818,20 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Traversable.unzip3") {
+    // Converts this $coll of triples into three collections of the first, second,
+    // and third element of each triple.
+
+    Traversable(
+      (0, 7, 1), (1, 1, 2), (0, 5, 3), (2, 2, 4), (3, 4, 5)
+    ).unzip3 shouldEqual(
+      Traversable(0, 1, 0, 2, 3),
+      Traversable(7, 1, 5, 2, 4),
+      Traversable(1, 2, 3, 4, 5)
+      )
+  }
+
+
   test("Traversable.view") {
     // Returns a nonstrict (lazy) view of the collection.
 

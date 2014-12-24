@@ -938,12 +938,9 @@ class ChoosingCollectionMethodResearch
   test("Seq.indexWhere") {
     // Finds index of the first element satisfying some predicate after or at some start index.
 
-    pending
-  }
+    val c = Seq(0, 1, 0, 2, 3)
 
-
-  test("Seq.indexWhere") {
-    pending
+    c.indexWhere(_ > 1) shouldEqual 3
   }
 
 

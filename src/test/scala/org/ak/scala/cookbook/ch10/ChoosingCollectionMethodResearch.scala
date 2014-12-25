@@ -956,6 +956,14 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Seq.lastIndexOf") {
+    // Finds index of last occurrence of some value in this $coll.
+
+    val c = Seq(0, 1, 0, 2, 3)
+
+    c.lastIndexOf(0) shouldEqual 2
+  }
+
   test("Seq.reverse") {
     // Returns a collection with the elements in reverse order. (Not available on Traversable, but
     // common to most collections, from GenSeqLike.)

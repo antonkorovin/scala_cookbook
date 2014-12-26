@@ -973,6 +973,16 @@ class ChoosingCollectionMethodResearch
     c.lastIndexOfSlice(Seq(0, 1, 0)) shouldEqual 2
   }
 
+
+  test("Seq.lastIndexWhere") {
+    // Finds index of last element satisfying some predicate.
+
+    val c = Seq(0, 1, 0, 2, 3)
+
+    c.lastIndexWhere(_ == 0) shouldEqual 2
+  }
+
+
   test("Seq.reverse") {
     // Returns a collection with the elements in reverse order. (Not available on Traversable, but
     // common to most collections, from GenSeqLike.)

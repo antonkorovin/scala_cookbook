@@ -736,7 +736,16 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.toIterator") {
-    pending
+    // Returns an Iterator over the elements in this $coll.  Will return
+    // the same Iterator if this instance is already an Iterator.
+
+    val actIterator = Traversable(0, 1, 0, 2, 3).toIterator
+    val expIterator = Iterator(0, 1, 0, 2, 3)
+
+
+    while (actIterator.hasNext || expIterator.hasNext) {
+      expIterator.next() shouldEqual actIterator.next()
+    }
   }
 
 

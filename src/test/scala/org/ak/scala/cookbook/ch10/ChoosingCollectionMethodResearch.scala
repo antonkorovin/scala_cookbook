@@ -707,7 +707,9 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.toArray") {
-    pending
+    // Converts this $coll to an array.
+
+    Traversable(0, 1, 0, 2, 3).toArray shouldEqual Array(0, 1, 0, 2, 3)
   }
 
 

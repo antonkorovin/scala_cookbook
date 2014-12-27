@@ -726,7 +726,12 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.toIterable") {
-    pending
+    // Converts this $coll to an iterable collection.  Note that
+    // the choice of target `Iterable` is lazy in this default implementation
+    // as this `TraversableOnce` may be lazy and unevaluated (i.e. it may
+    // be an iterator which is only traversable once).
+
+    Traversable(0, 1, 0, 2, 3).toIterable shouldEqual Iterable(0, 1, 0, 2, 3)
   }
 
 

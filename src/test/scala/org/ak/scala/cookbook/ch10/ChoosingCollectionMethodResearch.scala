@@ -759,7 +759,17 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.toMap") {
-    pending
+    // Converts this $coll to a map.  This method is unavailable unless
+    // the elements are members of Tuple2, each ((T, U)) becoming a key-value
+    // pair in the map.  Duplicate keys will be overwritten by later keys:
+    // if this is an unordered collection, which key is in the resulting map
+    // is undefined.
+
+    Traversable(
+      (0, "zero"), (1, "one"), (2, "two")
+    ).toMap shouldEqual Map(
+      0 -> "zero", 1 -> "one", 2 -> "two"
+    )
   }
 
 

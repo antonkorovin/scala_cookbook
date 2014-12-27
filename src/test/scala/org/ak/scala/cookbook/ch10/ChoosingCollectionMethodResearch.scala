@@ -752,7 +752,9 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.toList") {
-    pending
+    // Converts this $coll to a list.
+
+    Traversable(0, 1, 0, 2, 3).toList shouldEqual List(0, 1, 0, 2, 3)
   }
 
 

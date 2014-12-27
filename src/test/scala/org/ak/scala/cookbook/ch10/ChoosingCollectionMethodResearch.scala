@@ -964,6 +964,15 @@ class ChoosingCollectionMethodResearch
     c.lastIndexOf(0) shouldEqual 2
   }
 
+
+  test("Seq.lastIndexOfSlice") {
+    // Finds last index where this $coll contains a given sequence as a slice.
+
+    val c = Seq(0, 1, 0, 1, 0)
+
+    c.lastIndexOfSlice(Seq(0, 1, 0)) shouldEqual 2
+  }
+
   test("Seq.reverse") {
     // Returns a collection with the elements in reverse order. (Not available on Traversable, but
     // common to most collections, from GenSeqLike.)

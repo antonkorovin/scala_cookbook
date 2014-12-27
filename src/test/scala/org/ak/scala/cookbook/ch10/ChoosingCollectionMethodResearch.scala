@@ -719,7 +719,9 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.toIndexedSeq") {
-    pending
+    // Converts this $coll to an indexed sequence.
+
+    Traversable(0, 1, 0, 2, 3).toIndexedSeq shouldEqual IndexedSeq(0, 1, 0, 2, 3)
   }
 
 

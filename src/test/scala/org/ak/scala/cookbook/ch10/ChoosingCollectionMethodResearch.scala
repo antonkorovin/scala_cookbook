@@ -714,7 +714,9 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.toBuffer") {
-    pending
+    // Converts this $coll to a mutable buffer.
+
+    Traversable(0, 1, 0, 2, 3).toBuffer shouldEqual mutable.Buffer(0, 1, 0, 2, 3)
   }
 
 

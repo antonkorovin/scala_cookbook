@@ -3,7 +3,7 @@ package org.ak.scala.cookbook.ch10
 import org.scalatest.{FunSuite, Matchers}
 
 import scala.collection.parallel.mutable.ParArray
-import scala.collection.{SeqView, mutable}
+import scala.collection.{immutable, SeqView, mutable}
 
 /**
  * @author antonk
@@ -824,12 +824,12 @@ class ChoosingCollectionMethodResearch
 
     Traversable.empty.transpose shouldEqual Traversable.empty
 
-    intercept[IllegalArgumentException]{
+    intercept[IllegalArgumentException] {
       // transpose requires all collections have the same size
       Traversable(Traversable(1, 2), Traversable(1)).transpose
     }
 
-    intercept[IllegalArgumentException]{
+    intercept[IllegalArgumentException] {
       // transpose requires all collections have the same size
       Traversable(Traversable(1), Traversable(1, 2)).transpose
     }

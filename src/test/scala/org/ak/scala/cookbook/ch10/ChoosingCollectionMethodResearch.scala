@@ -933,6 +933,15 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Seq.distinct") {
+    // Builds a new $coll from this $coll without any duplicate elements.
+
+    val c = Seq(0, 1, 0, 2, 3)
+
+    c.distinct shouldEqual Seq(0, 1, 2, 3)
+  }
+
+
   test("Seq.endsWith") {
     // Tests whether this coll ends with the given sequence.
 

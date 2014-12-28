@@ -790,7 +790,9 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.toStream") {
-    pending
+    // Converts this $coll to a stream.
+
+    Traversable(0, 1, 0, 2, 3).toStream shouldEqual Stream(0, 1, 0, 2, 3)
   }
 
 

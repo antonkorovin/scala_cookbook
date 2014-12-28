@@ -805,7 +805,16 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.toVector") {
-    pending
+    // Converts this $coll to a Vector.
+
+    Traversable(0, 1, 0, 2, 3).toVector shouldEqual Vector(0, 1, 0, 2, 3)
+  }
+
+
+  test("Traversable.to[]") {
+    // Converts this $coll into another by copying all elements.
+
+    Traversable(0, 1, 0, 2, 3).to[immutable.Queue] shouldEqual immutable.Queue(0, 1, 0, 2, 3)
   }
 
 

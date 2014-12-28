@@ -1249,6 +1249,59 @@ class ChoosingCollectionMethodResearch
 
   // </editor-fold>
 
+  // <editor-fold desc="Iterable">
+
+
+  test("Iterable.sliding") {
+    // Groups elements in fixed size blocks by passing a "sliding window"
+    // over them (as opposed to partitioning them, as is done in grouped.)
+
+    val i = Iterable(1, 2, 3, 4, 5)
+    val slidedBy2 = i.sliding(2).
+      map(
+        _.toList
+      ).toList
+
+    val slidedBy3 = i.sliding(3).
+      map(
+        _.toList
+      ).toList
+
+
+    slidedBy2 shouldEqual List(List(1, 2), List(2, 3), List(3, 4), List(4, 5))
+    slidedBy3 shouldEqual List(List(1, 2, 3), List(2, 3, 4), List(3, 4, 5))
+
+
+
+    val slidedBy2WithStep2 = i.sliding(size = 2, step = 2).
+      map(
+        _.toList
+      ).toList
+
+    val slidedBy2WithStep3 = i.sliding(size = 2, step = 3).
+      map(
+        _.toList
+      ).toList
+
+    val slidedBy3WithStep2 = i.sliding(size = 3, step = 2).
+      map(
+        _.toList
+      ).toList
+
+    val slidedBy3WithStep3 = i.sliding(size = 3, step = 3).
+      map(
+        _.toList
+      ).toList
+
+
+    slidedBy2WithStep2 shouldEqual List(List(1, 2), List(3, 4), List(5))
+    slidedBy2WithStep3 shouldEqual List(List(1, 2), List(4, 5))
+    slidedBy3WithStep2 shouldEqual List(List(1, 2, 3), List(3, 4, 5))
+    slidedBy3WithStep3 shouldEqual List(List(1, 2, 3), List(4, 5))
+  }
+
+
+  // </editor-fold>
 
   // <editor-fold desc="Maps">
 

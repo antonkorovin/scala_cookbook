@@ -774,7 +774,11 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.toSeq") {
-    pending
+    // Converts this $coll to a sequence. As with `toIterable`, it's lazy
+    // in this default implementation, as this `TraversableOnce` may be
+    // lazy and unevaluated.
+
+    Traversable(0, 1, 0, 2, 3).toSeq shouldEqual Seq(0, 1, 0, 2, 3)
   }
 
 

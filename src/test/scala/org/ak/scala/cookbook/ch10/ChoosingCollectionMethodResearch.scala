@@ -783,7 +783,9 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.toSet") {
-    pending
+    // Converts this $coll to a set
+
+    Traversable(0, 1, 0, 2, 3).toSet shouldEqual Set(0, 1, 2, 3)
   }
 
 

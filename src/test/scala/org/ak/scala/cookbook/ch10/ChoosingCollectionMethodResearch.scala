@@ -797,7 +797,10 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.toTraversable") {
-    pending
+    // Converts this $coll to an unspecified Traversable.  Will return
+    // the same collection if this instance is already Traversable.
+
+    Traversable(0, 1, 0, 2, 3).toTraversable shouldEqual Traversable(0, 1, 0, 2, 3)
   }
 
 

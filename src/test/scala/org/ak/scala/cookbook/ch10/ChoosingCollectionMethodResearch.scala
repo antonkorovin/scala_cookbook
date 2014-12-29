@@ -101,6 +101,18 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Traversable.copyToBuffer") {
+    // Copies all elements of this $coll to a buffer.
+
+    val c = Traversable(1, 2, 3, 4, 5)
+    val b = mutable.Buffer[Int]()
+
+    c.copyToBuffer(b)
+
+    b shouldEqual mutable.Buffer(1, 2, 3, 4, 5)
+  }
+
+
   test("Traversable.count") {
     // Counts the number of elements in the collection for which the predicate is satisfied.
 

@@ -1252,6 +1252,16 @@ class ChoosingCollectionMethodResearch
   // <editor-fold desc="Iterable">
 
 
+  test("Iterable.dropRight") {
+    // Selects all elements except last ''n'' ones.
+
+    val i = Iterable(0, 1, 0, 2, 3)
+
+    i.dropRight(3) shouldEqual Iterable(0, 1)
+  }
+
+
+  test("Iterable.grouped") {
   test("Iterable.sliding") {
     // Groups elements in fixed size blocks by passing a "sliding window"
     // over them (as opposed to partitioning them, as is done in grouped.)

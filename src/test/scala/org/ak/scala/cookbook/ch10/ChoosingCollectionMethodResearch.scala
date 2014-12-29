@@ -70,6 +70,7 @@ class ChoosingCollectionMethodResearch
     // Fills the given array `xs` with values of this $coll.
     // Copying will stop once either the end of the current $coll is reached,
     // or the end of the array is reached.
+
     val xs1 = new Array[Int](c.size)
     c.copyToArray(xs1)
 
@@ -80,6 +81,7 @@ class ChoosingCollectionMethodResearch
     // Fills the given array `xs` with values of this $coll, beginning at index `start`.
     // Copying will stop once either the end of the current $coll is reached,
     // or the end of the array is reached.
+
     val xs2 = new Array[Int](c.size - 1)
     c.copyToArray(xs2, start = 1)
 
@@ -91,6 +93,7 @@ class ChoosingCollectionMethodResearch
     // this $coll, starting at position `start`.
     // Copying will stop once either the end of the current $coll is reached,
     // or the end of the array is reached, or `len` elements have been copied.
+
     val xs3 = new Array[Int](c.size - 2)
     c.copyToArray(xs3, start = 1, len = 3)
 
@@ -239,7 +242,6 @@ class ChoosingCollectionMethodResearch
   test("Traversable.foreach") {
     // Applies the function f to all elements of the collection.
 
-
     val c = Traversable(0, 1, 0, 2, 3)
 
     val sb = StringBuilder.newBuilder
@@ -296,7 +298,6 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.hasDefinitiveSize") {
-
     // Tests whether the collection has a finite size. (Returns false for a Stream or Iterator, for
     // example.)
 
@@ -307,7 +308,6 @@ class ChoosingCollectionMethodResearch
   }
 
   test("Traversable.head") {
-
     // Returns the first element of the collection. Throws a NoSuchElementException if the
     // collection is empty.
 
@@ -362,7 +362,6 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.last") {
-
     // Returns the last element from the collection. Throws a NoSuchElementException if the
     // collection is empty.
 
@@ -395,6 +394,7 @@ class ChoosingCollectionMethodResearch
 
   test("Traversable.max") {
     // Returns the largest element from the collection.
+
     Traversable(0, 1, 0, 2, 3).max shouldEqual 3
 
     intercept[UnsupportedOperationException] {
@@ -405,12 +405,14 @@ class ChoosingCollectionMethodResearch
 
   test("Traversable.maxBy") {
     // Finds the first element which yields the largest value measured by function f.
+
     Traversable(0, -1, 0, -2, -3).maxBy(Math.abs) shouldEqual -3
   }
 
 
   test("Traversable.min") {
     //  Returns the smallest element from the collection.
+
     Traversable(0, 1, 0, 2, 3).min shouldEqual 0
 
     intercept[UnsupportedOperationException] {
@@ -421,6 +423,7 @@ class ChoosingCollectionMethodResearch
 
   test("Traversable.minBy") {
     // Finds the first element which yields the largest value measured by function f.
+
     Traversable(0, -1, 0, -2, -3).minBy(Math.abs) shouldEqual 0
   }
 
@@ -1067,7 +1070,6 @@ class ChoosingCollectionMethodResearch
   test("Seq.union") {
     // Returns the union (all elements) of two collections.
 
-
     val c1 = Seq(0, 1, 0, 2, 3)
     val c2 = Seq(7, 1, 5, 2, 4)
 
@@ -1192,7 +1194,7 @@ class ChoosingCollectionMethodResearch
 
     arr shouldEqual mutable.ArrayBuffer(1, 2, 4, 5, 6)
 
-    arr.remove(1, 2)
+    arr.remove(n = 1, count = 2)
 
     arr shouldEqual mutable.ArrayBuffer(1, 5, 6)
   }
@@ -1248,6 +1250,7 @@ class ChoosingCollectionMethodResearch
   }
 
   // </editor-fold>
+
 
   // <editor-fold desc="Iterable">
 
@@ -1320,6 +1323,7 @@ class ChoosingCollectionMethodResearch
 
 
   // </editor-fold>
+
 
   // <editor-fold desc="Maps">
 

@@ -1262,6 +1262,14 @@ class ChoosingCollectionMethodResearch
 
 
   test("Iterable.grouped") {
+    // Partitions elements in fixed size ${coll}s.
+
+    val i = Iterable(0, 1, 0, 2, 3)
+
+    i.grouped(2).toIterable shouldEqual Iterable(Iterable(0, 1), Iterable(0, 2), Iterable(3))
+  }
+
+
   test("Iterable.sliding") {
     // Groups elements in fixed size blocks by passing a "sliding window"
     // over them (as opposed to partitioning them, as is done in grouped.)

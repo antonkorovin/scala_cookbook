@@ -15,6 +15,15 @@ class ChoosingCollectionMethodResearch
 
   // <editor-fold desc="Common collection methods">
 
+  test("Traversable.addString") {
+    // Appends all elements of this $coll to a string builder.
+    // The written text consists of the string representations (w.r.t. the method
+    // `toString`) of all elements of this $coll without any separator string.
+
+    pending
+  }
+
+
   test("Traversable.aggregate") {
     // Builds a new collection by applying a partial function to all elements of the collection on which
     // the function is defined.
@@ -152,6 +161,15 @@ class ChoosingCollectionMethodResearch
     c.exists(_ < 0) shouldEqual false
     c.exists(_ == 0) shouldEqual true
     c.exists(_ > 0) shouldEqual true
+  }
+
+
+  test("Traversable.fill") {
+    // Appends all elements of this $coll to a string builder.
+    // The written text consists of the string representations (w.r.t. the method
+    // `toString`) of all elements of this $coll without any separator string.
+
+    pending
   }
 
 
@@ -354,6 +372,11 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Traversable.inits") {
+    pending
+  }
+
+
   test("Traversable.isEmpty") {
     // Returns true if the collection is empty, false otherwise.
 
@@ -370,6 +393,11 @@ class ChoosingCollectionMethodResearch
     Traversable(0, 1, 0, 2, 3).isTraversableAgain shouldBe true
     Iterator(0, 1, 0, 2, 3).isTraversableAgain shouldBe false
     Stream(0, 1, 0, 2, 3).isTraversableAgain shouldBe true
+  }
+
+
+  test("Traversable.iterate") {
+    pending
   }
 
 
@@ -488,6 +516,11 @@ class ChoosingCollectionMethodResearch
     // Multiplies up the elements of this collection.
 
     Traversable(1, 2, 3, 4).product shouldEqual 24
+  }
+
+
+  test("Traversable.range") {
+    pending
   }
 
 
@@ -688,6 +721,11 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Traversable.tabulate") {
+    pending
+  }
+
+
   test("Traversable.tail") {
     // Returns all elements from the collection except the first element.
 
@@ -697,6 +735,11 @@ class ChoosingCollectionMethodResearch
     intercept[UnsupportedOperationException] {
       Traversable.empty.tail
     }
+  }
+
+
+  test("Traversable.tails") {
+    pending
   }
 
 
@@ -906,6 +949,10 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Traversable.withFilter") {
+    pending
+  }
+
 
   // </editor-fold>
 
@@ -929,6 +976,13 @@ class ChoosingCollectionMethodResearch
 
     c.containsSlice(Seq(1, 0, 2)) shouldBe true
     c.containsSlice(Seq(1, 2, 3)) shouldBe false
+  }
+
+
+  test("Seq.corresponds") {
+    val c = Seq(0, 1, 0, 2, 3)
+
+    pending
   }
 
 
@@ -976,26 +1030,6 @@ class ChoosingCollectionMethodResearch
     c.indexOf(42) shouldBe -1
 
     c.indexOf(0, from = 1) shouldBe 2
-  }
-
-
-  test("Seq.segmentLength") {
-    // Computes length of longest segment whose elements all satisfy some predicate.
-
-    val c = Seq(0, 1, 0, 2, 3)
-
-    c.segmentLength(_ <= 2, 1) shouldEqual 3
-    c.segmentLength(_ > 42, 0) shouldEqual 0
-  }
-
-
-  test("Seq.prefixLength") {
-    // Returns the length of the longest prefix whose elements all satisfy some predicate.
-
-    val c = Seq(0, 1, 0, 2, 3)
-
-    c.prefixLength(_ < 2) shouldEqual 3
-    c.prefixLength(_ > 42) shouldEqual 0
   }
 
 
@@ -1059,6 +1093,26 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Seq.padTo") {
+    pending
+  }
+
+
+  test("Seq.patch") {
+    pending
+  }
+
+
+  test("Seq.prefixLength") {
+    // Returns the length of the longest prefix whose elements all satisfy some predicate.
+
+    val c = Seq(0, 1, 0, 2, 3)
+
+    c.prefixLength(_ < 2) shouldEqual 3
+    c.prefixLength(_ > 42) shouldEqual 0
+  }
+
+
   test("Seq.reverse") {
     // Returns a collection with the elements in reverse order. (Not available on Traversable, but
     // common to most collections, from GenSeqLike.)
@@ -1067,6 +1121,25 @@ class ChoosingCollectionMethodResearch
     Seq.empty[AnyRef].reverse shouldEqual Seq.empty[AnyRef]
   }
 
+
+  test("Seq.reverseMap") {
+    pending
+  }
+
+
+  test("Seq.sameElements") {
+    pending
+  }
+
+
+  test("Seq.segmentLength") {
+    // Computes length of longest segment whose elements all satisfy some predicate.
+
+    val c = Seq(0, 1, 0, 2, 3)
+
+    c.segmentLength(_ <= 2, 1) shouldEqual 3
+    c.segmentLength(_ > 42, 0) shouldEqual 0
+  }
 
 
   test("Seq.sortWith") {
@@ -1090,6 +1163,11 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Seq.updated") {
+    pending
+  }
+
+
   test("Seq.zip") {
     // Creates a collection of pairs by matching the element 0 of c1 with element 0 of c2, element 1
     // of c1 with element 1 of c2, etc.
@@ -1104,6 +1182,11 @@ class ChoosingCollectionMethodResearch
     val c4 = Seq(7, 1, 5)
 
     c3.zip(c4) shouldEqual Seq((0, 7), (1, 1), (0, 5))
+  }
+
+
+  test("Seq.zipAll") {
+    pending
   }
 
 
@@ -1185,6 +1268,26 @@ class ChoosingCollectionMethodResearch
     arr(2) = 42
 
     arr shouldEqual mutable.ArrayBuffer(1, 2, 42, 4, 5, 6)
+  }
+
+
+  test("Mutable.andThen") {
+    pending
+  }
+
+
+  test("Mutable.applyOrElse") {
+    pending
+  }
+
+
+  test("Mutable.combinations") {
+    pending
+  }
+
+
+  test("Mutable.compose") {
+    pending
   }
 
 

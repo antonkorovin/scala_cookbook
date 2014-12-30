@@ -20,7 +20,25 @@ class ChoosingCollectionMethodResearch
     // The written text consists of the string representations (w.r.t. the method
     // `toString`) of all elements of this $coll without any separator string.
 
-    pending
+    val c = Traversable(0, 1, 0, 2, 3)
+
+    c.addString(
+      new StringBuilder
+    ).toString shouldEqual "01023"
+
+
+    c.addString(
+      new StringBuilder,
+      sep = ","
+    ).toString shouldEqual "0,1,0,2,3"
+
+
+    c.addString(
+      new StringBuilder,
+      start = "[",
+      sep = ",",
+      end = "]"
+    ).toString shouldEqual "[0,1,0,2,3]"
   }
 
 

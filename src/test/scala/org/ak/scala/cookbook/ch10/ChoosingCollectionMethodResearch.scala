@@ -3,7 +3,7 @@ package org.ak.scala.cookbook.ch10
 import org.scalatest.{FunSuite, Matchers}
 
 import scala.collection.parallel.mutable.ParArray
-import scala.collection.{immutable, SeqView, mutable}
+import scala.collection.{SeqView, immutable, mutable}
 
 /**
  * @author antonk
@@ -820,10 +820,10 @@ class ChoosingCollectionMethodResearch
     val actIterator = Traversable(0, 1, 0, 2, 3).toIterator
     val expIterator = Iterator(0, 1, 0, 2, 3)
 
-
-    while (actIterator.hasNext || expIterator.hasNext) {
-      expIterator.next() shouldEqual actIterator.next()
-    }
+    iteratorsShouldEqual(
+      expIterator,
+      actIterator
+    )
   }
 
 
@@ -1726,9 +1726,10 @@ class ChoosingCollectionMethodResearch
     val expItr = Iterator(1, 2, 3, 4)
 
 
-    while (keysItr.hasNext || expItr.hasNext) {
-      keysItr.next shouldEqual expItr.next
-    }
+    iteratorsShouldEqual(
+      expItr,
+      keysItr
+    )
   }
 
 
@@ -1793,12 +1794,29 @@ class ChoosingCollectionMethodResearch
     val expItr = Iterator("one", "two", "three", "four")
 
 
-    while (valuesItr.hasNext || expItr.hasNext) {
-      valuesItr.next shouldEqual expItr.next
-    }
+    iteratorsShouldEqual(
+      expItr,
+      valuesItr
+    )
   }
 
 
   // </editor-fold>
+
+  // <editor-fold desc="Private methods">
+
+
+  private def iteratorsShouldEqual[T](
+    expectedIterator: Iterator[T],
+    actualIterator: Iterator[T]
+  ) {
+    while (expectedIterator.hasNext || actualIterator.hasNext) {
+      expectedIterator.next shouldEqual actualIterator.next
+    }
+  }
+
+
+  // </editor-fold
+
 
 }

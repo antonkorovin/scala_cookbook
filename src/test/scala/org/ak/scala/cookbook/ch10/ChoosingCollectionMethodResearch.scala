@@ -183,11 +183,31 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.fill") {
-    // Appends all elements of this $coll to a string builder.
-    // The written text consists of the string representations (w.r.t. the method
-    // `toString`) of all elements of this $coll without any separator string.
+    // Produces a $coll containing the results of some element computation a number of times.
 
-    pending
+    var currentElementValue: Int = 0
+    def increment: Int = {
+      currentElementValue += 1
+      currentElementValue
+    }
+
+    val oneDimColl = Traversable.fill(n = 3)(elem = "42")
+    oneDimColl shouldEqual Traversable("42", "42", "42")
+
+    // Produces a two-dimensional $coll containing the results of some element computation a number of times.
+    val twoDimsColl = Traversable.fill(n1 = 3, n2 = 2)(elem = increment)
+    twoDimsColl shouldEqual Traversable(Traversable(1, 2), Traversable(3, 4), Traversable(5, 6))
+
+
+    // Produces a three-dimensional $coll containing the results of some element computation a number of times.
+
+    currentElementValue = 0
+    val threeDimsColl = Traversable.fill(n1 = 3, n2 = 2, n3 = 4)(elem = increment)
+    threeDimsColl shouldEqual List(
+      List(List(1, 2, 3, 4), List(5, 6, 7, 8)),
+      List(List(9, 10, 11, 12), List(13, 14, 15, 16)),
+      List(List(17, 18, 19, 20), List(21, 22, 23, 24))
+    )
   }
 
 

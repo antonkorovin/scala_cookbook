@@ -411,7 +411,22 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.inits") {
-    pending
+    // Iterates over the inits of this $coll. The first value will be this
+    // $coll and the final one will be an empty $coll, with the intervening
+    // values the results of successive applications of `init`.
+
+
+    iteratorsShouldEqual(
+      Iterator(
+        Traversable(0, 1, 0, 2, 3),
+        Traversable(0, 1, 0, 2),
+        Traversable(0, 1, 0),
+        Traversable(0, 1),
+        Traversable(0),
+        Traversable.empty[Int]
+      ),
+      Traversable(0, 1, 0, 2, 3).inits
+    )
   }
 
 

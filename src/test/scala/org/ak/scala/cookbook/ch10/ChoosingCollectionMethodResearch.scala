@@ -450,7 +450,14 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.iterate") {
-    pending
+    // Produces a $coll containing repeated applications of a function to a start value.
+
+    Traversable.iterate(
+      start = 3,
+      7
+    ) {
+      _ * 2
+    } shouldEqual Traversable(3, 6, 12, 24, 48, 96, 192)
   }
 
 

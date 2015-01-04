@@ -580,7 +580,19 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.range") {
-    pending
+    // Produces a $coll containing a sequence of increasing of integers.
+
+    Traversable.range(
+      'a',
+      'e'
+    ) shouldEqual Traversable('a', 'b', 'c', 'd')
+
+
+    Traversable.range(
+      start = 1,
+      end = 6,
+      step = 2
+    ) shouldEqual Traversable(1, 3, 5)
   }
 
 

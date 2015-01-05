@@ -794,7 +794,46 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.tabulate") {
-    pending
+    // Produces a $coll containing values of a given function over a range of integer values starting from 0.
+
+    Traversable.tabulate(
+      7
+    ) {
+      _ + 5
+    } shouldEqual Traversable(5, 6, 7, 8, 9, 10, 11)
+
+
+    // Produces a two-dimensional $coll containing values of a given function over ranges of integer values starting from 0.
+
+    Traversable.tabulate(
+      7, 3
+    ) {
+      _ + _
+    } shouldEqual Traversable(
+      Traversable(0, 1, 2),
+      Traversable(1, 2, 3),
+      Traversable(2, 3, 4),
+      Traversable(3, 4, 5),
+      Traversable(4, 5, 6),
+      Traversable(5, 6, 7),
+      Traversable(6, 7, 8)
+    )
+
+
+    // Produces a three-dimensional $coll containing values of a given function over ranges of integer values starting from 0.
+    Traversable.tabulate(
+      7, 3, 2
+    ) {
+      _ + _ + _
+    } shouldEqual List(
+      List(List(0, 1), List(1, 2), List(2, 3)),
+      List(List(1, 2), List(2, 3), List(3, 4)),
+      List(List(2, 3), List(3, 4), List(4, 5)),
+      List(List(3, 4), List(4, 5), List(5, 6)),
+      List(List(4, 5), List(5, 6), List(6, 7)),
+      List(List(5, 6), List(6, 7), List(7, 8)),
+      List(List(6, 7), List(7, 8), List(8, 9))
+    )
   }
 
 

@@ -850,7 +850,21 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.tails") {
-    pending
+    // Iterates over the tails of this $coll. The first value will be this
+    // $coll and the final one will be an empty $coll, with the intervening
+    // values the results of successive applications of `tail`.
+
+    iteratorsShouldEqual(
+      Iterator(
+        Traversable(0, 1, 0, 2, 3),
+        Traversable(1, 0, 2, 3),
+        Traversable(0, 2, 3),
+        Traversable(2, 3),
+        Traversable(3),
+        Traversable.empty[Int]
+      ),
+      Traversable(0, 1, 0, 2, 3).tails
+    )
   }
 
 

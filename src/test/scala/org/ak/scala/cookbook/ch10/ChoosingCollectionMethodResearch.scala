@@ -1075,7 +1075,15 @@ class ChoosingCollectionMethodResearch
 
 
   test("Traversable.withFilter") {
-    pending
+    // Creates a non-strict filter of this $coll.
+    //  Note: the difference between `c filter p` and `c withFilter p` is that
+    //        the former creates a new collection, whereas the latter only
+    //        restricts the domain of subsequent `map`, `flatMap`, `foreach`,
+    //        and `withFilter` operations.
+
+    Traversable(
+      0, 1, 0, 2, 3
+    ).withFilter(_ > 0).map(_ * 2) shouldEqual Traversable(2, 4, 6)
   }
 
 

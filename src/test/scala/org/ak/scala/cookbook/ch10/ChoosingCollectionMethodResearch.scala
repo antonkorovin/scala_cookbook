@@ -1113,9 +1113,17 @@ class ChoosingCollectionMethodResearch
 
 
   test("Seq.corresponds") {
-    val c = Seq(0, 1, 0, 2, 3)
+    // Tests whether every element of this $coll relates to the
+    // corresponding element of another sequence by satisfying a test predicate.
 
-    pending
+    val c1 = Seq(0, 1, 0, 2, 3)
+    val c2 = Seq(0, 1, 0, 2, 3)
+
+    c1.corresponds(c2)(_ == _) shouldBe true
+
+    c1.map(
+      _ * 2
+    ).corresponds(c2)(_ >= _) shouldBe true
   }
 
 

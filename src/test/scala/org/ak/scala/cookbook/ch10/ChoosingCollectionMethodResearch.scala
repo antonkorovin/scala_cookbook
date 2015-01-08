@@ -1246,7 +1246,21 @@ class ChoosingCollectionMethodResearch
 
 
   test("Seq.patch") {
-    pending
+    // A copy of this $coll with one single replaced element.
+
+    val c = Seq(0, 1, 0, 2, 3)
+
+    c.patch(
+      from = 0,
+      patch = Seq(42, 42),
+      replaced = 2
+    ) shouldEqual Seq(42, 42, 0, 2, 3)
+
+    c.patch(
+      from = 2,
+      patch = Seq(42, 42),
+      replaced = 1
+    ) shouldEqual Seq(0, 1, 42, 42, 2, 3)
   }
 
 

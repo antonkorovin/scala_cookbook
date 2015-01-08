@@ -1284,7 +1284,12 @@ class ChoosingCollectionMethodResearch
 
 
   test("Seq.reverseMap") {
-    pending
+    // Builds a new collection by applying a function to all elements of this $coll and
+    // collecting the results in reversed order.
+
+    val c = Seq(0, 1, 0, 2, 3)
+
+    c.reverseMap(_ * 2) shouldEqual Seq(6, 4, 0, 2, 0)
   }
 
 

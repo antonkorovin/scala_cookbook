@@ -1235,7 +1235,13 @@ class ChoosingCollectionMethodResearch
 
 
   test("Seq.padTo") {
-    pending
+    // A copy of this $coll with an element value appended until a given target length is reached.
+
+    val c = Seq(0, 1, 0, 2, 3)
+
+    c.padTo(len = 7, elem = 42) shouldEqual Seq(0, 1, 0, 2, 3, 42, 42)
+    c.padTo(len = 5, elem = 42) shouldEqual Seq(0, 1, 0, 2, 3)
+    c.padTo(len = 3, elem = 42) shouldEqual Seq(0, 1, 0, 2, 3)
   }
 
 

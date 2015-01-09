@@ -1294,7 +1294,15 @@ class ChoosingCollectionMethodResearch
 
 
   test("Seq.sameElements") {
-    pending
+    // Checks if the other iterable collection contains the same elements in the same order as this $coll.
+
+    val c = Seq(0, 1, 0, 2, 3)
+
+    c.sameElements(Seq(0, 1, 0, 2, 3)) shouldBe true
+
+    c.sameElements(Seq(0, 1, 0, 2, 3).reverse) shouldBe false
+
+    c.sameElements(Seq(0, 1, 0, 2)) shouldBe false
   }
 
 

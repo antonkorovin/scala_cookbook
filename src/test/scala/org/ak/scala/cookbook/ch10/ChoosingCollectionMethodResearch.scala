@@ -1316,6 +1316,16 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Seq.sorted") {
+    // Sorts this $coll according to an Ordering.
+    // The sort is stable. That is, elements that are equal (as determined by
+    // `lt`) appear in the same order in the sorted sequence as in the original.
+
+
+    Seq(0, 1, 0, 2, 3).sorted shouldEqual Seq(0, 0, 1, 2, 3)
+  }
+
+
   test("Seq.sortWith") {
     // Returns a version of the collection sorted by the comparison function f.
 

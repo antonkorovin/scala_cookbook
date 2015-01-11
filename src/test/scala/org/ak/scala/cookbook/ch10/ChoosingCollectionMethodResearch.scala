@@ -1348,7 +1348,39 @@ class ChoosingCollectionMethodResearch
 
 
   test("Seq.updated") {
-    pending
+    // A copy of this $coll with one single replaced element.
+
+    val c = Seq(0, 1, 0, 2, 3)
+
+    c.updated(
+      index = 3,
+      elem = 42
+    ) shouldEqual Seq(0, 1, 0, 42, 3)
+
+
+    c.updated(
+      index = -10,
+      elem = 42
+    ) shouldEqual Seq(42, 1, 0, 2, 3)
+
+
+    // ////////////////////////////////
+
+
+    intercept[UnsupportedOperationException]{
+      c.updated(
+        index = c.length + 1,
+        elem = 42
+      )
+    }
+
+
+    intercept[UnsupportedOperationException]{
+      Seq.empty.updated(
+        index = 0,
+        elem = 42
+      )
+    }
   }
 
 

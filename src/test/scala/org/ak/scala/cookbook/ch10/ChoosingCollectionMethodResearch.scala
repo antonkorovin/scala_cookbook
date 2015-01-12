@@ -1402,7 +1402,19 @@ class ChoosingCollectionMethodResearch
 
 
   test("Seq.zipAll") {
-    pending
+    // Returns a $coll formed from this $coll and another iterable collection
+    // by combining corresponding elements in pairs.
+    // If one of the two collections is shorter than the other,
+    // placeholder elements are used to extend the shorter collection to the length of the longer.
+
+
+    val c1 = Seq(0, 1, 0, 2, 3)
+    val c2 = Seq(7, 1, 5, 2, 4)
+
+    c1.zipAll(c2, 42, 37) shouldEqual Seq((0, 7), (1, 1), (0, 5), (2, 2), (3, 4))
+
+    c1.drop(1).zipAll(c2, 42, 37) shouldEqual Seq((1, 7), (0, 1), (2, 5), (3, 2), (42, 4))
+    c1.zipAll(c2.drop(1), 42, 37) shouldEqual Seq((0, 1), (1, 5), (0, 2), (2, 4), (3, 37))
   }
 
 

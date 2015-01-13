@@ -1281,6 +1281,27 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Seq.permutations") {
+    // Iterates over distinct permutations.
+
+    val c = Seq(1, 2, 3)
+
+    val itr = c.permutations
+
+    iteratorsShouldEqual(
+      Iterator(
+        Seq(1, 2, 3),
+        Seq(1, 3, 2),
+        Seq(2, 1, 3),
+        Seq(2, 3, 1),
+        Seq(3, 1, 2),
+        Seq(3, 2, 1)
+      ),
+      itr
+    )
+  }
+
+
   test("Seq.prefixLength") {
     // Returns the length of the longest prefix whose elements all satisfy some predicate.
 

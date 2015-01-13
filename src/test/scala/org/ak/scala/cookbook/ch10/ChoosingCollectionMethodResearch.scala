@@ -1321,6 +1321,17 @@ class ChoosingCollectionMethodResearch
   }
 
 
+
+  test("Seq.reverseIterator") {
+    // An iterator yielding elements in reversed order.
+
+    iteratorsShouldEqual(
+      Seq(0, 1, 0, 2, 3).reverse.iterator,
+      Seq(0, 1, 0, 2, 3).reverseIterator
+    )
+  }
+
+
   test("Seq.reverseMap") {
     // Builds a new collection by applying a function to all elements of this $coll and
     // collecting the results in reversed order.

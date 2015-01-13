@@ -1092,6 +1092,23 @@ class ChoosingCollectionMethodResearch
 
   // <editor-fold desc="Seq specific methods">
 
+
+  test("Seq.combinations") {
+    val c = Seq(1, 2, 3)
+
+    val itr = c.combinations(2)
+
+    iteratorsShouldEqual(
+      Iterator(
+        Seq(1, 2),
+        Seq(1, 3),
+        Seq(2, 3)
+      ),
+      itr
+    )
+  }
+
+
   test("Seq.contains") {
     // Tests whether this coll contains a given value as an element.
 

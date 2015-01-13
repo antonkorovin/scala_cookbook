@@ -1499,26 +1499,6 @@ class ChoosingCollectionMethodResearch
   }
 
 
-  test("Mutable.andThen") {
-    pending
-  }
-
-
-  test("Mutable.applyOrElse") {
-    pending
-  }
-
-
-  test("Mutable.combinations") {
-    pending
-  }
-
-
-  test("Mutable.compose") {
-    pending
-  }
-
-
   test("Mutable.clear") {
     val arr = mutable.ArrayBuffer(1, 2, 3, 4, 5, 6)
 

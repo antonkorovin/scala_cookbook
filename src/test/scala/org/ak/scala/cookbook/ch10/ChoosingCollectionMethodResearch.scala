@@ -1372,6 +1372,31 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Seq.sortBy") {
+    // Sorts this $Coll according to the Ordering which results from transforming
+    // an implicitly given Ordering with a transformation function.
+
+    case class Foo(id: Int, value: String)
+
+    val c = Seq(
+      Foo(0, "Zero"),
+      Foo(1, "One"),
+      Foo(0, "Zero"),
+      Foo(2, "Two"),
+      Foo(3, "Three")
+    )
+
+
+    c.sortBy(_.id) shouldEqual Seq(
+      Foo(0,"Zero"),
+      Foo(0,"Zero"),
+      Foo(1,"One"),
+      Foo(2,"Two"),
+      Foo(3,"Three")
+    )
+  }
+
+
   test("Seq.sorted") {
     // Sorts this $coll according to an Ordering.
     // The sort is stable. That is, elements that are equal (as determined by

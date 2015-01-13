@@ -1212,6 +1212,13 @@ class ChoosingCollectionMethodResearch
   }
 
 
+  test("Seq.indices") {
+    // Produces the range of all indices of this sequence.
+
+    Seq(0, 1, 0, 2, 3).indices shouldEqual (0 to 4)
+  }
+
+
   test("Seq.intersect") {
     // On collections that support it, it returns the intersection of the two collections (the elements
     // common to both collections).

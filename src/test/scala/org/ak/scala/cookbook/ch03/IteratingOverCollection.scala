@@ -211,7 +211,7 @@ class IteratingOverCollection
 
 
     var foundOuter = 0
-    var foundInner = '\0'
+    var foundInner = '\u0000'
 
     outer.breakable {
       for (i <- 1 to 5) {

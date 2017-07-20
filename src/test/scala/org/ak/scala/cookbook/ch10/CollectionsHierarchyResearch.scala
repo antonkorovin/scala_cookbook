@@ -151,17 +151,6 @@ class CollectionsHierarchyResearch
   }
 
 
-  test("understanding the collections hierarchy for sequences(Stack)") {
-    testSeq(
-      Stack(1, 2, 3),
-      stack = true,
-      indexedSeq = false,
-      buffer = false,
-      linearSeq = true
-    )
-  }
-
-
   test("understanding the collections hierarchy for sequences(Stream)") {
     testSeq(
       Stream(1, 2, 3),
@@ -210,17 +199,6 @@ class CollectionsHierarchyResearch
     testSeq(
       List(1, 2, 3),
       list = true,
-      indexedSeq = false,
-      buffer = false,
-      linearSeq = true
-    )
-  }
-
-
-  test("understanding the collections hierarchy for sequences(LinkedList)") {
-    testSeq(
-      mutable.LinkedList(1, 2, 3),
-      linkedList = true,
       indexedSeq = false,
       buffer = false,
       linearSeq = true
@@ -335,13 +313,11 @@ class CollectionsHierarchyResearch
     vector: Boolean = false,
     listBuffer: Boolean = false,
     queue: Boolean = false,
-    stack: Boolean = false,
     stream: Boolean = false,
     stringBuilder: Boolean = false,
     string: Boolean = false,
     arrayBuffer: Boolean = false,
     list: Boolean = false,
-    linkedList: Boolean = false,
     mutableList: Boolean = false,
     indexedSeq: Boolean = true,
     buffer: Boolean = true,
@@ -354,7 +330,6 @@ class CollectionsHierarchyResearch
     vector shouldEqual seqUnderTest.isInstanceOf[Vector[_]]
     listBuffer shouldEqual seqUnderTest.isInstanceOf[ListBuffer[_]]
     queue shouldEqual seqUnderTest.isInstanceOf[Queue[_]]
-    stack shouldEqual seqUnderTest.isInstanceOf[Stack[_]]
     stream shouldEqual seqUnderTest.isInstanceOf[Stream[_]]
     stringBuilder shouldEqual seqUnderTest.isInstanceOf[StringBuilder]
 
@@ -362,7 +337,6 @@ class CollectionsHierarchyResearch
     string shouldEqual seqUnderTest.isInstanceOf[WrappedString]
     arrayBuffer shouldEqual seqUnderTest.isInstanceOf[ArrayBuffer[_]]
     list shouldEqual seqUnderTest.isInstanceOf[List[_]]
-    linkedList shouldEqual seqUnderTest.isInstanceOf[mutable.LinkedList[_]]
     mutableList shouldEqual seqUnderTest.isInstanceOf[mutable.MutableList[_]]
     indexedSeq shouldEqual seqUnderTest.isInstanceOf[IndexedSeq[_]]
     buffer shouldEqual seqUnderTest.isInstanceOf[mutable.Buffer[_]]

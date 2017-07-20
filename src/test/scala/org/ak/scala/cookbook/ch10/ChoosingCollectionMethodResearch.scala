@@ -1440,15 +1440,15 @@ class ChoosingCollectionMethodResearch
 
 
     c.updated(
-      index = -10,
+      index = 2,
       elem = 42
-    ) shouldEqual Seq(42, 1, 0, 2, 3)
+    ) shouldEqual Seq(0, 1, 42, 2, 3)
 
 
     // ////////////////////////////////
 
 
-    intercept[UnsupportedOperationException]{
+    intercept[IndexOutOfBoundsException]{
       c.updated(
         index = c.length + 1,
         elem = 42
@@ -1456,7 +1456,7 @@ class ChoosingCollectionMethodResearch
     }
 
 
-    intercept[UnsupportedOperationException]{
+    intercept[IndexOutOfBoundsException]{
       Seq.empty.updated(
         index = 0,
         elem = 42

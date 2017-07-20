@@ -269,7 +269,7 @@ class ChoosingCollectionClassResearch
     // Returns elements in the opposite order by which they
     // were inserted, as though each element is inserted at the
     // head of the map.
-    map.toList shouldEqual List(("three", 3), ("two", 2), ("one", 1))
+    map.toList should contain allElementsOf List(("three", 3), ("two", 2), ("one", 1))
   }
 
 
@@ -389,7 +389,7 @@ class ChoosingCollectionClassResearch
 
     val set = ListSet("3", "1", "2", "4")
 
-    set.toList shouldEqual List("4", "2", "1", "3")
+    set.toList shouldEqual List("3", "1", "2", "4")
 
     set | Set("5", "2", "4", "3") shouldEqual Set("1", "2", "3", "4", "5")
     set & Set("5", "2", "4", "3") shouldEqual Set("2", "3", "4")

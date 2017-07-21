@@ -343,7 +343,7 @@ class ChoosingCollectionClassResearch
     keys.clear()
     System.gc()
 
-    map should be (empty)
+    map should contain theSameElementsAs Map.empty[Key, String]
   }
 
   // </editor-fold>

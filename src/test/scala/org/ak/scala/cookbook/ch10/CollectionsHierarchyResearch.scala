@@ -2,7 +2,7 @@ package org.ak.scala.cookbook.ch10
 
 import org.scalatest.{FunSuite, Matchers}
 
-import scala.collection.immutable.{Queue, Stack, WrappedString}
+import scala.collection.immutable.{Queue, WrappedString}
 import scala.collection.mutable.{ArrayBuffer, ListBuffer}
 import scala.collection.{LinearSeq, mutable}
 

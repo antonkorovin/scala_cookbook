@@ -1,9 +1,9 @@
 package org.ak.scala.cookbook.ch10
 
-import org.scalameter.Gen.Collections
+import org.ak.scala.cookbook.ch10.util.MeasureSize
+import org.ak.scala.cookbook.ch10.util.gen.ImmutableCollections
 import org.scalameter.api._
 
-import scala.collection.immutable.{Queue, WrappedString}
 import scala.language.reflectiveCalls
 
 /**
@@ -12,35 +12,28 @@ import scala.language.reflectiveCalls
   */
 object CollectionPerformanceResearch
   extends Bench.OfflineReport
-    with Collections {
-
-  type SizeAware = {def size: Int}
-
-  def queues: Gen[Queue[Int]] = for {
-    size <- sizes
-  } yield {
-    (Queue.newBuilder ++= (0 until size)).result()
-  }
+    with ImmutableCollections
+    with MeasureSize {
 
   performance of "collections" in {
     performance of "list" in {
-      testSizeFor(lists)
+      measureSizeFor(lists)
     }
 
     performance of "range" in {
-      testSizeFor(ranges)
+      measureSizeFor(ranges)
     }
 
     performance of "vector" in {
-      testSizeFor(vectors)
+      measureSizeFor(vectors)
     }
 
     performance of "queue" in {
-      testSizeFor(queues)
+      measureSizeFor(queues)
     }
 
     performance of "string" in {
-      testSizeFor(strings)
+      measureSizeFor(strings)
     }
   }
 
@@ -49,17 +42,4 @@ object CollectionPerformanceResearch
     10000,
     10
   )
-
-  def strings: Gen[WrappedString] = for {
-    size <- sizes
-  } yield {
-    "*" * size
-  }
-
-
-  private def testSizeFor(gen: Gen[_ <: SizeAware]) = {
-    using(gen) curve "size" in {
-      _.size
-    }
-  }
 }

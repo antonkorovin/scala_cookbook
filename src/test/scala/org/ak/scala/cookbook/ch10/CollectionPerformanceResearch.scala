@@ -1,6 +1,6 @@
 package org.ak.scala.cookbook.ch10
 
-import org.ak.scala.cookbook.ch10.util.MeasureSize
+import org.ak.scala.cookbook.ch10.util.{MeasureHeadAndTail, MeasureSize}
 import org.ak.scala.cookbook.ch10.util.gen.ImmutableCollections
 import org.scalameter.api._
 
@@ -13,27 +13,38 @@ import scala.language.reflectiveCalls
 object CollectionPerformanceResearch
   extends Bench.OfflineReport
     with ImmutableCollections
-    with MeasureSize {
+    with MeasureSize
+    with MeasureHeadAndTail {
 
   performance of "collections" in {
     performance of "list" in {
       measureSizeFor(lists)
+
+      measureHeadAndTailFor(lists)
     }
 
     performance of "range" in {
       measureSizeFor(ranges)
+
+      measureHeadAndTailFor(ranges)
     }
 
     performance of "vector" in {
       measureSizeFor(vectors)
+
+      measureHeadAndTailFor(vectors)
     }
 
     performance of "queue" in {
       measureSizeFor(queues)
+
+      measureHeadAndTailFor(queues)
     }
 
     performance of "string" in {
       measureSizeFor(strings)
+
+      measureHeadAndTailFor(strings)
     }
   }
 

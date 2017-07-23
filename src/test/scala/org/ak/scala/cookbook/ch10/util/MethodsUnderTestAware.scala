@@ -8,4 +8,8 @@ trait MethodsUnderTestAware {
 
   type SizeAware = {def size: Int}
 
+  type HeadAware[T] = {def head: T}
+
+  type TailAware[T] = {def tail: T}
+
 }

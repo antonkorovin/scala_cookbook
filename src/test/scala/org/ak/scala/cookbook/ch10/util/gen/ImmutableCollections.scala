@@ -11,16 +11,30 @@ import scala.collection.immutable.{Queue, WrappedString}
   */
 trait ImmutableCollections extends Collections {
 
-  def queues: Gen[Queue[Int]] = for {
-    size <- sizes
-  } yield {
-    (Queue.newBuilder ++= (0 until size)).result()
-  }
 
-  def strings: Gen[WrappedString] = for {
-    size <- sizes
-  } yield {
-    "*" * size
+  override val lists = super.lists.cached
+
+  override val ranges = super.ranges.cached
+
+  override val vectors = super.vectors.cached
+
+  def queues: Gen[Queue[Int]] = {
+    for {
+      size <- sizes
+    } yield {
+      (Queue.newBuilder ++= (0 until size)).result()
+    }
+  }.cached
+
+
+  def strings: Gen[WrappedString] = {
+    val gen: Gen[WrappedString] = for {
+      size <- sizes
+    } yield {
+      "*" * size
+    }
+
+    gen.cached
   }
 
 }

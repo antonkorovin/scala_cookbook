@@ -16,7 +16,11 @@ object CollectionPerformanceResearch
     with MeasureSize
     with MeasureHeadAndTail {
 
-  performance of "collections" in {
+  performance of "collections" config (
+    exec.minWarmupRuns -> 1,
+    exec.maxWarmupRuns -> 1,
+    exec.benchRuns-> 3
+  ) in {
     performance of "list" in {
       measureSizeFor(lists)
 

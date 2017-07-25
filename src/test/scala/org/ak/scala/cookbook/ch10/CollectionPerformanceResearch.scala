@@ -14,7 +14,8 @@ object CollectionPerformanceResearch
   extends Bench.OfflineReport
     with ImmutableCollections
     with MeasureSize
-    with MeasureHeadAndTail {
+    with MeasureHeadAndTail
+    with MeasureLast {
 
   performance of "collections" config(
     exec.minWarmupRuns -> 1,
@@ -56,6 +57,8 @@ object CollectionPerformanceResearch
     measureSizeFor(gen)
 
     measureHeadAndTailFor(gen)
+
+    measureLastFor(gen)
   }
 
 }

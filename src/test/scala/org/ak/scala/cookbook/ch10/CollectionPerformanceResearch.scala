@@ -15,7 +15,8 @@ object CollectionPerformanceResearch
     with ImmutableCollections
     with MeasureSize
     with MeasureHeadAndTail
-    with MeasureLast {
+    with MeasureLast
+    with MeasureInit {
 
   performance of "collections" config(
     exec.minWarmupRuns -> 1,
@@ -59,6 +60,8 @@ object CollectionPerformanceResearch
     measureHeadAndTailFor(gen)
 
     measureLastFor(gen)
+
+    measureInitFor(gen)
   }
 
 }

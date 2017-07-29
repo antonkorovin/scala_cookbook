@@ -52,8 +52,8 @@ object CollectionPerformanceResearch
 
   override def sizes = Gen.exponential("size")(
     1,
-    10000,
-    10
+    0x0FFFFF + 1,
+    2
   )
 
   private def measureSeqMethodsFor[T](gen: Gen[_ <: Seq[T]]): Unit = {

@@ -18,7 +18,8 @@ object CollectionPerformanceResearch
     with MeasureLast
     with MeasureInit
     with MeasureAppend
-    with MeasurePrepend {
+    with MeasurePrepend
+    with MeasureConcat {
 
   performance of "collections" config(
     exec.minWarmupRuns -> 1,
@@ -68,6 +69,8 @@ object CollectionPerformanceResearch
     measureAppendFor(gen)
 
     measurePrependFor(gen)
+
+    measureConcatFor(gen)
   }
 
 }

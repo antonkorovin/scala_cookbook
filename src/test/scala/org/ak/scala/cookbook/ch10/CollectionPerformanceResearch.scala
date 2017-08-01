@@ -1,7 +1,7 @@
 package org.ak.scala.cookbook.ch10
 
 import org.ak.scala.cookbook.ch10.util._
-import org.ak.scala.cookbook.ch10.util.gen.ImmutableCollections
+import org.ak.scala.cookbook.ch10.util.gen.{ImmutableCollections, MutableCollections}
 import org.scalameter.api._
 
 import scala.language.reflectiveCalls
@@ -13,6 +13,7 @@ import scala.language.reflectiveCalls
 object CollectionPerformanceResearch
   extends Bench.OfflineReport
     with ImmutableCollections
+    with MutableCollections
     with MeasureSize
     with MeasureHeadAndTail
     with MeasureLast
@@ -51,6 +52,35 @@ object CollectionPerformanceResearch
     performance of "mutable" in {
       performance of "arraybuffer" in {
         measureSeqMethodsFor(arraybuffers)
+      }
+
+      performance of "listbuffer" in {
+        measureSeqMethodsFor(listbuffers)
+      }
+
+
+      performance of "stringbuilder" in {
+        measureSeqMethodsFor(stringbuilders)
+      }
+
+      performance of "mutablelist" in {
+        measureSeqMethodsFor(mutablelists)
+      }
+
+      performance of "queue" in {
+        measureSeqMethodsFor(mutablequeues)
+      }
+
+      performance of "arrayseq" in {
+        measureSeqMethodsFor(arrayseqs)
+      }
+
+      performance of "stack" in {
+        measureSeqMethodsFor(mutablestacks)
+      }
+
+      performance of "arraystack" in {
+        measureSeqMethodsFor(arraystacks)
       }
     }
   }

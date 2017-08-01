@@ -45,6 +45,10 @@ object CollectionPerformanceResearch
     performance of "string" in {
       measureSeqMethodsFor(strings)
     }
+
+    performance of "arraybuffer" in {
+      measureSeqMethodsFor(arraybuffers)
+    }
   }
 
 

@@ -21,33 +21,37 @@ object CollectionPerformanceResearch
     with MeasurePrepend
     with MeasureConcat {
 
-  performance of "collections" config(
+  performance of "sequences" config(
     exec.minWarmupRuns -> 1,
     exec.maxWarmupRuns -> 1,
     exec.benchRuns -> 3
   ) in {
-    performance of "list" in {
-      measureSeqMethodsFor(lists)
+    performance of "immutable" in {
+      performance of "list" in {
+        measureSeqMethodsFor(lists)
+      }
+
+      performance of "range" in {
+        measureSeqMethodsFor(ranges)
+      }
+
+      performance of "vector" in {
+        measureSeqMethodsFor(vectors)
+      }
+
+      performance of "queue" in {
+        measureSeqMethodsFor(queues)
+      }
+
+      performance of "string" in {
+        measureSeqMethodsFor(strings)
+      }
     }
 
-    performance of "range" in {
-      measureSeqMethodsFor(ranges)
-    }
-
-    performance of "vector" in {
-      measureSeqMethodsFor(vectors)
-    }
-
-    performance of "queue" in {
-      measureSeqMethodsFor(queues)
-    }
-
-    performance of "string" in {
-      measureSeqMethodsFor(strings)
-    }
-
-    performance of "arraybuffer" in {
-      measureSeqMethodsFor(arraybuffers)
+    performance of "mutable" in {
+      performance of "arraybuffer" in {
+        measureSeqMethodsFor(arraybuffers)
+      }
     }
   }
 

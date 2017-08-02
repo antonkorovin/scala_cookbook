@@ -22,65 +22,68 @@ object CollectionPerformanceResearch
     with MeasurePrepend
     with MeasureConcat {
 
-  performance of "sequences" config(
+  performance of "collections" config(
     exec.minWarmupRuns -> 1,
     exec.maxWarmupRuns -> 1,
     exec.benchRuns -> 3
   ) in {
-    performance of "immutable" in {
-      performance of "list" in {
-        measureSeqMethodsFor(lists)
+
+    performance of "sequences" in {
+      performance of "immutable" in {
+        performance of "list" in {
+          measureSeqMethodsFor(lists)
+        }
+
+        performance of "range" in {
+          measureSeqMethodsFor(ranges)
+        }
+
+        performance of "vector" in {
+          measureSeqMethodsFor(vectors)
+        }
+
+        performance of "queue" in {
+          measureSeqMethodsFor(queues)
+        }
+
+        performance of "string" in {
+          measureSeqMethodsFor(strings)
+        }
       }
 
-      performance of "range" in {
-        measureSeqMethodsFor(ranges)
-      }
+      performance of "mutable" in {
+        performance of "arraybuffer" in {
+          measureSeqMethodsFor(arraybuffers)
+        }
 
-      performance of "vector" in {
-        measureSeqMethodsFor(vectors)
-      }
-
-      performance of "queue" in {
-        measureSeqMethodsFor(queues)
-      }
-
-      performance of "string" in {
-        measureSeqMethodsFor(strings)
-      }
-    }
-
-    performance of "mutable" in {
-      performance of "arraybuffer" in {
-        measureSeqMethodsFor(arraybuffers)
-      }
-
-      performance of "listbuffer" in {
-        measureSeqMethodsFor(listbuffers)
-      }
+        performance of "listbuffer" in {
+          measureSeqMethodsFor(listbuffers)
+        }
 
 
-      performance of "stringbuilder" in {
-        measureSeqMethodsFor(stringbuilders)
-      }
+        performance of "stringbuilder" in {
+          measureSeqMethodsFor(stringbuilders)
+        }
 
-      performance of "mutablelist" in {
-        measureSeqMethodsFor(mutablelists)
-      }
+        performance of "mutablelist" in {
+          measureSeqMethodsFor(mutablelists)
+        }
 
-      performance of "queue" in {
-        measureSeqMethodsFor(mutablequeues)
-      }
+        performance of "queue" in {
+          measureSeqMethodsFor(mutablequeues)
+        }
 
-      performance of "arrayseq" in {
-        measureSeqMethodsFor(arrayseqs)
-      }
+        performance of "arrayseq" in {
+          measureSeqMethodsFor(arrayseqs)
+        }
 
-      performance of "stack" in {
-        measureSeqMethodsFor(mutablestacks)
-      }
+        performance of "stack" in {
+          measureSeqMethodsFor(mutablestacks)
+        }
 
-      performance of "arraystack" in {
-        measureSeqMethodsFor(arraystacks)
+        performance of "arraystack" in {
+          measureSeqMethodsFor(arraystacks)
+        }
       }
     }
   }

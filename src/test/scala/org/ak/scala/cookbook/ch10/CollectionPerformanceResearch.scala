@@ -86,6 +86,20 @@ object CollectionPerformanceResearch
         }
       }
     }
+
+    performance of "maps" in {
+      performance of "hashmaps" in {
+        measureMapMethodsFor(hashMaps)
+      }
+
+      performance of "treemaps" in {
+        measureMapMethodsFor(treeMaps)
+      }
+
+      performance of "listmaps" in {
+        measureMapMethodsFor(listMaps)
+      }
+    }
   }
 
 
@@ -114,4 +128,8 @@ object CollectionPerformanceResearch
     measureConcatFor(gen)
   }
 
+
+  private def measureMapMethodsFor[K, V](gen: Gen[_ <: Map[K, V]]): Unit = {
+    measureSizeFor(gen)
+  }
 }

@@ -9,7 +9,7 @@ import scala.collection.immutable.{Queue, WrappedString}
   * @author antonk
   * @since 7/25/17 - 12:26 PM
   */
-trait ImmutableCollections extends Collections {
+trait ImmutableCollections extends Collections with ImmutableMaps {
 
 
   override val lists = super.lists.cached

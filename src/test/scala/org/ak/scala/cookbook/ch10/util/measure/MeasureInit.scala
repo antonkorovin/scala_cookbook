@@ -1,4 +1,4 @@
-package org.ak.scala.cookbook.ch10.util
+package org.ak.scala.cookbook.ch10.util.measure
 
 import org.ak.scala.cookbook.ch10.CollectionPerformanceResearch.using
 import org.scalameter.api.Gen

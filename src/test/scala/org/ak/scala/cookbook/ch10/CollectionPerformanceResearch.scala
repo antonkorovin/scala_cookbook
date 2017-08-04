@@ -2,6 +2,7 @@ package org.ak.scala.cookbook.ch10
 
 import org.ak.scala.cookbook.ch10.util._
 import org.ak.scala.cookbook.ch10.util.gen.{ImmutableCollections, MutableCollections}
+import org.ak.scala.cookbook.ch10.util.measure._
 import org.scalameter.api._
 
 import scala.language.reflectiveCalls

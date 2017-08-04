@@ -9,7 +9,9 @@ import scala.collection.immutable.{HashMap, ListMap, TreeMap}
   * @author antonk
   * @since 8/1/17 - 4:55 PM
   */
-trait ImmutableMaps extends Collections {
+trait ImmutableMaps
+  extends Collections
+    with MapEntries{
 
   val hashMaps: Gen[HashMap[Int, Int]] = {
     for {
@@ -42,10 +44,4 @@ trait ImmutableMaps extends Collections {
       )
     }
   }.cached
-
-  private def mapEntries(size: Int) = {
-    (0 until size).map {
-      x => x -> x
-    }.toArray
-  }
 }

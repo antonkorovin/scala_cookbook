@@ -101,6 +101,21 @@ object CollectionPerformanceResearch
         measureMapMethodsFor(listMaps)
       }
     }
+
+
+    performance of "sets" in {
+      performance of "hashsets" in {
+        measureSetMethodsFor(hashSets)
+      }
+
+      performance of "treesets" in {
+        measureSetMethodsFor(treeSets)
+      }
+
+      performance of "bitset" in {
+        measureSetMethodsFor(bitSets)
+      }
+    }
   }
 
 
@@ -135,6 +150,18 @@ object CollectionPerformanceResearch
   )(
     implicit keyOrdering: Ordering[K],
     valOrdering: Ordering[V]
+  ): Unit = {
+
+    measureSizeFor(gen)
+
+    measureMinFor(gen)
+  }
+
+
+  private def measureSetMethodsFor[T](
+    gen: Gen[_ <: Set[T]]
+  )(
+    implicit ordering: Ordering[T]
   ): Unit = {
 
     measureSizeFor(gen)

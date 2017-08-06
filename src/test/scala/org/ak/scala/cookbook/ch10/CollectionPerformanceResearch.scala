@@ -1,10 +1,10 @@
 package org.ak.scala.cookbook.ch10
 
-import org.ak.scala.cookbook.ch10.util._
 import org.ak.scala.cookbook.ch10.util.gen.{ImmutableCollections, MutableCollections}
 import org.ak.scala.cookbook.ch10.util.measure._
 import org.scalameter.api._
 
+import scala.collection.MapLike
 import scala.language.reflectiveCalls
 
 /**
@@ -90,16 +90,29 @@ object CollectionPerformanceResearch
     }
 
     performance of "maps" in {
-      performance of "hashmaps" in {
-        measureMapMethodsFor(hashMaps)
+      performance of "immutable" in {
+        performance of "hashmaps" in {
+          measureMapMethodsFor(hashMaps)
+        }
+
+        performance of "treemaps" in {
+          measureMapMethodsFor(treeMaps)
+        }
+
+        performance of "listmaps" in {
+          measureMapMethodsFor(listMaps)
+        }
       }
 
-      performance of "treemaps" in {
-        measureMapMethodsFor(treeMaps)
-      }
 
-      performance of "listmaps" in {
-        measureMapMethodsFor(listMaps)
+      performance of "mutable" in {
+        performance of "hashmaps" in {
+          measureMapMethodsFor(mutableHashMaps)
+        }
+
+        performance of "weakhashmap" in {
+          measureMapMethodsFor(mutableWeakHashMaps)
+        }
       }
     }
 
@@ -147,7 +160,7 @@ object CollectionPerformanceResearch
 
 
   private def measureMapMethodsFor[K, V](
-    gen: Gen[_ <: Map[K, V]]
+    gen: Gen[_ <: MapLike[K, V, _]]
   )(
     implicit keyOrdering: Ordering[K],
     valOrdering: Ordering[V]

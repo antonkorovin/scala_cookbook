@@ -8,7 +8,9 @@ import scala.collection.mutable
   * @author antonk
   * @since 8/8/17 - 6:22 PM
   */
-trait MutableCollections extends Collections {
+trait MutableCollections
+  extends Collections
+    with MutableMaps {
   override val arraybuffers = super.arraybuffers.cached
 
   val listbuffers = {

@@ -9,7 +9,9 @@ import scala.collection.immutable.{BitSet, HashMap, HashSet, TreeSet}
   * @author antonk
   * @since 8/9/17 - 6:11 PM
   */
-trait ImmutableSets extends Collections {
+trait ImmutableSets
+  extends Collections
+    with ArrayEntries {
 
   def hashSets: Gen[HashSet[Int]] = {
     for {
@@ -41,9 +43,4 @@ trait ImmutableSets extends Collections {
       )
     }
   }.cached
-
-  private def entries(size: Int) = {
-    (0 until size).toArray
-  }
-
 }

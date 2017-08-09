@@ -4,7 +4,7 @@ import org.ak.scala.cookbook.ch10.util.gen.{ImmutableCollections, MutableCollect
 import org.ak.scala.cookbook.ch10.util.measure._
 import org.scalameter.api._
 
-import scala.collection.MapLike
+import scala.collection.{MapLike, SetLike}
 import scala.language.reflectiveCalls
 
 /**
@@ -118,16 +118,32 @@ object CollectionPerformanceResearch
 
 
     performance of "sets" in {
-      performance of "hashsets" in {
-        measureSetMethodsFor(hashSets)
+      performance of "immutable" in {
+        performance of "hashsets" in {
+          measureSetMethodsFor(hashSets)
+        }
+
+        performance of "treesets" in {
+          measureSetMethodsFor(treeSets)
+        }
+
+        performance of "bitset" in {
+          measureSetMethodsFor(bitSets)
+        }
       }
 
-      performance of "treesets" in {
-        measureSetMethodsFor(treeSets)
-      }
+      performance of "mutable" in {
+        performance of "hashsets" in {
+          measureSetMethodsFor(mutableHashSets)
+        }
 
-      performance of "bitset" in {
-        measureSetMethodsFor(bitSets)
+        performance of "treesets" in {
+          measureSetMethodsFor(mutableTreeSets)
+        }
+
+        performance of "bitset" in {
+          measureSetMethodsFor(mutableBitSets)
+        }
       }
     }
   }
@@ -173,7 +189,7 @@ object CollectionPerformanceResearch
 
 
   private def measureSetMethodsFor[T](
-    gen: Gen[_ <: Set[T]]
+    gen: Gen[_ <: SetLike[T, _]]
   )(
     implicit ordering: Ordering[T]
   ): Unit = {

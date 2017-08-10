@@ -1,6 +1,5 @@
 package org.ak.scala.cookbook.ch10.util.gen
 
-import org.scalameter.Gen.Collections
 import org.scalameter.api.Gen
 
 import scala.collection.immutable.{HashMap, ListMap, TreeMap}
@@ -10,8 +9,8 @@ import scala.collection.immutable.{HashMap, ListMap, TreeMap}
   * @since 8/1/17 - 4:55 PM
   */
 trait ImmutableMaps
-  extends Collections
-    with MapEntries{
+  extends Sizes
+    with MapEntries {
 
   val hashMaps: Gen[HashMap[Int, Int]] = {
     for {

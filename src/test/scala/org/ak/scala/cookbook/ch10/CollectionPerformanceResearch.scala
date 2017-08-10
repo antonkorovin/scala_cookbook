@@ -79,10 +79,6 @@ object CollectionPerformanceResearch
           measureSeqMethodsFor(arrayseqs)
         }
 
-        performance of "stack" in {
-          measureSeqMethodsFor(mutablestacks)
-        }
-
         performance of "arraystack" in {
           measureSeqMethodsFor(arraystacks)
         }

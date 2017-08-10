@@ -1,6 +1,6 @@
 package org.ak.scala.cookbook.ch10.util.gen
 
-import org.scalameter.Gen.Collections
+import org.scalameter.Gen
 
 import scala.collection.mutable
 
@@ -9,54 +9,37 @@ import scala.collection.mutable
   * @since 8/8/17 - 6:22 PM
   */
 trait MutableCollections
-  extends Collections
+  extends Sizes
     with MutableMaps
     with MutableSets {
-  override val arraybuffers = super.arraybuffers.cached
 
-  val listbuffers = {
-    for {
-      size <- sizes
-    } yield mutable.ListBuffer(0 until size: _*)
-  }.cached
+  val arraybuffers: Gen[mutable.ArrayBuffer[Int]] = {
+    sizes.map(size => entries(size).to[mutable.ArrayBuffer]).cached
+  }
 
-  val stringbuilders = {
-    for {
-      size <- sizes
-    } yield {
-      new mutable.StringBuilder("*" * size)
-    }
-  }.cached
+  val listbuffers: Gen[mutable.ListBuffer[Int]] = {
+    sizes.map(size => entries(size).to[mutable.ListBuffer])
+  }
+
+  val stringbuilders: Gen[mutable.StringBuilder] = {
+    sizes.map(size => new mutable.StringBuilder("*" * size)).cached
+  }
 
 
-  val mutablelists = {
-    for {
-      size <- sizes
-    } yield mutable.MutableList(0 until size: _*)
-  }.cached
+  val mutablelists: Gen[mutable.MutableList[Int]] = {
+    sizes.map(size => entries(size).to[mutable.MutableList]).cached
+  }
 
-  val mutablequeues = {
-    for {
-      size <- sizes
-    } yield mutable.Queue(0 until size: _*)
-  }.cached
+  val mutablequeues: Gen[mutable.Queue[Int]] = {
+    sizes.map(size => entries(size).to[mutable.Queue]).cached
+  }
 
-  val arrayseqs = {
-    for {
-      size <- sizes
-    } yield mutable.ArraySeq(0 until size: _*)
-  }.cached
-
-  val mutablestacks = {
-    for {
-      size <- sizes
-    } yield mutable.Stack(0 until size: _*)
-  }.cached
+  val arrayseqs: Gen[mutable.ArraySeq[Int]] = {
+    sizes.map(size => entries(size).to[mutable.ArraySeq]).cached
+  }
 
 
-  val arraystacks = {
-    for {
-      size <- sizes
-    } yield mutable.ArrayStack(0 until size: _*)
-  }.cached
+  val arraystacks: Gen[mutable.ArrayStack[Int]] = {
+    sizes.map(size => entries(size).to[mutable.ArrayStack]).cached
+  }
 }

@@ -1,7 +1,6 @@
 package org.ak.scala.cookbook.ch10.util.gen
 
 import org.scalameter.Gen
-import org.scalameter.Gen.Collections
 
 import scala.collection.mutable
 
@@ -10,7 +9,7 @@ import scala.collection.mutable
   * @since 8/9/17 - 6:30 PM
   */
 trait MutableMaps
-  extends Collections
+  extends Sizes
     with MapEntries {
 
   val mutableHashMaps: Gen[mutable.HashMap[Int, Int]] = {

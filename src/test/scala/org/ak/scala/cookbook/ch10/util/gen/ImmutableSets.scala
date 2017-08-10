@@ -1,16 +1,15 @@
 package org.ak.scala.cookbook.ch10.util.gen
 
 import org.scalameter.Gen
-import org.scalameter.Gen.Collections
 
-import scala.collection.immutable.{BitSet, HashMap, HashSet, TreeSet}
+import scala.collection.immutable.{BitSet, HashSet, TreeSet}
 
 /**
   * @author antonk
   * @since 8/9/17 - 6:11 PM
   */
 trait ImmutableSets
-  extends Collections
+  extends Sizes
     with ArrayEntries {
 
   def hashSets: Gen[HashSet[Int]] = {

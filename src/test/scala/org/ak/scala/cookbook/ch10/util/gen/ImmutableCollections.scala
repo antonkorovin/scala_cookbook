@@ -1,6 +1,5 @@
 package org.ak.scala.cookbook.ch10.util.gen
 
-import org.scalameter.Gen.Collections
 import org.scalameter.api.Gen
 
 import scala.collection.immutable.{Queue, WrappedString}
@@ -10,18 +9,39 @@ import scala.collection.immutable.{Queue, WrappedString}
   * @since 7/25/17 - 12:26 PM
   */
 trait ImmutableCollections
-  extends Collections
+  extends Sizes
     with ImmutableMaps
     with ImmutableSets {
 
 
-  override val lists = super.lists.cached
+  val lists: Gen[List[Int]] = {
+    sizes.map(
+      size =>
+        List(
+          entries(size): _*
+        )
+    )
+  }.cached
 
-  override val ranges = super.ranges.cached
 
-  override val vectors = super.vectors.cached
+  val ranges: Gen[Range] = {
+    sizes.map(
+      size =>
+        0 until size
+    )
+  }.cached
 
-  def queues: Gen[Queue[Int]] = {
+  val vectors: Gen[Vector[Int]] = {
+    sizes.map(
+      size =>
+        Vector(
+          entries(size): _*
+        )
+    )
+  }.cached
+
+
+  val queues: Gen[Queue[Int]] = {
     for {
       size <- sizes
     } yield {
@@ -30,7 +50,7 @@ trait ImmutableCollections
   }.cached
 
 
-  def strings: Gen[WrappedString] = {
+  val strings: Gen[WrappedString] = {
     val gen: Gen[WrappedString] = for {
       size <- sizes
     } yield {

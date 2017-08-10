@@ -1,7 +1,6 @@
 package org.ak.scala.cookbook.ch10.util.gen
 
 import org.scalameter.Gen
-import org.scalameter.Gen.Collections
 
 import scala.collection.mutable
 
@@ -10,7 +9,7 @@ import scala.collection.mutable
   * @since 8/8/17 - 00:02 PM
   */
 trait MutableSets
-  extends Collections
+  extends Sizes
     with ArrayEntries {
 
   val mutableHashSets: Gen[mutable.HashSet[Int]] = {

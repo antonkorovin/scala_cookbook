@@ -1,6 +1,6 @@
 package org.ak.scala.cookbook.ch10
 
-import org.ak.scala.cookbook.ch10.util.gen.{ImmutableCollections, MutableCollections}
+import org.ak.scala.cookbook.ch10.util.gen.{ImmutableCollections, Indexes, MutableCollections}
 import org.ak.scala.cookbook.ch10.util.measure._
 import org.scalameter.api._
 
@@ -15,6 +15,7 @@ object CollectionPerformanceResearch
   extends Bench.OfflineReport
     with ImmutableCollections
     with MutableCollections
+    with Indexes
     with MeasureSize
     with MeasureHeadAndTail
     with MeasureLast
@@ -22,7 +23,8 @@ object CollectionPerformanceResearch
     with MeasureAppend
     with MeasurePrepend
     with MeasureConcat
-    with MeasureMin {
+    with MeasureMin
+    with MeasureApply {
 
   performance of "collections" config(
     exec.minWarmupRuns -> 1,
@@ -148,11 +150,12 @@ object CollectionPerformanceResearch
   // ////////////////////////////////////////////
 
 
-  override def sizes = Gen.exponential("size")(
-    1,
+  override def sizes: Gen[Int] = Gen.exponential("size")(
+    2,
     0x0FFFFF + 1,
     2
   )
+
 
   private def measureSeqMethodsFor[T](gen: Gen[_ <: Seq[T]]): Unit = {
     measureSizeFor(gen)
@@ -168,6 +171,8 @@ object CollectionPerformanceResearch
     measurePrependFor(gen)
 
     measureConcatFor(gen)
+
+    measureApplyFor(gen)
   }
 
 

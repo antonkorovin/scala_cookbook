@@ -24,7 +24,8 @@ object CollectionPerformanceResearch
     with MeasurePrepend
     with MeasureConcat
     with MeasureMin
-    with MeasureApply {
+    with MeasureApply
+    with MeasureLookup {
 
   performance of "collections" config(
     exec.minWarmupRuns -> 1,
@@ -176,16 +177,17 @@ object CollectionPerformanceResearch
   }
 
 
-  private def measureMapMethodsFor[K, V](
-    gen: Gen[_ <: MapLike[K, V, _]]
+  private def measureMapMethodsFor[V](
+    gen: Gen[_ <: MapLike[Int, V, _]]
   )(
-    implicit keyOrdering: Ordering[K],
-    valOrdering: Ordering[V]
+    implicit valOrdering: Ordering[V]
   ): Unit = {
 
     measureSizeFor(gen)
 
     measureMinFor(gen)
+
+    measureLookupFor(gen)
   }
 
 

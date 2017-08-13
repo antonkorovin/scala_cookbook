@@ -25,7 +25,8 @@ object CollectionPerformanceResearch
     with MeasureConcat
     with MeasureMin
     with MeasureApply
-    with MeasureLookup {
+    with MeasureLookup
+    with MeasureContains {
 
   performance of "collections" config(
     exec.minWarmupRuns -> 1,
@@ -191,14 +192,14 @@ object CollectionPerformanceResearch
   }
 
 
-  private def measureSetMethodsFor[T](
-    gen: Gen[_ <: SetLike[T, _]]
-  )(
-    implicit ordering: Ordering[T]
+  private def measureSetMethodsFor(
+    gen: Gen[_ <: SetLike[Int, _]]
   ): Unit = {
 
     measureSizeFor(gen)
 
     measureMinFor(gen)
+
+    measureContainsFor(gen)
   }
 }

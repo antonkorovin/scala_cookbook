@@ -4,16 +4,17 @@ import org.scalameter.api.Gen
 
 /**
   * @author antonk
-  * @since 8/11/17 - 07:57 AM
+  * @since 8/14/17 - 3:24 PM
   */
-trait Indexes extends Sizes {
+trait NonExistentKeys extends Sizes {
 
   import org.scalameter.picklers.Implicits._
 
-  def indexes: Gen[Int] = {
+  // Use with maps and sets only
+  def nonExistentKeys: Gen[Int] = {
     sizes.flatMap(
       s =>
-        Gen.enumeration("indexes")(1, s / 2, s - 1)
+        Gen.enumeration("nonExistentKeys")(0,  s + 1)
     )
   }
 }

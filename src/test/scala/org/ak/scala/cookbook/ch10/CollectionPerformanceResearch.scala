@@ -1,6 +1,6 @@
 package org.ak.scala.cookbook.ch10
 
-import org.ak.scala.cookbook.ch10.util.gen.{ImmutableCollections, Indexes, MutableCollections}
+import org.ak.scala.cookbook.ch10.util.gen.{ImmutableCollections, Indexes, MutableCollections, NonExistentKeys}
 import org.ak.scala.cookbook.ch10.util.measure._
 import org.scalameter.api._
 
@@ -16,6 +16,7 @@ object CollectionPerformanceResearch
     with ImmutableCollections
     with MutableCollections
     with Indexes
+    with NonExistentKeys
     with MeasureSize
     with MeasureHeadAndTail
     with MeasureLast
@@ -26,7 +27,11 @@ object CollectionPerformanceResearch
     with MeasureMin
     with MeasureApply
     with MeasureLookup
-    with MeasureContains {
+    with MeasureContains
+    with MeasureMapAdd
+    with MeasureMapRemove
+    with MeasureSetAdd
+    with MeasureSetRemove {
 
   performance of "collections" config(
     exec.minWarmupRuns -> 1,
@@ -189,6 +194,10 @@ object CollectionPerformanceResearch
     measureMinFor(gen)
 
     measureLookupFor(gen)
+
+    measureMapAddFor(gen)
+
+    measureMapRemoveFor(gen)
   }
 
 
@@ -201,5 +210,9 @@ object CollectionPerformanceResearch
     measureMinFor(gen)
 
     measureContainsFor(gen)
+
+    measureSetAddFor(gen)
+
+    measureSetRemoveFor(gen)
   }
 }
